@@ -47,11 +47,17 @@
     }
 
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
-      color: var(--black);
+      display: flex;
+      align-items: center;
       text-decoration: none;
+    }
+
+    .nav-logo-img {
+      height: 44px;
+      width: auto;
+      background: var(--black);
+      border-radius: 8px;
+      padding: 4px 8px;
     }
 
     .nav-logo span { color: var(--mid); font-style: italic; }
@@ -316,7 +322,7 @@
     .how-step-num {
       font-family: var(--serif);
       font-size: 3rem;
-      color: rgba(247,245,242,0.1);
+      color: #1e3a8a;
       line-height: 1;
       margin-bottom: 1rem;
     }
@@ -453,7 +459,9 @@
 <body>
 
   <nav>
-    <a href="#" class="nav-logo">Performance<span>.Rebuilt</span></a>
+    <a href="#" class="nav-logo">
+      <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
+    </a>
     <ul>
       <li><a href="#services">Services</a></li>
       <li><a href="#how">How it works</a></li>
