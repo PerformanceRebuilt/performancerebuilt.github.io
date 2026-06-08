@@ -296,6 +296,17 @@
       color: var(--white);
     }
 
+    .service-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: #90a8e8;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+
+    .service-card:hover .service-link { opacity: 0.7; }
+
     .service-desc {
       font-size: 0.875rem;
       color: rgba(247,245,242,0.6);
@@ -513,21 +524,24 @@
   <section class="services" id="services">
     <p class="section-label">What we offer</p>
     <div class="services-grid">
-      <div class="service-card">
+      <a href="online-coaching.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
         <div class="service-num">01</div>
         <h3 class="service-title">Online Coaching</h3>
-        <p class="service-desc">Full remote coaching with regular check-ins, form feedback, and program adjustments. You get a coach in your corner, wherever you train.</p>
-      </div>
-      <div class="service-card">
+        <p class="service-desc">Our most hands-on service. Regular check-ins, form feedback, and ongoing program adjustments — a dedicated coach in your corner every step of the way.</p>
+        <span class="service-link">Learn more →</span>
+      </a>
+      <a href="custom-programming.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
         <div class="service-num">02</div>
         <h3 class="service-title">Custom Programming</h3>
-        <p class="service-desc">Training plans written specifically for you — your sport, your goals, your schedule. No cookie-cutter templates, ever.</p>
-      </div>
-      <div class="service-card">
+        <p class="service-desc">A fully personalised training program written around your goals and schedule. Designed for those who know how to execute — minimal check-ins, maximum results.</p>
+        <span class="service-link">Learn more →</span>
+      </a>
+      <a href="athlete-development.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
         <div class="service-num">03</div>
         <h3 class="service-title">Athlete Development</h3>
         <p class="service-desc">Sport-specific strength and conditioning designed to build the physical qualities that transfer directly onto the field, court, or platform.</p>
-      </div>
+        <span class="service-link">Learn more →</span>
+      </a>
     </div>
   </section>
 
