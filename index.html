@@ -586,6 +586,10 @@
       const btn = e.target.querySelector('button');
       btn.textContent = 'Sending...';
       btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send enquiry →';
+        btn.disabled = false;
+      }, 4000);
     }
   </script>
 
