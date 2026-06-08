@@ -582,13 +582,9 @@
 
   <script>
     function handleSubmit(e) {
-      e.preventDefault();
       const btn = e.target.querySelector('button');
-      btn.textContent = 'Sent! We\'ll be in touch soon.';
-      btn.style.background = '#1e3a8a';
-      btn.style.color = '#f7f5f2';
+      btn.textContent = 'Sending...';
       btn.disabled = true;
-      e.target.reset();
     }
   </script>
 
