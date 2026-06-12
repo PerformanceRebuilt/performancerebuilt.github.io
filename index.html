@@ -89,7 +89,61 @@
     }
 
     .nav-cta:hover { opacity: 0.85 !important; }
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 101;
+}
 
+@media (max-width: 900px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 90px;
+    left: 0;
+    right: 0;
+    background: rgba(14,14,14,0.98);
+    backdrop-filter: blur(12px);
+
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 0.3s ease;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  nav ul.active {
+    max-height: 500px;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul a {
+    display: block;
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+
+  .nav-cta {
+    margin: 1rem;
+    text-align: center;
+  }
+}
+    
     /* HERO */
     .hero {
       min-height: 100vh;
