@@ -34,59 +34,27 @@
     }
 
     /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.25rem 2.5rem;
-      background: rgba(14,14,14,0.85);
-      backdrop-filter: blur(12px);
-      
-      border-bottom: 0.5px solid rgba(255,255,255,0.08);
-    }
+    <nav>
+  <a href="#" class="nav-logo">
+    <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
+  </a>
 
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-    }
+  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+    ☰
+  </button>
 
-    .nav-logo-img {
-      height: 110px;
-      width: auto;
-      display: block;
-    }
-
-    .nav-logo span { color: var(--mid); font-style: italic; }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul a {
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 400;
-      color: rgba(247,245,242,0.6);
-      letter-spacing: 0.02em;
-      transition: color 0.2s;
-    }
-
-    nav ul a:hover { color: var(--white); }
-
-    .nav-cta {
-      background: var(--accent) !important;
-      color: var(--white) !important;
-      padding: 0.5rem 1.25rem;
-      border-radius: 2rem;
-      font-weight: 500 !important;
-      transition: opacity 0.2s !important;
-    }
+  <ul id="mobileMenu">
+    <li><a href="about.html">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how">How it works</a></li>
+    <li>
+      <a href="https://www.instagram.com/performance.rebuilt" target="_blank">
+        Instagram
+      </a>
+    </li>
+    <li><a href="#contact" class="nav-cta">Get started</a></li>
+  </ul>
+</nav>
 
     .nav-cta:hover { opacity: 0.85 !important; }
 .menu-toggle {
@@ -139,6 +107,71 @@
   }
 
   .nav-cta {
+    margin: 1rem;
+    text-align: center;
+  }
+}
+    /* MOBILE MENU */
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 101;
+}
+
+@media (max-width: 900px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .nav-logo-img {
+    height: 80px;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 95px;
+    left: 0;
+    right: 0;
+
+    background: rgba(14,14,14,0.98);
+    backdrop-filter: blur(12px);
+
+    display: flex;
+    flex-direction: column;
+
+    max-height: 0;
+    overflow: hidden;
+
+    transition: max-height 0.3s ease;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  nav ul.active {
+    max-height: 500px;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul a {
+    display: block;
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-cta {
+    display: block;
     margin: 1rem;
     text-align: center;
   }
@@ -514,7 +547,6 @@
       .services-grid { grid-template-columns: 1fr; }
       .how-steps { grid-template-columns: 1fr 1fr; }
       .cta-section { grid-template-columns: 1fr; }
-      nav ul { display: none; }
     }
 
     @media (max-width: 600px) {
@@ -678,6 +710,29 @@
       }
     }
   </script>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
 
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+
+    if (mobileMenu.classList.contains('active')) {
+      menuToggle.innerHTML = '✕';
+      menuToggle.setAttribute('aria-label', 'Close menu');
+    } else {
+      menuToggle.innerHTML = '☰';
+      menuToggle.setAttribute('aria-label', 'Open menu');
+    }
+  });
+
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      menuToggle.innerHTML = '☰';
+      menuToggle.setAttribute('aria-label', 'Open menu');
+    });
+  });
+</script>
 </body>
 </html>
