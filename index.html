@@ -33,156 +33,116 @@
       overflow-x: hidden;
     }
 
-    /* NAV */
-    <nav>
-  <a href="#" class="nav-logo">
-    <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
-  </a>
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 72px;
+      background: rgba(14,14,14,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    }
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-    ☰
-  </button>
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
 
-  <ul id="mobileMenu">
-    <li><a href="about.html">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li>
-      <a href="https://www.instagram.com/performance.rebuilt" target="_blank">
-        Instagram
-      </a>
-    </li>
-    <li><a href="#contact" class="nav-cta">Get started</a></li>
-  </ul>
-</nav>
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
 
-    .nav-cta:hover { opacity: 0.85 !important; }
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--white);
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 101;
-}
+    nav ul a {
+      color: rgba(247,245,242,0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
 
-@media (max-width: 900px) {
+    nav ul a:hover { color: var(--white); }
 
-  .menu-toggle {
-    display: block;
-  }
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      font-weight: 500 !important;
+    }
 
-  nav ul {
-    position: fixed;
-    top: 90px;
-    left: 0;
-    right: 0;
-    background: rgba(14,14,14,0.98);
-    backdrop-filter: blur(12px);
+    .nav-cta:hover { opacity: 0.85; }
 
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+    /* hamburger — hidden on desktop */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 101;
+    }
 
-    max-height: 0;
-    overflow: hidden;
+    /* ── MOBILE NAV ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; }
 
-    transition: max-height 0.3s ease;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
+      .nav-logo-img { height: 42px; }
 
-  nav ul.active {
-    max-height: 500px;
-  }
+      .menu-toggle { display: block; }
 
-  nav ul li {
-    width: 100%;
-  }
+      nav ul {
+        position: fixed;
+        top: 72px;
+        left: 0; right: 0;
+        background: rgba(14,14,14,0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-top: 0.5px solid rgba(255,255,255,0.08);
+      }
 
-  nav ul a {
-    display: block;
-    padding: 1rem 1.5rem;
-    width: 100%;
-  }
+      nav ul.active { max-height: 500px; }
 
-  .nav-cta {
-    margin: 1rem;
-    text-align: center;
-  }
-}
-    /* MOBILE MENU */
+      nav ul li { width: 100%; }
 
-.menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--white);
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 101;
-}
+      nav ul a {
+        display: block;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        font-size: 1rem;
+      }
 
-@media (max-width: 900px) {
+      .nav-cta {
+        display: block;
+        margin: 0.75rem 1.25rem 1rem;
+        text-align: center;
+        border-radius: 2rem;
+        padding: 0.75rem 1.25rem;
+      }
+    }
 
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    padding: 0.75rem 1.25rem;
-  }
-
-  .nav-logo-img {
-    height: 80px;
-  }
-
-  nav ul {
-    position: fixed;
-    top: 95px;
-    left: 0;
-    right: 0;
-
-    background: rgba(14,14,14,0.98);
-    backdrop-filter: blur(12px);
-
-    display: flex;
-    flex-direction: column;
-
-    max-height: 0;
-    overflow: hidden;
-
-    transition: max-height 0.3s ease;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  nav ul.active {
-    max-height: 500px;
-  }
-
-  nav ul li {
-    width: 100%;
-  }
-
-  nav ul a {
-    display: block;
-    width: 100%;
-    padding: 1rem 1.5rem;
-  }
-
-  .nav-cta {
-    display: block;
-    margin: 1rem;
-    text-align: center;
-  }
-}
-    
-    /* HERO */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 5rem;
+      padding-top: 72px;
     }
 
     .hero-left {
@@ -190,7 +150,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: transparent;
     }
 
     .hero-eyebrow {
@@ -253,6 +212,7 @@
       letter-spacing: 0.01em;
       transition: background 0.2s, transform 0.15s;
       display: inline-block;
+      border: 1px solid rgba(247,245,242,0.3);
     }
 
     .btn-primary:hover { background: #222; transform: translateY(-1px); }
@@ -273,7 +233,6 @@
     .btn-secondary:hover { opacity: 0.6; }
 
     .hero-right {
-      background: transparent;
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -324,10 +283,9 @@
       font-weight: 400;
     }
 
-    /* SERVICES */
+    /* ── SERVICES ── */
     .services {
       padding: 6rem 2.5rem;
-      background: transparent;
       border-top: 0.5px solid rgba(255,255,255,0.08);
     }
 
@@ -362,6 +320,9 @@
       background: rgba(255,255,255,0.03);
       padding: 2.5rem 2rem;
       transition: background 0.2s;
+      text-decoration: none;
+      display: block;
+      cursor: pointer;
     }
 
     .service-card:hover { background: rgba(255,255,255,0.06); }
@@ -383,6 +344,13 @@
       color: var(--white);
     }
 
+    .service-desc {
+      font-size: 0.875rem;
+      color: rgba(247,245,242,0.6);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
     .service-link {
       display: inline-block;
       margin-top: 1rem;
@@ -394,31 +362,16 @@
 
     .service-card:hover .service-link { opacity: 0.7; }
 
-    .service-desc {
-      font-size: 0.875rem;
-      color: rgba(247,245,242,0.6);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    /* HOW IT WORKS */
+    /* ── HOW IT WORKS ── */
     .how {
       padding: 6rem 2.5rem;
-      background: transparent;
-      color: var(--white);
     }
-
-    .how .section-label { color: rgba(247,245,242,0.4); }
-    .how .section-label::after { background: rgba(247,245,242,0.1); }
 
     .how-steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 2rem;
-      counter-reset: steps;
     }
-
-    .how-step { counter-increment: steps; }
 
     .how-step-num {
       font-family: var(--serif);
@@ -442,14 +395,13 @@
       font-weight: 300;
     }
 
-    /* CTA */
+    /* ── CTA / CONTACT ── */
     .cta-section {
       padding: 7rem 2.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
-      background: transparent;
       border-top: 0.5px solid rgba(255,255,255,0.08);
     }
 
@@ -510,36 +462,40 @@
 
     .contact-form button:hover { opacity: 0.85; transform: translateY(-1px); }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
       padding: 2rem 2.5rem;
-      border-top: 0.5px solid var(--border);
+      border-top: 0.5px solid rgba(255,255,255,0.08);
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.8rem;
-      color: rgba(247,245,242,0.6);
+      color: rgba(247,245,242,0.5);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    footer a { color: var(--mid); text-decoration: none; }
-    footer a:hover { color: var(--black); }
+    footer a {
+      color: rgba(247,245,242,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
 
-    /* ANIMATIONS */
+    footer a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-left > * {
-      animation: fadeUp 0.7s ease both;
-    }
-
+    .hero-left > * { animation: fadeUp 0.7s ease both; }
     .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
     .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
     .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
     .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
 
-    /* RESPONSIVE */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { min-height: 300px; }
@@ -550,10 +506,9 @@
     }
 
     @media (max-width: 600px) {
-      nav { padding: 1rem 1.25rem; }
       .hero-left { padding: 4rem 1.25rem 2rem; }
       .services, .how, .cta-section { padding: 4rem 1.25rem; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      footer { flex-direction: column; text-align: center; }
       .how-steps { grid-template-columns: 1fr; }
     }
   </style>
@@ -561,22 +516,20 @@
 <body>
 
   <nav>
-  <a href="#" class="nav-logo">
-    <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
-  </a>
+    <a href="#" class="nav-logo">
+      <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
+    </a>
 
-  <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
-    ☰
-  </button>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
 
-  <ul id="mobileMenu">
-    <li><a href="about.html">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#how">How it works</a></li>
-    <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
-    <li><a href="#contact" class="nav-cta">Get started</a></li>
-  </ul>
-</nav>
+    <ul id="mobileMenu">
+      <li><a href="about.html">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
+      <li><a href="#contact" class="nav-cta">Get started</a></li>
+    </ul>
+  </nav>
 
   <section class="hero">
     <div class="hero-left">
@@ -613,19 +566,19 @@
   <section class="services" id="services">
     <p class="section-label">What we offer</p>
     <div class="services-grid">
-      <a href="online-coaching.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
+      <a href="online-coaching.html" class="service-card">
         <div class="service-num">01</div>
         <h3 class="service-title">Online Coaching</h3>
         <p class="service-desc">Our most hands-on service. Regular check-ins, form feedback, and ongoing program adjustments — a dedicated coach in your corner every step of the way.</p>
         <span class="service-link">Learn more →</span>
       </a>
-      <a href="custom-programming.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
+      <a href="custom-programming.html" class="service-card">
         <div class="service-num">02</div>
         <h3 class="service-title">Custom Programming</h3>
         <p class="service-desc">A fully personalised training program written around your goals and schedule. Designed for those who know how to execute — minimal check-ins, maximum results.</p>
         <span class="service-link">Learn more →</span>
       </a>
-      <a href="athlete-development.html" class="service-card" style="text-decoration:none; display:block; cursor:pointer;">
+      <a href="athlete-development.html" class="service-card">
         <div class="service-num">03</div>
         <h3 class="service-title">Athlete Development</h3>
         <p class="service-desc">Sport-specific strength and conditioning designed to build the physical qualities that transfer directly onto the field, court, or platform.</p>
@@ -680,9 +633,7 @@
     <span>© 2026 Performance.Rebuilt</span>
     <span>Online coaching &amp; programming for athletes</span>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
-    <a href="https://www.instagram.com/performance.rebuilt" target="_blank" style="display:inline-flex; align-items:center; gap:5px;">
-      <i class="ti ti-brand-instagram" style="font-size:16px;" aria-hidden="true"></i> @performance.rebuilt
-    </a>
+    <a href="https://www.instagram.com/performance.rebuilt" target="_blank">@performance.rebuilt</a>
   </footer>
 
   <script>
@@ -709,30 +660,25 @@
         btn.disabled = false;
       }
     }
-  </script>
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
 
-  menuToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
 
-    if (mobileMenu.classList.contains('active')) {
-      menuToggle.innerHTML = '✕';
-      menuToggle.setAttribute('aria-label', 'Close menu');
-    } else {
-      menuToggle.innerHTML = '☰';
-      menuToggle.setAttribute('aria-label', 'Open menu');
-    }
-  });
-
-  document.querySelectorAll('#mobileMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-      menuToggle.innerHTML = '☰';
-      menuToggle.setAttribute('aria-label', 'Open menu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
-  });
-</script>
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  </script>
+
 </body>
 </html>
