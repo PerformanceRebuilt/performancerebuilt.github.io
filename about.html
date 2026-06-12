@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
       --black: #0e0e0e;
       --white: #f7f5f2;
@@ -19,7 +20,9 @@
       --serif: "DM Serif Display", Georgia, serif;
       --sans: "DM Sans", system-ui, sans-serif;
     }
+
     html { scroll-behavior: smooth; }
+
     body {
       font-family: var(--sans);
       background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%);
@@ -29,160 +32,525 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+
+    /* ── NAV ── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0.25rem 2.5rem;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 72px;
       background: rgba(14,14,14,0.85);
       backdrop-filter: blur(12px);
       border-bottom: 0.5px solid var(--border);
     }
-    .nav-logo img { height: 110px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.6); letter-spacing: 0.02em; transition: color 0.2s; }
-    nav ul a:hover { color: var(--white); }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
 
-    /* HERO */
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    nav ul a {
+      color: rgba(247,245,242,0.7);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--white); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2rem;
+      font-weight: 500 !important;
+    }
+
+    .nav-cta:hover { opacity: 0.85; }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 1.75rem;
+      cursor: pointer;
+      line-height: 1;
+      z-index: 101;
+    }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+
+      nav ul {
+        position: fixed;
+        top: 72px;
+        left: 0; right: 0;
+        background: rgba(14,14,14,0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        border-top: 0.5px solid var(--border);
+      }
+
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; }
+
+      nav ul a {
+        display: block;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        font-size: 1rem;
+      }
+
+      .nav-cta {
+        display: block;
+        margin: 0.75rem 1.25rem 1rem;
+        text-align: center;
+        border-radius: 2rem;
+        padding: 0.75rem 1.25rem;
+      }
+    }
+
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      padding-top: 130px;
+      padding-top: 72px;
       border-bottom: 0.5px solid var(--border);
     }
+
     .hero-left {
       padding: 5rem 3rem 5rem 2.5rem;
-      display: flex; flex-direction: column; justify-content: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
     .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--blue-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-light);
       margin-bottom: 1.5rem;
     }
-    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
-    h1 { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+
+    .hero-eyebrow::before {
+      content: "";
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--blue-light);
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
     h1 em { font-style: italic; color: rgba(247,245,242,0.35); }
-    .hero-intro { font-size: 1.05rem; color: rgba(247,245,242,0.6); font-weight: 300; line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
+
+    .hero-intro {
+      font-size: 1.05rem;
+      color: rgba(247,245,242,0.6);
+      font-weight: 300;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      max-width: 480px;
+    }
+
     .hero-intro strong { color: var(--white); font-weight: 500; }
-    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 2rem; border-radius: 2rem; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 2rem;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: opacity 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
     .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
+
     .hero-right {
       background: rgba(30,58,138,0.06);
       border-left: 0.5px solid var(--border);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 3rem; position: relative; overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
     }
+
     .hero-right-bg {
-      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--serif); font-size: 16rem;
-      color: rgba(30,58,138,0.06); pointer-events: none; line-height: 1;
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 16rem;
+      color: rgba(30,58,138,0.06);
+      pointer-events: none;
+      line-height: 1;
       letter-spacing: -0.05em;
     }
-    .credential-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 0.5px solid var(--border); position: relative; z-index: 1; }
-    .credential { background: rgba(14,14,14,0.6); padding: 1.5rem; }
-    .credential-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.4rem; }
-    .credential-value { font-family: var(--serif); font-size: 1rem; color: var(--white); line-height: 1.3; }
 
-    /* STORY */
-    .story { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
-    .section-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,245,242,0.4); font-weight: 500; margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
-    .section-label::after { content: ""; flex: 1; height: 0.5px; background: var(--border); }
-    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-    h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
+    .credential-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      position: relative;
+      z-index: 1;
+    }
+
+    .credential { background: rgba(14,14,14,0.6); padding: 1.5rem; }
+
+    .credential-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 0.4rem;
+    }
+
+    .credential-value {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    /* ── DIFFERENTIATOR STRIP ── */
+    .diff-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .diff-item {
+      padding: 2rem 2.5rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .diff-item:last-child { border-right: none; }
+
+    .diff-heading {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .diff-body {
+      font-size: 0.82rem;
+      color: rgba(247,245,242,0.45);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    .diff-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(30,58,138,0.2);
+      color: var(--blue-light);
+      padding: 3px 10px;
+      border-radius: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── STORY ── */
+    .story {
+      padding: 7rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(247,245,242,0.4);
+      font-weight: 500;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: "";
+      flex: 1;
+      height: 0.5px;
+      background: var(--border);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
     h2 em { font-style: italic; color: rgba(247,245,242,0.35); }
+
     .story-body { display: flex; flex-direction: column; gap: 1.25rem; }
-    .story-body p { font-size: 0.975rem; color: rgba(247,245,242,0.6); line-height: 1.8; font-weight: 300; }
+
+    .story-body p {
+      font-size: 0.975rem;
+      color: rgba(247,245,242,0.6);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
     .story-body p strong { color: var(--white); font-weight: 500; }
+
     .story-pull {
       border-left: 2px solid var(--accent);
       padding: 1rem 1.5rem;
       font-family: var(--serif);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: rgba(247,245,242,0.75);
       line-height: 1.5;
       font-style: italic;
       margin: 0.5rem 0;
     }
 
-    /* PHILOSOPHY */
-    .philosophy { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
-    .philosophy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
-    .philosophy-card { background: rgba(255,255,255,0.02); padding: 2.5rem 2rem; transition: background 0.2s; }
-    .philosophy-card:hover { background: rgba(255,255,255,0.05); }
-    .philosophy-num { font-family: var(--serif); font-size: 2.5rem; color: rgba(30,58,138,0.35); line-height: 1; margin-bottom: 1.25rem; }
-    .philosophy-title { font-family: var(--serif); font-size: 1.2rem; color: var(--white); margin-bottom: 0.6rem; }
-    .philosophy-desc { font-size: 0.875rem; color: rgba(247,245,242,0.5); line-height: 1.7; font-weight: 300; }
+    /* ── PHILOSOPHY ── */
+    .philosophy {
+      padding: 7rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
 
-    /* QUALS */
-    .quals { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
-    .quals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
+    .philosophy-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 3rem;
+    }
+
+    .philosophy-card {
+      background: rgba(255,255,255,0.02);
+      padding: 2.5rem 2rem;
+      transition: background 0.2s;
+    }
+
+    .philosophy-card:hover { background: rgba(255,255,255,0.05); }
+
+    .philosophy-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      color: rgba(30,58,138,0.7);
+      line-height: 1;
+      margin-bottom: 1.25rem;
+    }
+
+    .philosophy-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+
+    .philosophy-desc {
+      font-size: 0.875rem;
+      color: rgba(247,245,242,0.5);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── QUALIFICATIONS ── */
+    .quals {
+      padding: 7rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .quals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      margin-top: 3rem;
+    }
+
     .qual-item { background: rgba(255,255,255,0.02); padding: 2rem; }
-    .qual-tag { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(30,58,138,0.2); color: var(--blue-light); padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.85rem; }
-    .qual-title { font-family: var(--serif); font-size: 1.05rem; color: var(--white); line-height: 1.3; margin-bottom: 0.4rem; }
+
+    .qual-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(30,58,138,0.2);
+      color: var(--blue-light);
+      padding: 3px 10px;
+      border-radius: 2rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .qual-title {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 0.4rem;
+    }
+
     .qual-detail { font-size: 0.82rem; color: rgba(247,245,242,0.4); }
 
-    /* SPORTS */
-    .sports { padding: 5rem 2.5rem; border-bottom: 0.5px solid var(--border); background: rgba(30,58,138,0.04); }
-    .sports-intro { font-size: 0.975rem; color: rgba(247,245,242,0.55); max-width: 600px; line-height: 1.75; font-weight: 300; margin-top: 1rem; margin-bottom: 3rem; }
+    /* ── SPORTS ── */
+    .sports {
+      padding: 5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .sports-intro {
+      font-size: 0.975rem;
+      color: rgba(247,245,242,0.55);
+      max-width: 600px;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-top: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
     .sports-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-    .sport-tag { font-size: 0.82rem; padding: 0.4rem 1rem; border: 0.5px solid rgba(255,255,255,0.12); color: rgba(247,245,242,0.6); border-radius: 2rem; }
 
-    /* STATS */
-    .stats { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 0.5px solid var(--border); }
-    .stat { padding: 2.5rem 2rem; border-right: 0.5px solid var(--border); text-align: center; }
-    .stat:last-child { border-right: none; }
-    .stat-num { font-family: var(--serif); font-size: 3rem; color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
-    .stat-num span { color: var(--blue-light); }
-    .stat-label { font-size: 0.75rem; color: rgba(247,245,242,0.4); letter-spacing: 0.06em; text-transform: uppercase; }
+    .sport-tag {
+      font-size: 0.82rem;
+      padding: 0.4rem 1rem;
+      border: 0.5px solid rgba(255,255,255,0.12);
+      color: rgba(247,245,242,0.6);
+      border-radius: 2rem;
+    }
 
-    /* CTA */
-    .cta-section { padding: 7rem 2.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .cta-section p { font-size: 1rem; color: rgba(247,245,242,0.5); max-width: 440px; font-weight: 300; line-height: 1.7; }
+    /* ── CTA ── */
+    .cta-section {
+      padding: 7rem 2.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
 
-    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); }
-    footer a { color: rgba(247,245,242,0.4); text-decoration: none; }
+    .cta-section p {
+      font-size: 1rem;
+      color: rgba(247,245,242,0.5);
+      max-width: 440px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 2.5rem;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(247,245,242,0.4);
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--white); }
 
-    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .hero-left > * { animation: fadeUp 0.6s ease both; }
     .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
     .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
     .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
     .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-right { min-height: 320px; }
+      .hero-right { min-height: 320px; border-left: none; border-top: 0.5px solid var(--border); }
+      .diff-strip { grid-template-columns: 1fr; }
+      .diff-item { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .diff-item:last-child { border-bottom: none; }
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .philosophy-grid, .quals-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      nav ul { display: none; }
+      .philosophy-grid { grid-template-columns: 1fr; }
+      .quals-grid { grid-template-columns: 1fr; }
     }
+
     @media (max-width: 600px) {
-      nav { padding: 0.25rem 1.25rem; }
       .hero-left { padding: 3rem 1.25rem; }
       .story, .philosophy, .quals, .sports, .cta-section { padding: 4rem 1.25rem; }
-      .stats { grid-template-columns: repeat(2, 1fr); }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+      .diff-strip { padding: 0; }
+      .diff-item { padding: 1.5rem 1.25rem; }
+      footer { flex-direction: column; text-align: center; }
     }
-</style>
+  </style>
 </head>
 <body>
 
   <nav>
     <a href="index.html" class="nav-logo">
-      <img src="PR_Logo.png" alt="Performance.Rebuilt" />
+      <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
     </a>
-    <ul>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+    <ul id="mobileMenu">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#how">How it works</a></li>
-      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank" style="display:inline-flex;align-items:center;gap:5px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-        Instagram
-      </a></li>
+      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
     </ul>
   </nav>
@@ -193,8 +561,8 @@
       <span class="hero-eyebrow">The coach behind the program</span>
       <h1>14 years.<br />Two degrees.<br /><em>One standard.</em></h1>
       <p class="hero-intro">
-        Performance.Rebuilt is built on a simple belief: <strong>great coaching changes people.</strong> Not just physically, but in how they move, how they think about training, and what they believe they're capable of.<br /><br />
-        With a dual background in <strong>Physiotherapy and Exercise & Sports Science</strong>, and over a decade of hands-on coaching experience, this isn't guesswork dressed up as expertise. Every program, every decision, every adjustment is grounded in evidence and shaped by thousands of hours in the gym and on the field.
+        Performance.Rebuilt is built on a simple belief: <strong>great coaching changes people.</strong> Not just physically — but in how they move, how they think about training, and what they believe they're capable of.<br /><br />
+        With a dual background in <strong>Physiotherapy and Exercise &amp; Sports Science</strong>, and over a decade of hands-on coaching, every program is grounded in evidence and shaped by thousands of hours in the gym and on the field.
       </p>
       <a href="index.html#contact" class="btn-primary">Work with me →</a>
     </div>
@@ -211,7 +579,7 @@
         </div>
         <div class="credential">
           <div class="credential-label">Certification</div>
-          <div class="credential-value">Cert III/IV in Fitness</div>
+          <div class="credential-value">Cert III &amp; IV in Fitness</div>
         </div>
         <div class="credential">
           <div class="credential-label">Experience</div>
@@ -221,23 +589,22 @@
     </div>
   </section>
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">14<span>+</span></div>
-      <div class="stat-label">Years coaching</div>
+  <!-- WHY DIFFERENT -->
+  <div class="diff-strip">
+    <div class="diff-item">
+      <div class="diff-tag">Not generic</div>
+      <div class="diff-heading">Built around you, not a template</div>
+      <p class="diff-body">Generic programs are written for nobody in particular. Every program here is written specifically for you — your schedule, your history, your goals. No copy-paste, no one-size-fits-all.</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">2</div>
-      <div class="stat-label">Bachelor's degrees</div>
+    <div class="diff-item">
+      <div class="diff-tag">Physio background</div>
+      <div class="diff-heading">Progress that doesn't cost you your health</div>
+      <p class="diff-body">Most coaches program for results. A physiotherapy background means programming for results and longevity — understanding injury risk and how to build a body that keeps performing long-term.</p>
     </div>
-    <div class="stat">
-      <div class="stat-num">1000<span>+</span></div>
-      <div class="stat-label">CLients trained</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">AU</div>
-      <div class="stat-label">Based in Perth · Worldwide</div>
+    <div class="diff-item">
+      <div class="diff-tag">Real experience</div>
+      <div class="diff-heading">14 years in, not just certified</div>
+      <p class="diff-body">A certificate takes weeks. Real coaching expertise takes years. 14+ years working with athletes and gym-goers across multiple sports means the experience to handle almost any situation.</p>
     </div>
   </div>
 
@@ -253,13 +620,13 @@
           Most people find their way into fitness coaching through a single passion. For me, it started earlier and went deeper. <strong>From my teenage years I was already coaching</strong> — helping others train, understanding what worked, and developing an instinct for programming that only comes from years of doing the work yourself.
         </p>
         <p>
-          I competed across multiple sports growing up, never at an elite level, but always with serious intent. That experience across multiple sports gave me something textbooks can't: <strong>a genuine understanding of how different bodies move, respond to load, and break down under pressure.</strong>
+          Playing many sports growing up gave me something textbooks can't: <strong>a genuine understanding of how different bodies move, respond to load, and break down under pressure.</strong>
         </p>
         <div class="story-pull">
-          "The best coaches aren't just educated, they've lived it. Every program I write is informed by 14 years of being in the trenches."
+          "The best coaches aren't just educated — they've lived it. Every program I write is informed by 14 years of being in the trenches."
         </div>
         <p>
-          I didn't go straight from school into formal study. I worked first, managing a boutique PT studio at age 20. After this then completing a <strong>Bachelor of Science in Exercise and Sports Science</strong> alongside a <strong>Bachelor of Science in Physiotherapy</strong>. While others were learning theory, I was already applying it. Over 14 years, the two worlds merged: the science of how the body works, and the art of making it perform.
+          I went on to complete a <strong>Bachelor of Science in Exercise and Sports Science</strong> alongside a <strong>Bachelor of Science in Physiotherapy</strong> — but while others were learning theory, I was already applying it. Over 14 years, the two worlds merged: the science of how the body works, and the art of making it perform.
         </p>
         <p>
           What sets Performance.Rebuilt apart is that <strong>physiotherapy lens</strong>. Most coaches program for progress. I program for progress and longevity — understanding injury risk, movement dysfunction, and how to build a body that performs for the long haul, not just the next 12 weeks.
@@ -276,32 +643,22 @@
       <div class="philosophy-card">
         <div class="philosophy-num">01</div>
         <div class="philosophy-title">Master the basics first</div>
-        <p class="philosophy-desc">The fundamentals are fundamental for a reason. Before complexity, before intensity, before anything else — the bread and butter movements, done well, done consistently, will take you further than any advanced protocol ever could. I build athletes from the ground up, and I make no apologies for it.</p>
+        <p class="philosophy-desc">The fundamentals are fundamental for a reason. Before complexity, before intensity — bread and butter movements, done well and done consistently, will take you further than any advanced protocol ever could. I build athletes from the ground up, and make no apologies for it.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">02</div>
         <div class="philosophy-title">Consistency over intensity</div>
-        <p class="philosophy-desc">The best program is the one you actually follow. Results are not built in single sessions — they're built across months and years of showing up, applying effort, and recovering properly. I design programs that fit your life, because a program you can sustain will always outperform one you can't.</p>
+        <p class="philosophy-desc">The best program is the one you actually follow. Results are built across months and years of showing up, applying effort, and recovering properly. I design programs that fit your life, because a program you can sustain will always outperform one you can't.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">03</div>
-        <div class="philosophy-title">Intent in every rep</div>
-        <p class="philosophy-desc">Going through the motions builds nothing. Every set, every session needs a purpose — and you should know what that purpose is. I coach with full context so you're not just executing a program, you understand why it's built the way it is. That understanding is what separates athletes who progress from those who plateau.</p>
+        <div class="philosophy-title">Build to last</div>
+        <p class="philosophy-desc">Getting strong matters. Staying healthy enough to keep getting strong matters more. My physiotherapy background means longevity is a core principle of every program — injury prevention isn't an afterthought, it's built in from day one.</p>
       </div>
       <div class="philosophy-card">
         <div class="philosophy-num">04</div>
-        <div class="philosophy-title">Build to last</div>
-        <p class="philosophy-desc">My physiotherapy background means I think about longevity as much as performance. Getting strong matters. Staying healthy enough to keep getting strong matters more. Every program is designed with injury prevention baked in — not as an afterthought, but as a core principle.</p>
-      </div>
-      <div class="philosophy-card">
-        <div class="philosophy-num">05</div>
         <div class="philosophy-title">Evidence over trend</div>
-        <p class="philosophy-desc">The fitness industry is full of noise. I cut through it. Every method I use is grounded in sports science and physiology — not whatever is trending on social media this week. You deserve coaching built on what actually works, not what looks good online.</p>
-      </div>
-      <div class="philosophy-card">
-        <div class="philosophy-num">06</div>
-        <div class="philosophy-title">The whole athlete</div>
-        <p class="philosophy-desc">Training doesn't happen in isolation. Sleep, stress, nutrition, life — it all feeds into how you perform and recover. Good coaching accounts for all of it. I work with the full picture of who you are, not just what happens inside the gym.</p>
+        <p class="philosophy-desc">The fitness industry is full of noise. I cut through it. Every method I use is grounded in sports science and physiology — not whatever is trending on social media this week. You deserve coaching built on what actually works.</p>
       </div>
     </div>
   </section>
@@ -329,29 +686,11 @@
     </div>
   </section>
 
-  <!-- SPORTS BACKGROUND -->
-  <section class="sports">
-    <p class="section-label">Athletic background</p>
-    <h2>Competed across<br /><em>five sports</em></h2>
-    <p class="sports-intro">
-      A multi-sport background isn't just a fun fact — it's a coaching asset. Having trained and competed across different movement patterns, energy systems, and team and individual sport environments gives me a rare ability to understand and program for almost any athlete, regardless of their discipline.
-    </p>
-    <div class="sports-tags">
-      <span class="sport-tag">AFL</span>
-      <span class="sport-tag">Cricket</span>
-      <span class="sport-tag">Athletics</span>
-      <span class="sport-tag">Boxing</span>
-      <span class="sport-tag">Netball</span>
-      <span class="sport-tag">14+ years gym training</span>
-      <span class="sport-tag">Coaching since teens</span>
-      <span class="sport-tag">Perth, WA</span>
-      <span class="sport-tag">Coaching worldwide</span>
-    </div>
-  </section>
-
   <!-- CTA -->
   <section class="cta-section">
-    <h2 style="font-family:var(--serif); font-size:clamp(2rem,3.5vw,3rem); letter-spacing:-0.02em; line-height:1.1; text-align:center;">Ready to work with someone<br /><em style="color:rgba(247,245,242,0.35);">who actually knows their craft?</em></h2>
+    <h2 style="font-family:var(--serif); font-size:clamp(2rem,3.5vw,3rem); letter-spacing:-0.02em; line-height:1.1; text-align:center;">
+      Ready to work with someone<br /><em style="color:rgba(247,245,242,0.35);">who actually knows their craft?</em>
+    </h2>
     <p>14 years of coaching, two degrees, and a genuine passion for getting people to where they want to be. Let's talk.</p>
     <a href="index.html#contact" class="btn-primary">Get in touch →</a>
   </section>
@@ -360,7 +699,28 @@
     <span>© 2026 Performance.Rebuilt</span>
     <span>Online coaching &amp; programming for athletes</span>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
+    <a href="https://www.instagram.com/performance.rebuilt" target="_blank">@performance.rebuilt</a>
   </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  </script>
 
 </body>
 </html>
