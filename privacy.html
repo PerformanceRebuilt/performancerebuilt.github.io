@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Performance.Rebuilt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8;
+      --border: rgba(255,255,255,0.08);
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "DM Sans", system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo-img { height: 80px; width: auto; display: block; }
+    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; height: 72px; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; }
+      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+    }
+
+    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .effective-date { font-size: 0.82rem; color: rgba(247,245,242,0.35); letter-spacing: 0.04em; }
+
+    .legal-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
+    .legal-section { margin-bottom: 3.5rem; }
+    .legal-section h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .legal-section h3 { font-family: var(--serif); font-size: 1.1rem; color: rgba(247,245,242,0.8); margin: 1.25rem 0 0.5rem; }
+    .legal-section p { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+    .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
+    .legal-section ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .section-num { font-family: var(--serif); font-size: 0.75rem; color: var(--blue-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+    .contact-block { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); padding: 1.5rem 2rem; margin-top: 1rem; }
+    .contact-block p { margin: 0; }
+    .contact-block a { color: var(--blue-light); text-decoration: none; }
+    .contact-block a:hover { opacity: 0.8; }
+
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
+    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    @media (max-width: 600px) {
+      .page-hero { padding: 8rem 1.25rem 3rem; }
+      .legal-body { padding: 3rem 1.25rem 4rem; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <ul id="mobileMenu">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <span class="hero-eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="effective-date">Effective Date: 18 June 2026</p>
+  </div>
+
+  <div class="legal-body">
+
+    <div class="legal-section">
+      <span class="section-num">Section 01</span>
+      <h2>Our Commitment to Your Privacy</h2>
+      <p>Performance Rebuilt Aus ("we", "us", "our") is committed to protecting your personal information in accordance with the Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs). This Privacy Policy explains how we collect, use, disclose, and safeguard your personal information when you use the Performance Rebuilt Aus platform.</p>
+      <p>Health and fitness data is classified as sensitive information under Australian law. We take additional care in handling this data and will only collect, use, or disclose it with your consent or as otherwise permitted by law.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 02</span>
+      <h2>What Information We Collect</h2>
+      <h3>Information You Provide</h3>
+      <ul>
+        <li>Name and email address (for account creation)</li>
+        <li>Body weight, body measurements, and progress photos</li>
+        <li>Nutrition data including calorie and macronutrient intake</li>
+        <li>Workout and exercise logs</li>
+        <li>Health goals and fitness history</li>
+        <li>Messages and communications sent through the Platform</li>
+      </ul>
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li>Device type and browser information</li>
+        <li>IP address and approximate location</li>
+        <li>Usage data including features accessed and time spent on the Platform</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 03</span>
+      <h2>How We Use Your Information</h2>
+      <p>We collect and use your personal information to:</p>
+      <ul>
+        <li>Create and manage your account</li>
+        <li>Deliver personalised coaching, training programs, and nutrition guidance</li>
+        <li>Track your fitness progress over time</li>
+        <li>Communicate with you about your program and account</li>
+        <li>Improve the Platform and our services</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+      <p>We will not use your sensitive health information for any purpose other than delivering the service to you, without your explicit consent.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 04</span>
+      <h2>How We Store Your Information</h2>
+      <p>Your data is stored securely using Supabase, a cloud database provider, on servers located in Australia or as otherwise disclosed. We implement industry-standard security measures including:</p>
+      <ul>
+        <li>Row-level security controls on all database tables</li>
+        <li>Encrypted connections (HTTPS/TLS) for all data in transit</li>
+        <li>Access controls limiting data visibility to you and your assigned coach only</li>
+      </ul>
+      <p>We retain your personal information for as long as your account is active, or as required by law. Upon account deletion, your data will be removed within 30 days.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 05</span>
+      <h2>Who We Share Your Information With</h2>
+      <p>We do not sell your personal information. We may share your information with:</p>
+      <ul>
+        <li>Your assigned Performance Rebuilt Aus coach, for the purpose of delivering coaching services</li>
+        <li>Third-party service providers who assist in operating the Platform (including Supabase and Vercel), bound by confidentiality obligations</li>
+        <li>Law enforcement or regulatory authorities where required by law</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 06</span>
+      <h2>Progress Photos</h2>
+      <p>Progress photos you upload are stored securely and are only accessible to you and your assigned coach. We will never share, publish, or use your progress photos for any marketing or commercial purpose without your explicit written consent.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 07</span>
+      <h2>Your Privacy Rights</h2>
+      <p>Under the Australian Privacy Act, you have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction of inaccurate or incomplete information</li>
+        <li>Request deletion of your personal information (subject to legal obligations)</li>
+        <li>Opt out of any direct marketing communications</li>
+        <li>Lodge a complaint with the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank">www.oaic.gov.au</a></li>
+      </ul>
+      <p>To exercise any of these rights, contact us at the details below.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 08</span>
+      <h2>Cookies and Tracking</h2>
+      <p>The Platform uses session cookies and local storage to maintain your login session and preferences. We do not use third-party advertising trackers or sell your browsing data. You may disable cookies in your browser settings, though this may affect Platform functionality.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 09</span>
+      <h2>Children's Privacy</h2>
+      <p>The Platform is not intended for use by persons under the age of 18. We do not knowingly collect personal information from minors. If you believe a minor has provided us with personal information, please contact us immediately.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 10</span>
+      <h2>Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time to reflect changes in our practices or legal requirements. We will notify you of material changes via email or through the Platform. The updated policy will be effective from the date it is posted.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 11</span>
+      <h2>Contact and Complaints</h2>
+      <p>If you have questions about this Privacy Policy or wish to make a privacy complaint, please contact:</p>
+      <div class="contact-block">
+        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763<br />
+        Email: <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a><br />
+        Western Australia, Australia</p>
+      </div>
+      <p style="margin-top:1rem;">We will respond to all privacy enquiries within 30 days. If you are not satisfied with our response, you may escalate your complaint to the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" style="color:var(--blue-light);">www.oaic.gov.au</a> or by calling 1300 363 992.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="waiver.html">Liability Waiver</a>
+    </div>
+    <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  </script>
+
+</body>
+</html>
