@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liability Waiver — Performance.Rebuilt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8;
+      --border: rgba(255,255,255,0.08);
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "DM Sans", system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo-img { height: 80px; width: auto; display: block; }
+    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; height: 72px; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; }
+      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+    }
+
+    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .effective-date { font-size: 0.82rem; color: rgba(247,245,242,0.35); letter-spacing: 0.04em; }
+
+    .notice-banner { background: rgba(30,58,138,0.12); border: 0.5px solid rgba(30,58,138,0.3); padding: 1.25rem 2.5rem; font-size: 0.85rem; color: rgba(247,245,242,0.6); line-height: 1.7; }
+    .notice-banner strong { color: var(--white); }
+
+    .legal-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
+    .legal-section { margin-bottom: 3.5rem; }
+    .legal-section h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .legal-section p { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+    .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
+    .legal-section ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .section-num { font-family: var(--serif); font-size: 0.75rem; color: var(--blue-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+    .contact-block { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); padding: 1.5rem 2rem; margin-top: 1rem; }
+    .contact-block p { margin: 0; }
+    .contact-block a { color: var(--blue-light); text-decoration: none; }
+    .acknowledgement-box { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(255,255,255,0.12); padding: 2rem; margin-top: 1rem; }
+    .acknowledgement-box ul { margin: 0.75rem 0 0 1.25rem; }
+    .acknowledgement-box ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
+    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    @media (max-width: 600px) {
+      .page-hero { padding: 8rem 1.25rem 3rem; }
+      .notice-banner { padding: 1rem 1.25rem; }
+      .legal-body { padding: 3rem 1.25rem 4rem; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <ul id="mobileMenu">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <span class="hero-eyebrow">Legal</span>
+    <h1>Health, Fitness &amp;<br />Liability Waiver</h1>
+    <p class="effective-date">Effective Date: 18 June 2026</p>
+  </div>
+
+  <div class="notice-banner">
+    <strong>Please read this waiver carefully before using the Performance Rebuilt platform.</strong> By creating an account and accessing the platform, you acknowledge that you have read, understood, and agree to be bound by this waiver.
+  </div>
+
+  <div class="legal-body">
+
+    <div class="legal-section">
+      <span class="section-num">Section 01</span>
+      <h2>Nature of Services</h2>
+      <p>Performance Rebuilt Aus provides online fitness coaching services, including personalised training programs, nutrition guidance, and progress tracking through its digital platform. The services are intended to support your health and fitness goals.</p>
+      <p>Performance Rebuilt Aus coaches are fitness professionals. Unless expressly stated, they are not registered medical practitioners, physiotherapists, dietitians, or allied health professionals. Nothing provided through the Platform constitutes medical advice, diagnosis, or treatment.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 02</span>
+      <h2>Acknowledgment of Risks</h2>
+      <p>You acknowledge and accept that participation in physical exercise and changes to dietary intake carry inherent risks, including but not limited to:</p>
+      <ul>
+        <li>Muscle strains, sprains, and other soft tissue injuries</li>
+        <li>Joint injuries including to the knee, shoulder, back, and hip</li>
+        <li>Cardiovascular events including elevated heart rate and in rare cases, cardiac events</li>
+        <li>Dizziness, nausea, or fainting during or after exercise</li>
+        <li>Aggravation of pre-existing medical conditions</li>
+        <li>Adverse reactions to changes in nutrition or caloric intake</li>
+        <li>Psychological impacts related to body image or performance pressure</li>
+      </ul>
+      <p>You accept full responsibility for any risk of injury, illness, or adverse outcome that may result from following a training or nutrition program provided through the Platform.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 03</span>
+      <h2>Medical Clearance</h2>
+      <p>Before commencing any exercise or nutrition program through the Platform, you warrant that you:</p>
+      <ul>
+        <li>Have obtained, or will obtain, written medical clearance from a qualified medical practitioner if you have any pre-existing medical conditions, injuries, or health concerns</li>
+        <li>Are not aware of any physical condition that would prevent you from participating in moderate to vigorous physical activity</li>
+        <li>Will immediately cease any exercise that causes pain, discomfort, or unusual symptoms and seek medical advice before continuing</li>
+        <li>Will inform your coach of any changes in your health status that may affect the suitability of your program</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 04</span>
+      <h2>Release and Indemnification</h2>
+      <p>To the maximum extent permitted by applicable Australian law, you release, discharge, and hold harmless Performance Rebuilt Aus, its coaches, employees, contractors, and representatives ("Released Parties") from any and all claims, demands, losses, damages, costs, or liabilities of any nature arising from or related to:</p>
+      <ul>
+        <li>Your use of the Platform or any services provided through it</li>
+        <li>Your participation in any training program or nutrition plan</li>
+        <li>Any injury, illness, death, or property damage suffered by you or a third party</li>
+        <li>Any reliance on information or content provided through the Platform</li>
+      </ul>
+      <p>You agree to indemnify the Released Parties against any claims made by third parties arising from your use of the Platform.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 05</span>
+      <h2>Australian Consumer Law</h2>
+      <p>Nothing in this Waiver excludes, restricts, or modifies any right or remedy, or any guarantee, warranty, or other term or condition implied or imposed by the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010 (Cth)) that cannot be excluded, restricted, or modified.</p>
+      <p>Where the Australian Consumer Law applies, our liability is limited to re-supplying the services or paying the cost of having the services re-supplied, at our election.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 06</span>
+      <h2>Assumption of Risk</h2>
+      <p>You voluntarily and knowingly assume all risks associated with your participation in exercise and nutrition programs facilitated through the Platform. You acknowledge that you have had the opportunity to ask questions and have been given satisfactory answers before agreeing to this Waiver.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Section 07</span>
+      <h2>Governing Law</h2>
+      <p>This Waiver is governed by the laws of Western Australia, Australia. Any dispute arising from this Waiver shall be subject to the jurisdiction of the courts of Western Australia.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Client Acknowledgement</span>
+      <h2>Client Acknowledgement</h2>
+      <div class="acknowledgement-box">
+        <p style="color:rgba(247,245,242,0.7); font-weight:400;">By accessing and using the Performance Rebuilt Aus platform, you confirm that:</p>
+        <ul>
+          <li>You have read and understood this Waiver in full</li>
+          <li>You accept and agree to all terms stated above</li>
+          <li>You are 18 years of age or older</li>
+          <li>You have not been pressured or coerced into accepting these terms</li>
+        </ul>
+      </div>
+      <p style="margin-top:1rem;">If you do not agree to this Waiver, you must not use the Platform. For questions, contact us at <a href="mailto:performancerebuilt@gmail.com" style="color:var(--blue-light);">performancerebuilt@gmail.com</a>.</p>
+    </div>
+
+    <div class="legal-section">
+      <div class="contact-block">
+        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763<br />
+        Email: <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a><br />
+        Western Australia, Australia</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="waiver.html">Liability Waiver</a>
+    </div>
+    <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  </script>
+
+</body>
+</html>
