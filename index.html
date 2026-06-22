@@ -512,6 +512,9 @@
       footer { flex-direction: column; text-align: center; }
       .how-steps { grid-template-columns: 1fr; }
     }
+
+    .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    @media (max-width: 600px) { .footer-legal { justify-content: center; } }
   </style>
 </head>
 <body>
@@ -631,10 +634,13 @@
   </section>
 
   <footer>
-    <span>© 2026 Performance.Rebuilt</span>
-    <span>Online coaching &amp; programming for athletes</span>
+    <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="waiver.html">Liability Waiver</a>
+    </div>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
-    <a href="https://www.instagram.com/performance.rebuilt" target="_blank">@performance.rebuilt</a>
   </footer>
 
   <script>
