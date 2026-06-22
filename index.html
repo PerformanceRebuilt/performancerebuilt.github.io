@@ -241,30 +241,22 @@
       overflow: hidden;
     }
 
-    .hero-right::before {
-      content: 'PR';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--serif);
-      font-size: 18rem;
-      color: rgba(255,255,255,0.04);
-      line-height: 1;
-      pointer-events: none;
-      letter-spacing: -0.05em;
-    }
+    .hero-right::before { display: none; }
 
     .hero-stat-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 1px;
       border: 1px solid rgba(255,255,255,0.1);
+      position: relative;
+      z-index: 1;
     }
 
     .hero-stat {
       padding: 1.5rem;
       border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(14,14,14,0.75);
+      backdrop-filter: blur(4px);
     }
 
     .hero-stat-num {
@@ -546,6 +538,9 @@
       </div>
     </div>
     <div class="hero-right">
+      <div style="position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+        <img src="PR_Logo_only.png" alt="" style="width:70%;height:auto;opacity:0.09;filter:grayscale(100%) brightness(2);" />
+      </div>
       <div class="hero-stat-grid">
         <div class="hero-stat">
           <div class="hero-stat-num">14+</div>
@@ -557,7 +552,7 @@
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">Gym programming</div>
-          <div class="hero-stat-label">Sport performance or gym-based</div>
+          <div class="hero-stat-label">Train around injury or gym-based</div>
         </div>
         <div class="hero-stat">
           <div class="hero-stat-num">24hr</div>
