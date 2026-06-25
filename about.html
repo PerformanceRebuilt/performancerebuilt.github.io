@@ -48,18 +48,9 @@
       border-bottom: 0.5px solid var(--border);
     }
 
-    .nav-logo-img {
-      height: 80px;
-      width: auto;
-      display: block;
-    }
+    .nav-logo-img { height: 80px; width: auto; display: block; }
 
-    nav ul {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      list-style: none;
-    }
+    nav ul { display: flex; align-items: center; gap: 2rem; list-style: none; }
 
     nav ul a {
       color: rgba(247,245,242,0.7);
@@ -93,44 +84,22 @@
       z-index: 101;
     }
 
-    /* ── MOBILE NAV ── */
     @media (max-width: 900px) {
       nav { padding: 0 1.25rem; }
       .nav-logo-img { height: 42px; }
       .menu-toggle { display: block; }
-
       nav ul {
-        position: fixed;
-        top: 72px;
-        left: 0; right: 0;
-        background: rgba(14,14,14,0.98);
-        backdrop-filter: blur(12px);
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        max-height: 0;
-        overflow: hidden;
+        position: fixed; top: 72px; left: 0; right: 0;
+        background: rgba(14,14,14,0.98); backdrop-filter: blur(12px);
+        flex-direction: column; align-items: stretch; gap: 0;
+        max-height: 0; overflow: hidden;
         transition: max-height 0.3s ease;
         border-top: 0.5px solid var(--border);
       }
-
       nav ul.active { max-height: 500px; }
       nav ul li { width: 100%; }
-
-      nav ul a {
-        display: block;
-        padding: 1rem 1.5rem;
-        width: 100%;
-        font-size: 1rem;
-      }
-
-      .nav-cta {
-        display: block;
-        margin: 0.75rem 1.25rem 1rem;
-        text-align: center;
-        border-radius: 2rem;
-        padding: 0.75rem 1.25rem;
-      }
+      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
     }
 
     /* ── HERO ── */
@@ -144,375 +113,115 @@
 
     .hero-left {
       padding: 5rem 3rem 5rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      display: flex; flex-direction: column; justify-content: center;
     }
 
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 1.5rem;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.5rem;
     }
 
-    .hero-eyebrow::before {
-      content: "";
-      display: block;
-      width: 24px;
-      height: 1px;
-      background: var(--blue-light);
-    }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
 
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(2.8rem, 5vw, 4.5rem);
-      line-height: 1.06;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-    }
-
+    h1 { font-family: var(--serif); font-size: clamp(2.8rem, 5vw, 4.5rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
     h1 em { font-style: italic; color: rgba(247,245,242,0.35); }
 
-    .hero-intro {
-      font-size: 1.05rem;
-      color: rgba(247,245,242,0.6);
-      font-weight: 300;
-      line-height: 1.75;
-      margin-bottom: 2.5rem;
-      max-width: 480px;
-    }
-
+    .hero-intro { font-size: 1.05rem; color: rgba(247,245,242,0.6); font-weight: 300; line-height: 1.75; margin-bottom: 2.5rem; max-width: 480px; }
     .hero-intro strong { color: var(--white); font-weight: 500; }
 
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-      padding: 0.85rem 2rem;
-      border-radius: 2rem;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: opacity 0.2s, transform 0.15s;
-      display: inline-block;
-    }
-
+    .btn-primary { background: var(--accent); color: var(--white); padding: 0.85rem 2rem; border-radius: 2rem; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { opacity: 0.85; transform: translateY(-1px); }
 
     .hero-right {
       background: rgba(30,58,138,0.06);
       border-left: 0.5px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 3rem;
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 3rem; position: relative; overflow: hidden;
     }
 
     .hero-right-bg {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      display: flex; align-items: center; justify-content: center;
       pointer-events: none;
     }
 
     .credential-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-      position: relative;
-      z-index: 1;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--border); border: 0.5px solid var(--border);
+      position: relative; z-index: 1;
     }
 
     .credential { background: rgba(14,14,14,0.75); padding: 1.5rem; backdrop-filter: blur(4px); }
-
-    .credential-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 0.4rem;
-    }
-
-    .credential-value {
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: var(--white);
-      line-height: 1.3;
-    }
+    .credential-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 0.4rem; }
+    .credential-value { font-family: var(--serif); font-size: 1rem; color: var(--white); line-height: 1.3; }
 
     /* ── DIFFERENTIATOR STRIP ── */
-    .diff-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .diff-item {
-      padding: 2rem 2.5rem;
-      border-right: 0.5px solid var(--border);
-    }
-
+    .diff-strip { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid var(--border); }
+    .diff-item { padding: 2rem 2.5rem; border-right: 0.5px solid var(--border); }
     .diff-item:last-child { border-right: none; }
-
-    .diff-heading {
-      font-family: var(--serif);
-      font-size: 1rem;
-      color: var(--white);
-      margin-bottom: 0.4rem;
-    }
-
-    .diff-body {
-      font-size: 0.82rem;
-      color: rgba(247,245,242,0.45);
-      line-height: 1.65;
-      font-weight: 300;
-    }
-
-    .diff-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(30,58,138,0.2);
-      color: var(--blue-light);
-      padding: 3px 10px;
-      border-radius: 2rem;
-      margin-bottom: 0.75rem;
-    }
+    .diff-heading { font-family: var(--serif); font-size: 1rem; color: var(--white); margin-bottom: 0.4rem; }
+    .diff-body { font-size: 0.82rem; color: rgba(247,245,242,0.45); line-height: 1.65; font-weight: 300; }
+    .diff-tag { display: inline-block; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(30,58,138,0.2); color: var(--blue-light); padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.75rem; }
 
     /* ── STORY ── */
-    .story {
-      padding: 7rem 2.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
+    .story { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
 
-    .section-label {
-      font-size: 0.72rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(247,245,242,0.4);
-      font-weight: 500;
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
+    .section-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,245,242,0.4); font-weight: 500; margin-bottom: 3rem; display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::after { content: ""; flex: 1; height: 0.5px; background: var(--border); }
 
-    .section-label::after {
-      content: "";
-      flex: 1;
-      height: 0.5px;
-      background: var(--border);
-    }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 
-    .story-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-    }
-
+    h2 { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; }
     h2 em { font-style: italic; color: rgba(247,245,242,0.35); }
 
     .story-body { display: flex; flex-direction: column; gap: 1.25rem; }
-
-    .story-body p {
-      font-size: 0.975rem;
-      color: rgba(247,245,242,0.6);
-      line-height: 1.8;
-      font-weight: 300;
-    }
-
+    .story-body p { font-size: 0.975rem; color: rgba(247,245,242,0.6); line-height: 1.8; font-weight: 300; }
     .story-body p strong { color: var(--white); font-weight: 500; }
 
-    .story-pull {
-      border-left: 2px solid var(--accent);
-      padding: 1rem 1.5rem;
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      color: rgba(247,245,242,0.75);
-      line-height: 1.5;
-      font-style: italic;
-      margin: 0.5rem 0;
-    }
+    .story-pull { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; font-family: var(--serif); font-size: 1.2rem; color: rgba(247,245,242,0.75); line-height: 1.5; font-style: italic; margin: 0.5rem 0; }
+
+    /* ── WHO I WORK WITH ── */
+    .experience { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
+    .experience-card { background: rgba(255,255,255,0.02); padding: 2rem; }
+    .experience-tag { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(30,58,138,0.2); color: var(--blue-light); padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.85rem; }
+    .experience-title { font-family: var(--serif); font-size: 1.1rem; color: var(--white); line-height: 1.3; margin-bottom: 0.5rem; }
+    .experience-desc { font-size: 0.82rem; color: rgba(247,245,242,0.4); line-height: 1.7; font-weight: 300; }
 
     /* ── PHILOSOPHY ── */
-    .philosophy {
-      padding: 7rem 2.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .philosophy-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-      margin-top: 3rem;
-    }
-
-    .philosophy-card {
-      background: rgba(255,255,255,0.02);
-      padding: 2.5rem 2rem;
-      transition: background 0.2s;
-    }
-
+    .philosophy { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .philosophy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
+    .philosophy-card { background: rgba(255,255,255,0.02); padding: 2.5rem 2rem; transition: background 0.2s; }
     .philosophy-card:hover { background: rgba(255,255,255,0.05); }
-
-    .philosophy-num {
-      font-family: var(--serif);
-      font-size: 2.5rem;
-      color: rgba(30,58,138,0.7);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-    }
-
-    .philosophy-title {
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      color: var(--white);
-      margin-bottom: 0.6rem;
-    }
-
-    .philosophy-desc {
-      font-size: 0.875rem;
-      color: rgba(247,245,242,0.5);
-      line-height: 1.7;
-      font-weight: 300;
-    }
+    .philosophy-num { font-family: var(--serif); font-size: 2.5rem; color: rgba(30,58,138,0.7); line-height: 1; margin-bottom: 1.25rem; }
+    .philosophy-title { font-family: var(--serif); font-size: 1.2rem; color: var(--white); margin-bottom: 0.6rem; }
+    .philosophy-desc { font-size: 0.875rem; color: rgba(247,245,242,0.5); line-height: 1.7; font-weight: 300; }
 
     /* ── QUALIFICATIONS ── */
-    .quals {
-      padding: 7rem 2.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .quals-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-      margin-top: 3rem;
-    }
-
+    .quals { padding: 7rem 2.5rem; border-bottom: 0.5px solid var(--border); }
+    .quals-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 3rem; }
     .qual-item { background: rgba(255,255,255,0.02); padding: 2rem; }
-
-    .qual-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      background: rgba(30,58,138,0.2);
-      color: var(--blue-light);
-      padding: 3px 10px;
-      border-radius: 2rem;
-      margin-bottom: 0.85rem;
-    }
-
-    .qual-title {
-      font-family: var(--serif);
-      font-size: 1.05rem;
-      color: var(--white);
-      line-height: 1.3;
-      margin-bottom: 0.4rem;
-    }
-
+    .qual-tag { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(30,58,138,0.2); color: var(--blue-light); padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.85rem; }
+    .qual-title { font-family: var(--serif); font-size: 1.05rem; color: var(--white); line-height: 1.3; margin-bottom: 0.4rem; }
     .qual-detail { font-size: 0.82rem; color: rgba(247,245,242,0.4); }
 
-    /* ── SPORTS ── */
-    .sports {
-      padding: 5rem 2.5rem;
-      border-bottom: 0.5px solid var(--border);
-    }
-
-    .sports-intro {
-      font-size: 0.975rem;
-      color: rgba(247,245,242,0.55);
-      max-width: 600px;
-      line-height: 1.75;
-      font-weight: 300;
-      margin-top: 1rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .sports-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-    .sport-tag {
-      font-size: 0.82rem;
-      padding: 0.4rem 1rem;
-      border: 0.5px solid rgba(255,255,255,0.12);
-      color: rgba(247,245,242,0.6);
-      border-radius: 2rem;
-    }
-
     /* ── CTA ── */
-    .cta-section {
-      padding: 7rem 2.5rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .cta-section p {
-      font-size: 1rem;
-      color: rgba(247,245,242,0.5);
-      max-width: 440px;
-      font-weight: 300;
-      line-height: 1.7;
-    }
+    .cta-section { padding: 7rem 2.5rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+    .cta-section p { font-size: 1rem; color: rgba(247,245,242,0.5); max-width: 440px; font-weight: 300; line-height: 1.7; }
 
     /* ── FOOTER ── */
-    footer {
-      padding: 2rem 2.5rem;
-      border-top: 0.5px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: rgba(247,245,242,0.4);
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
     footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
     footer a:hover { color: var(--white); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .hero-left > * { animation: fadeUp 0.6s ease both; }
     .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
     .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
     .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
     .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
       .hero-right { min-height: 320px; border-left: none; border-top: 0.5px solid var(--border); }
@@ -520,13 +229,14 @@
       .diff-item { border-right: none; border-bottom: 0.5px solid var(--border); }
       .diff-item:last-child { border-bottom: none; }
       .story-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .experience-grid { grid-template-columns: 1fr; }
       .philosophy-grid { grid-template-columns: 1fr; }
       .quals-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
       .hero-left { padding: 3rem 1.25rem; }
-      .story, .philosophy, .quals, .sports, .cta-section { padding: 4rem 1.25rem; }
+      .story, .philosophy, .quals, .cta-section { padding: 4rem 1.25rem; }
       .diff-strip { padding: 0; }
       .diff-item { padding: 1.5rem 1.25rem; }
       footer { flex-direction: column; text-align: center; }
@@ -542,9 +252,7 @@
     <a href="index.html" class="nav-logo">
       <img src="PR_Logo.png" alt="Performance.Rebuilt" class="nav-logo-img" />
     </a>
-
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
-
     <ul id="mobileMenu">
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#how">How it works</a></li>
@@ -553,7 +261,6 @@
     </ul>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-left">
       <span class="hero-eyebrow">The coach behind the program</span>
@@ -589,7 +296,6 @@
     </div>
   </section>
 
-  <!-- WHY DIFFERENT -->
   <div class="diff-strip">
     <div class="diff-item">
       <div class="diff-tag">Not generic</div>
@@ -608,7 +314,6 @@
     </div>
   </div>
 
-  <!-- STORY -->
   <section class="story">
     <p class="section-label">The story</p>
     <div class="story-grid">
@@ -616,26 +321,39 @@
         <h2>Not just a coach.<br /><em>A practitioner.</em></h2>
       </div>
       <div class="story-body">
-        <p>
-          Most people find their way into fitness coaching through a single passion. For me, it started earlier and went deeper. <strong>From my teenage years I was already coaching</strong> — helping others train, understanding what worked, and developing an instinct for programming that only comes from years of doing the work yourself.
-        </p>
-        <p>
-          Playing many sports growing up gave me something textbooks can't: <strong>a genuine understanding of how different bodies move, respond to load, and break down under pressure.</strong>
-        </p>
+        <p>Most people find their way into fitness coaching through a single passion. For me, it started earlier and went deeper. <strong>From my teenage years I was already coaching</strong> — helping others train, understanding what worked, and developing an instinct for programming that only comes from years of doing the work yourself.</p>
+        <p>Playing many sports growing up gave me something textbooks can't: <strong>a genuine understanding of how different bodies move, respond to load, and break down under pressure.</strong></p>
         <div class="story-pull">
           "The best coaches aren't just educated — they've lived it. Every program I write is shaped by 14 years of real coaching, real people, and real results."
         </div>
-        <p>
-          I went on to complete a <strong>Bachelor of Science in Exercise and Sports Science</strong> alongside a <strong>Bachelor of Science in Physiotherapy</strong> — but while others were learning theory, I was already applying it. Over 14 years, the two worlds merged: the science of how the body works, and the art of making it perform.
-        </p>
-        <p>
-          What sets Performance Rebuilt apart is that <strong>physiotherapy lens</strong>. Most coaches program for progress. I program for progress and longevity — understanding injury risk, movement dysfunction, and how to build a body that performs for the long haul, not just the next 12 weeks.
-        </p>
+        <p>I went on to complete a <strong>Bachelor of Science in Exercise and Sports Science</strong> alongside a <strong>Bachelor of Science in Physiotherapy</strong> — but while others were learning theory, I was already applying it. Over 14 years, the two worlds merged: the science of how the body works, and the art of making it perform.</p>
+        <p>What sets Performance Rebuilt apart is that <strong>physiotherapy lens</strong>. Most coaches program for progress. I program for progress and longevity — understanding injury risk, movement dysfunction, and how to build a body that performs for the long haul, not just the next 12 weeks.</p>
       </div>
     </div>
   </section>
 
-  <!-- PHILOSOPHY -->
+  <section class="experience">
+    <p class="section-label">Who I work with</p>
+    <h2>Thousands of people.<br /><em>Every starting point.</em></h2>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <span class="experience-tag">Runners</span>
+        <div class="experience-title">Recreational to world major marathons</div>
+        <p class="experience-desc">From first-time runners building their base to competitive athletes chasing world major marathon qualifiers. Running performance is built in the gym as much as on the road, and programming that understands both makes the difference.</p>
+      </div>
+      <div class="experience-card">
+        <span class="experience-tag">Elite sport</span>
+        <div class="experience-title">High performance athletes</div>
+        <p class="experience-desc">Experience working across elite sporting environments means understanding the demands, the pressures, and the physical standards required to perform at the highest level. That context shapes how every athlete program is built.</p>
+      </div>
+      <div class="experience-card">
+        <span class="experience-tag">All levels</span>
+        <div class="experience-title">Brand new to the gym</div>
+        <p class="experience-desc">Thousands of people across 14 years means experience with every starting point. Whether you've never stepped foot in a gym or you've been training for years and hit a wall, the approach is the same — meet you where you are and build from there.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="philosophy">
     <p class="section-label">Coaching philosophy</p>
     <h2>How I believe<br /><em>training should work</em></h2>
@@ -663,7 +381,6 @@
     </div>
   </section>
 
-  <!-- QUALIFICATIONS -->
   <section class="quals">
     <p class="section-label">Qualifications &amp; credentials</p>
     <h2>The education<br /><em>behind the coaching</em></h2>
@@ -686,7 +403,6 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta-section">
     <h2 style="font-family:var(--serif); font-size:clamp(2rem,3.5vw,3rem); letter-spacing:-0.02em; line-height:1.1; text-align:center;">
       Ready to work with someone<br /><em style="color:rgba(247,245,242,0.35);">who actually knows their craft?</em>
@@ -708,14 +424,12 @@
   <script>
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
-
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
       const isOpen = mobileMenu.classList.contains('active');
       menuToggle.innerHTML = isOpen ? '✕' : '☰';
       menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
-
     document.querySelectorAll('#mobileMenu a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('active');
