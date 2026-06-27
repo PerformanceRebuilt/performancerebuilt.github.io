@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complaints Procedure — Performance Rebuilt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8;
+      --border: rgba(255,255,255,0.08);
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "DM Sans", system-ui, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    .nav-logo-img { height: 80px; width: auto; display: block; }
+    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul a:hover { color: var(--white); }
+    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    @media (max-width: 900px) {
+      nav { padding: 0 1.25rem; height: 72px; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; }
+      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+    }
+
+    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
+    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
+    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
+    .effective-date { font-size: 0.82rem; color: rgba(247,245,242,0.35); letter-spacing: 0.04em; }
+
+    .legal-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
+    .legal-section { margin-bottom: 3.5rem; }
+    .legal-section h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .legal-section p { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+    .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
+    .legal-section ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .section-num { font-family: var(--serif); font-size: 0.75rem; color: var(--blue-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
+    .contact-block { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); padding: 1.5rem 2rem; margin-top: 1rem; }
+    .contact-block p { margin: 0 0 0.5rem; }
+    .contact-block p:last-child { margin: 0; }
+    .contact-block a { color: var(--blue-light); text-decoration: none; }
+    .contact-block a:hover { opacity: 0.8; }
+    .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 1.5rem; }
+    .step-item { background: rgba(255,255,255,0.02); padding: 1.75rem 2rem; }
+    .step-num { font-family: var(--serif); font-size: 2rem; color: rgba(30,58,138,0.7); line-height: 1; margin-bottom: 0.75rem; }
+    .step-title { font-family: var(--serif); font-size: 1.05rem; color: var(--white); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.85rem; color: rgba(247,245,242,0.45); line-height: 1.7; font-weight: 300; }
+    .escalation-box { background: rgba(30,58,138,0.08); border: 0.5px solid rgba(30,58,138,0.25); padding: 1.5rem 2rem; margin-top: 1rem; }
+    .escalation-box p { font-size: 0.9rem; color: rgba(247,245,242,0.6); line-height: 1.75; font-weight: 300; margin: 0; }
+    .escalation-box a { color: var(--blue-light); text-decoration: none; }
+
+    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
+    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--white); }
+    .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    @media (max-width: 600px) {
+      .page-hero { padding: 8rem 1.25rem 3rem; }
+      .legal-body { padding: 3rem 1.25rem 4rem; }
+      .steps-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" />
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <ul id="mobileMenu">
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#services">Services</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <span class="hero-eyebrow">Legal</span>
+    <h1>Complaints Procedure</h1>
+    <p class="effective-date">Effective Date: 18 June 2026</p>
+  </div>
+
+  <div class="legal-body">
+
+    <div class="legal-section">
+      <span class="section-num">Our commitment</span>
+      <h2>We take complaints seriously.</h2>
+      <p>Performance Rebuilt Aus is committed to providing a high standard of service. If something hasn't met your expectations, we want to hear about it and work to put it right. This procedure sets out how to raise a complaint and what you can expect from us in response.</p>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">How it works</span>
+      <h2>The process, step by step.</h2>
+      <div class="steps-grid">
+        <div class="step-item">
+          <div class="step-num">01</div>
+          <div class="step-title">Submit your complaint</div>
+          <p class="step-desc">Contact us by email at performancerebuilt@gmail.com or through the contact form on this website. Please include your name, a description of the issue, and any relevant dates or details.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">02</div>
+          <div class="step-title">Acknowledgement</div>
+          <p class="step-desc">We will acknowledge receipt of your complaint within 7 business days of receiving it. You will be advised of who is handling your complaint and the next steps.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">03</div>
+          <div class="step-title">Investigation</div>
+          <p class="step-desc">We will review the circumstances of your complaint thoroughly and fairly. We may contact you during this process to gather any additional information needed.</p>
+        </div>
+        <div class="step-item">
+          <div class="step-num">04</div>
+          <div class="step-title">Resolution</div>
+          <p class="step-desc">We will work to resolve your complaint promptly and keep you informed throughout. Our goal is to reach a fair outcome that addresses your concerns as quickly as possible.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">How to contact us</span>
+      <h2>Get in touch.</h2>
+      <p>You can submit a complaint through any of the following:</p>
+      <div class="contact-block">
+        <p>Email: <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a></p>
+        <p>Contact form: <a href="index.html#contact">performancerebuilt.github.io</a></p>
+        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763 &nbsp;|&nbsp; Western Australia, Australia</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">External escalation</span>
+      <h2>If you're not satisfied.</h2>
+      <p>We hope to resolve all complaints directly. However, if you are not satisfied with the outcome of your complaint after engaging with us, you have the right to escalate your matter to an external body.</p>
+      <div class="escalation-box">
+        <p><strong style="color:var(--white);">Consumer Protection WA</strong> handles complaints about businesses operating in Western Australia and can assist with disputes relating to consumer services.</p>
+        <p style="margin-top:0.75rem;">Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a><br />Phone: 1300 304 054</p>
+      </div>
+    </div>
+
+    <div class="legal-section">
+      <span class="section-num">Australian Consumer Law</span>
+      <h2>Your rights are protected.</h2>
+      <p>Nothing in this complaints procedure limits your rights under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010 (Cth)). You are entitled to remedies including repair, replacement, or refund where a service fails to meet consumer guarantees.</p>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
+    <div class="footer-legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="waiver.html">Liability Waiver</a>
+      <a href="complaints.html">Complaints</a>
+    </div>
+    <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('active');
+      const isOpen = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        menuToggle.innerHTML = '☰';
+        menuToggle.setAttribute('aria-label', 'Open menu');
+      });
+    });
+  </script>
+
+</body>
+</html>
