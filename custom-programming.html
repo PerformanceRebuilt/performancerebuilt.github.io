@@ -19,6 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -27,7 +28,7 @@
       --serif: "DM Serif Display", Georgia, serif;
       --sans: "DM Sans", system-ui, sans-serif;
     }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
     /* ── NAV ── */
@@ -131,10 +132,10 @@
 
   <section class="hero">
     <div class="hero-bg-text">02</div>
-    <span class="hero-eyebrow">Service 02</span>
-    <h1>Expert program.<br /><em>App included.</em></h1>
-    <p class="hero-sub">A fully personalised training program with app access included. Written around your goals and schedule — expert structure, delivered to your phone, ready to execute from day one.</p>
-    <div class="hero-actions">
+    <span class="hero-eyebrow" data-aos="fade-up" data-aos-delay="100">Service 02</span>
+    <h1 data-aos="fade-up" data-aos-delay="200">Expert program.<br /><em>App included.</em></h1>
+    <p class="hero-sub" data-aos="fade-up" data-aos-delay="300">A fully personalised training program with app access included. Written around your goals and schedule — expert structure, delivered to your phone, ready to execute from day one.</p>
+    <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
       <a href="index.html#contact" class="btn-primary">Apply now</a>
       <a href="index.html#services" class="btn-secondary">← All services</a>
     </div>
@@ -158,7 +159,7 @@
   <section class="section">
     <p class="section-label">What's included</p>
     <h2>Everything you <em>need to succeed</em></h2>
-    <div class="includes-grid">
+    <div class="includes-grid" data-aos="fade-up">
       <div class="include-item"><div class="include-icon">📋</div><div class="include-title">Fully custom program</div><p class="include-desc">Written specifically for you — your goal, your schedule, your equipment. Not a template with your name on it.</p></div>
       <div class="include-item"><div class="include-icon">📝</div><div class="include-title">Coaching notes</div><p class="include-desc">Every session comes with clear guidance on intent, execution, and how to approach each block of training.</p></div>
       <div class="include-item"><div class="include-icon">📊</div><div class="include-title">Progressive structure</div><p class="include-desc">Built with intelligent progression baked in — you'll know exactly how to advance week to week without guesswork.</p></div>
@@ -171,7 +172,7 @@
   <section class="section">
     <p class="section-label">Who this is for</p>
     <h2>Built for <em>athletes who are serious</em></h2>
-    <div class="who-grid">
+    <div class="who-grid" data-aos="fade-up">
       <div class="who-item"><div class="who-check">✦</div><p class="who-text">You're experienced enough to train independently but want expert programming behind you</p></div>
       <div class="who-item"><div class="who-check">✦</div><p class="who-text">You don't need regular check-ins — you just need a great plan</p></div>
       <div class="who-item"><div class="who-check">✦</div><p class="who-text">You've been following generic programs and want something built for your specific goals</p></div>
@@ -184,7 +185,7 @@
   <section class="section">
     <p class="section-label">The process</p>
     <h2>How it <em>works</em></h2>
-    <div class="process-steps">
+    <div class="process-steps" data-aos="fade-up">
       <div><div class="process-step-num">01</div><div class="process-step-title">Submit your intake</div><p class="process-step-desc">Fill in a detailed intake form covering your goals, schedule, training history, and equipment access.</p></div>
       <div><div class="process-step-num">02</div><div class="process-step-title">Program is built</div><p class="process-step-desc">We write your custom program from scratch — no templates. Delivered within 72 hours.</p></div>
       <div><div class="process-step-num">03</div><div class="process-step-title">Review & refine</div><p class="process-step-desc">You review the program. If anything needs adjusting, one round of revisions is included.</p></div>
@@ -192,7 +193,7 @@
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-aos="fade-up">
     <h2>Your program.<br /><em>In your pocket.</em></h2>
     <p>Fill in a short enquiry form and we'll get back to you within 24 hours to talk goals and get started.</p>
     <a href="index.html#contact" class="btn-primary">Apply now →</a>
@@ -227,5 +228,15 @@
     });
   </script>
 
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- AOS scroll animations -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+  </script>
 </body>
 </html>
