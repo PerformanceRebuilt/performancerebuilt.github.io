@@ -1,130 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAR-Q Health Screening — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8;
-      --border: rgba(255,255,255,0.08);
-      --serif: "DM Serif Display", Georgia, serif;
-      --sans: "DM Sans", system-ui, sans-serif;
-    }
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(255,255,255,0.65); --dim: rgba(255,255,255,0.35); --blue: #1a6bff; --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
+    html { scroll-behavior: auto; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(8,12,20,0.80); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
+    nav ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
     nav ul a:hover { color: var(--white); }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
-    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; z-index: 201; }
     @media (max-width: 900px) {
-      nav { padding: 0 1.25rem; height: 72px; }
-      .nav-logo-img { height: 42px; }
-      .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
-      nav ul.active { max-height: 500px; }
-      nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(8,12,20,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.06); }
+      nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
     }
-
-    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
-    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
-    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .page-intro { font-size: 0.95rem; color: rgba(247,245,242,0.5); max-width: 600px; line-height: 1.75; font-weight: 300; margin-top: 0.75rem; }
-
-    .form-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
-
-    .notice-banner { background: rgba(30,58,138,0.1); border: 0.5px solid rgba(30,58,138,0.25); padding: 1.25rem 2rem; margin-bottom: 3rem; }
-    .notice-banner p { font-size: 0.875rem; color: rgba(247,245,242,0.65); line-height: 1.7; margin: 0; font-weight: 300; }
-    .notice-banner strong { color: var(--white); }
-
+    .page-hero { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.06); background: var(--bg2); }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .page-hero h1 span { color: var(--blue); }
+    .page-hero p { font-size: 1rem; color: var(--off); font-weight: 300; max-width: 580px; line-height: 1.75; margin-top: 0.75rem; }
+    .notice { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.2); border-radius: 10px; padding: 1.25rem 1.75rem; margin: 1.5rem 3rem 0; font-size: 0.875rem; color: var(--off); line-height: 1.7; }
+    .notice strong { color: var(--white); font-weight: 600; }
+    .form-body { max-width: 800px; margin: 0 auto; padding: 5rem 3rem 6rem; }
     .form-section { margin-bottom: 3rem; }
-    .form-section-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(247,245,242,0.4); font-weight: 500; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
-    .form-section-label::after { content: ""; flex: 1; height: 0.5px; background: var(--border); }
-
-    .form-group { margin-bottom: 1.25rem; }
-    .form-group label { display: block; font-size: 0.875rem; color: rgba(247,245,242,0.7); margin-bottom: 0.5rem; font-weight: 400; }
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="date"],
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.85rem 1rem;
-      border: 0.5px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.04);
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      color: var(--white);
-      outline: none;
-      transition: border-color 0.2s;
-      border-radius: 0;
-      appearance: none;
+    .form-section-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .form-section-label::after { content: ""; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+    .form-group { margin-bottom: 1.1rem; }
+    .form-group label { display: block; font-size: 0.875rem; color: var(--off); margin-bottom: 0.45rem; font-weight: 400; }
+    .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="date"], .form-group textarea {
+      width: 100%; padding: 0.85rem 1.1rem; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.05); backdrop-filter: blur(8px); font-family: var(--sans); font-size: 0.9rem; color: var(--white); outline: none; border-radius: 10px; transition: border-color 0.2s, background 0.2s;
     }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--accent); }
-    .form-group textarea { resize: vertical; min-height: 80px; }
-    .form-group select option { background: #1a1a1a; }
-
-    .parq-question { background: rgba(255,255,255,0.02); border: 0.5px solid var(--border); padding: 1.25rem 1.5rem; margin-bottom: 1px; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
-    .parq-question:first-of-type { border-top: 0.5px solid rgba(30,58,138,0.3); }
-    .parq-q-text { font-size: 0.9rem; color: rgba(247,245,242,0.7); line-height: 1.6; font-weight: 300; flex: 1; }
-    .parq-q-text strong { color: var(--white); font-weight: 500; }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+    .form-group input:focus, .form-group textarea:focus { border-color: rgba(26,107,255,0.5); background: rgba(255,255,255,0.07); }
+    .form-group textarea { resize: vertical; min-height: 75px; }
+    .parq-q { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; backdrop-filter: blur(10px); transition: background 0.2s; }
+    .parq-q:hover { background: rgba(255,255,255,0.08); }
+    .parq-q-text { font-size: 0.9rem; color: var(--off); line-height: 1.6; font-weight: 300; flex: 1; }
+    .parq-q-text strong { color: var(--white); font-weight: 600; }
     .radio-group { display: flex; gap: 1rem; flex-shrink: 0; }
-    .radio-group label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: rgba(247,245,242,0.6); cursor: pointer; white-space: nowrap; }
-    .radio-group input[type="radio"] { accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; }
-
+    .radio-group label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.875rem; color: var(--off); cursor: pointer; white-space: nowrap; }
+    .radio-group input[type="radio"] { accent-color: var(--blue); width: 16px; height: 16px; }
     .yes-detail { display: none; margin-top: 0.75rem; }
-    .yes-detail textarea { width: 100%; padding: 0.75rem 1rem; border: 0.5px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.03); font-family: var(--sans); font-size: 0.85rem; color: var(--white); outline: none; resize: vertical; min-height: 60px; border-radius: 0; }
-    .yes-detail textarea:focus { border-color: var(--accent); }
-    .yes-detail label { font-size: 0.78rem; color: rgba(247,245,242,0.4); display: block; margin-bottom: 0.4rem; letter-spacing: 0.04em; }
-
-    .declaration-box { background: rgba(255,255,255,0.02); border: 0.5px solid var(--border); padding: 2rem; margin-top: 2rem; }
-    .declaration-box p { font-size: 0.875rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 1.25rem; }
-    .declaration-box ul { margin: 0 0 1.25rem 1.25rem; }
-    .declaration-box ul li { font-size: 0.875rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .checkbox-group { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 1rem; }
-    .checkbox-group input[type="checkbox"] { accent-color: var(--accent); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; cursor: pointer; }
-    .checkbox-group label { font-size: 0.875rem; color: rgba(247,245,242,0.65); line-height: 1.65; font-weight: 300; cursor: pointer; }
-    .checkbox-group label a { color: var(--blue-light); text-decoration: none; }
-
-    .submit-btn { background: var(--accent); color: var(--white); border: none; padding: 1rem 2.5rem; font-family: var(--sans); font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: opacity 0.2s, transform 0.15s; border-radius: 2rem; letter-spacing: 0.01em; margin-top: 1.5rem; }
-    .submit-btn:hover { opacity: 0.85; transform: translateY(-1px); }
-    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
-
+    .yes-detail label { font-size: 0.78rem; color: var(--dim); display: block; margin-bottom: 0.35rem; letter-spacing: 0.04em; }
+    .yes-detail textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.10); background: rgba(255,255,255,0.04); font-family: var(--sans); font-size: 0.85rem; color: var(--white); outline: none; resize: vertical; min-height: 60px; border-radius: 8px; }
+    .yes-detail textarea:focus { border-color: rgba(26,107,255,0.5); }
+    .decl-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; padding: 2rem; margin-top: 1rem; backdrop-filter: blur(12px); }
+    .decl-box p { font-size: 0.9rem; color: var(--off); line-height: 1.75; font-weight: 300; margin-bottom: 1rem; }
+    .decl-box ul { margin: 0 0 1.25rem 1.25rem; }
+    .decl-box ul li { font-size: 0.875rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .check-group { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.85rem; }
+    .check-group input[type="checkbox"] { accent-color: var(--blue); width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+    .check-group label { font-size: 0.875rem; color: var(--off); line-height: 1.65; font-weight: 300; cursor: pointer; }
+    .check-group label a { color: var(--blue); text-decoration: none; }
     .sig-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-
-    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
-    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
+    .submit-btn { background: var(--blue); color: var(--white); border: none; padding: 1rem 2.5rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; cursor: pointer; border-radius: 2rem; transition: opacity 0.2s, transform 0.15s; margin-top: 1.5rem; }
+    .submit-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.75rem; background: var(--bg); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--white); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    @media (max-width: 600px) {
-      .page-hero { padding: 8rem 1.25rem 3rem; }
-      .form-body { padding: 3rem 1.25rem 4rem; }
-      .parq-question { flex-direction: column; gap: 0.75rem; }
-      .sig-fields { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-legal { justify-content: center; }
-    }
+    @media (max-width: 900px) { .notice { margin: 1.5rem 1.5rem 0; } .parq-q { flex-direction: column; gap: 0.75rem; } .sig-fields { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .page-hero { padding: 8rem 1.5rem 3rem; } .form-body { padding: 3rem 1.5rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
   </style>
 </head>
 <body>
-
   <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" />
-    </a>
+    <a href="index.html" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
       <li><a href="about.html">About</a></li>
@@ -136,221 +88,67 @@
   </nav>
 
   <div class="page-hero">
-    <span class="hero-eyebrow">Onboarding</span>
-    <h1>Physical Activity<br />Readiness Questionnaire</h1>
-    <p class="page-intro">This form must be completed before commencing any training program with Performance Rebuilt Aus. Your answers help us ensure the program is safe and appropriate for you specifically.</p>
+    <h1 data-aos="fade-up">PAR-Q <span>Health Screening</span></h1>
+    <p data-aos="fade-up" data-aos-delay="100">This form must be completed before commencing any training program with Performance Rebuilt Aus. Your answers help ensure the program is safe and appropriate for you specifically.</p>
   </div>
+  <div class="notice"><strong>Confidential.</strong> The information you provide is stored securely, accessible only to you and your assigned coach, and used solely for designing a safe and appropriate training program. See our <a href="privacy.html" style="color:var(--blue);">Privacy Policy</a> for full details.</div>
 
   <div class="form-body">
-
-    <div class="notice-banner">
-      <p><strong>Confidential.</strong> The information you provide here is stored securely, accessible only to you and your assigned coach, and used solely for the purpose of designing a safe and appropriate training program. See our <a href="privacy.html" style="color:var(--blue-light);">Privacy Policy</a> for full details.</p>
-    </div>
-
     <form id="parq-form" onsubmit="handleSubmit(event)">
 
-      <!-- PERSONAL DETAILS -->
-      <div class="form-section">
+      <div class="form-section" data-aos="fade-up">
         <p class="form-section-label">Personal details</p>
-        <div class="form-group">
-          <label for="full-name">Full name</label>
-          <input type="text" id="full-name" name="full_name" placeholder="Your full name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" id="email" name="email" placeholder="Your email address" required />
-        </div>
-        <div class="form-group">
-          <label for="dob">Date of birth</label>
-          <input type="date" id="dob" name="dob" required />
-        </div>
+        <div class="form-group"><label for="full-name">Full name</label><input type="text" id="full-name" name="full_name" placeholder="Your full name" required /></div>
+        <div class="form-group"><label for="email">Email address</label><input type="email" id="email" name="email" placeholder="Your email address" required /></div>
+        <div class="form-group"><label for="dob">Date of birth</label><input type="date" id="dob" name="dob" required /></div>
       </div>
 
-      <!-- PAR-Q QUESTIONS -->
-      <div class="form-section">
+      <div class="form-section" data-aos="fade-up">
         <p class="form-section-label">Health screening questions</p>
-        <p style="font-size:0.875rem;color:rgba(247,245,242,0.5);margin-bottom:1.5rem;font-weight:300;line-height:1.7;">Please answer YES or NO to each of the following questions honestly and to the best of your knowledge. If you answer YES to any question, please provide details in the field provided.</p>
+        <p style="font-size:0.875rem;color:var(--off);margin-bottom:1.5rem;font-weight:300;line-height:1.7;">Please answer YES or NO to each question honestly. If you answer YES to any question, please provide details in the field that appears.</p>
 
-        <!-- Q1 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q1.</strong> Has a doctor ever said that you have a heart condition and that you should only perform physical activity recommended by a doctor?</p>
-            <div class="yes-detail" id="detail-1">
-              <label>Please provide details:</label>
-              <textarea name="detail_q1" placeholder="Describe your condition and any relevant medical advice..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q1" value="no" required onchange="toggleDetail(1, false)" /> No</label>
-            <label><input type="radio" name="q1" value="yes" onchange="toggleDetail(1, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q2 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q2.</strong> Do you feel pain in your chest when you perform physical activity?</p>
-            <div class="yes-detail" id="detail-2">
-              <label>Please provide details:</label>
-              <textarea name="detail_q2" placeholder="Describe when and how often this occurs..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q2" value="no" required onchange="toggleDetail(2, false)" /> No</label>
-            <label><input type="radio" name="q2" value="yes" onchange="toggleDetail(2, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q3.</strong> In the past month, have you had chest pain when you were not performing any physical activity?</p>
-            <div class="yes-detail" id="detail-3">
-              <label>Please provide details:</label>
-              <textarea name="detail_q3" placeholder="Describe when this occurred and any medical advice received..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q3" value="no" required onchange="toggleDetail(3, false)" /> No</label>
-            <label><input type="radio" name="q3" value="yes" onchange="toggleDetail(3, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q4.</strong> Do you lose your balance because of dizziness, or do you ever lose consciousness?</p>
-            <div class="yes-detail" id="detail-4">
-              <label>Please provide details:</label>
-              <textarea name="detail_q4" placeholder="Describe frequency, circumstances, and any diagnosis..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q4" value="no" required onchange="toggleDetail(4, false)" /> No</label>
-            <label><input type="radio" name="q4" value="yes" onchange="toggleDetail(4, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q5.</strong> Do you have a bone or joint problem (for example, back, knee, or hip) that could be made worse by a change in your physical activity?</p>
-            <div class="yes-detail" id="detail-5">
-              <label>Please provide details:</label>
-              <textarea name="detail_q5" placeholder="Describe the condition, affected area, and any treatment or restrictions..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q5" value="no" required onchange="toggleDetail(5, false)" /> No</label>
-            <label><input type="radio" name="q5" value="yes" onchange="toggleDetail(5, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q6.</strong> Is your doctor currently prescribing medication for your blood pressure or a heart condition?</p>
-            <div class="yes-detail" id="detail-6">
-              <label>Please provide details:</label>
-              <textarea name="detail_q6" placeholder="List relevant medications and conditions being managed..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q6" value="no" required onchange="toggleDetail(6, false)" /> No</label>
-            <label><input type="radio" name="q6" value="yes" onchange="toggleDetail(6, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q7.</strong> Do you know of any other reason why you should not participate in physical activity?</p>
-            <div class="yes-detail" id="detail-7">
-              <label>Please provide details:</label>
-              <textarea name="detail_q7" placeholder="Describe any other health concerns, conditions, or restrictions..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q7" value="no" required onchange="toggleDetail(7, false)" /> No</label>
-            <label><input type="radio" name="q7" value="yes" onchange="toggleDetail(7, true)" /> Yes</label>
-          </div>
-        </div>
-
-        <!-- Q8 - Additional -->
-        <div class="parq-question">
-          <div style="flex:1;">
-            <p class="parq-q-text"><strong>Q8.</strong> Are you currently pregnant or have you given birth in the last 12 months?</p>
-            <div class="yes-detail" id="detail-8">
-              <label>Please provide details:</label>
-              <textarea name="detail_q8" placeholder="Please share any relevant details so we can adapt your program appropriately..."></textarea>
-            </div>
-          </div>
-          <div class="radio-group">
-            <label><input type="radio" name="q8" value="no" required onchange="toggleDetail(8, false)" /> No</label>
-            <label><input type="radio" name="q8" value="yes" onchange="toggleDetail(8, true)" /> Yes</label>
-          </div>
-        </div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q1.</strong> Has a doctor ever said that you have a heart condition and that you should only perform physical activity recommended by a doctor?</p><div class="yes-detail" id="detail-1"><label>Please provide details:</label><textarea name="detail_q1" placeholder="Describe your condition and any relevant medical advice..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q1" value="no" required onchange="toggleDetail(1,false)" /> No</label><label><input type="radio" name="q1" value="yes" onchange="toggleDetail(1,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q2.</strong> Do you feel pain in your chest when you perform physical activity?</p><div class="yes-detail" id="detail-2"><label>Please provide details:</label><textarea name="detail_q2" placeholder="Describe when and how often this occurs..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q2" value="no" required onchange="toggleDetail(2,false)" /> No</label><label><input type="radio" name="q2" value="yes" onchange="toggleDetail(2,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q3.</strong> In the past month, have you had chest pain when you were not performing any physical activity?</p><div class="yes-detail" id="detail-3"><label>Please provide details:</label><textarea name="detail_q3" placeholder="Describe when this occurred..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q3" value="no" required onchange="toggleDetail(3,false)" /> No</label><label><input type="radio" name="q3" value="yes" onchange="toggleDetail(3,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q4.</strong> Do you lose your balance because of dizziness, or do you ever lose consciousness?</p><div class="yes-detail" id="detail-4"><label>Please provide details:</label><textarea name="detail_q4" placeholder="Describe frequency, circumstances, and any diagnosis..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q4" value="no" required onchange="toggleDetail(4,false)" /> No</label><label><input type="radio" name="q4" value="yes" onchange="toggleDetail(4,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q5.</strong> Do you have a bone or joint problem (for example, back, knee, or hip) that could be made worse by a change in your physical activity?</p><div class="yes-detail" id="detail-5"><label>Please provide details:</label><textarea name="detail_q5" placeholder="Describe the condition, affected area, and any restrictions..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q5" value="no" required onchange="toggleDetail(5,false)" /> No</label><label><input type="radio" name="q5" value="yes" onchange="toggleDetail(5,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q6.</strong> Is your doctor currently prescribing medication for your blood pressure or a heart condition?</p><div class="yes-detail" id="detail-6"><label>Please provide details:</label><textarea name="detail_q6" placeholder="List relevant medications and conditions..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q6" value="no" required onchange="toggleDetail(6,false)" /> No</label><label><input type="radio" name="q6" value="yes" onchange="toggleDetail(6,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q7.</strong> Do you know of any other reason why you should not participate in physical activity?</p><div class="yes-detail" id="detail-7"><label>Please provide details:</label><textarea name="detail_q7" placeholder="Describe any other health concerns, conditions, or restrictions..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q7" value="no" required onchange="toggleDetail(7,false)" /> No</label><label><input type="radio" name="q7" value="yes" onchange="toggleDetail(7,true)" /> Yes</label></div></div>
+        <div class="parq-q"><div style="flex:1;"><p class="parq-q-text"><strong>Q8.</strong> Are you currently pregnant or have you given birth in the last 12 months?</p><div class="yes-detail" id="detail-8"><label>Please provide details:</label><textarea name="detail_q8" placeholder="Please share any relevant details..."></textarea></div></div><div class="radio-group"><label><input type="radio" name="q8" value="no" required onchange="toggleDetail(8,false)" /> No</label><label><input type="radio" name="q8" value="yes" onchange="toggleDetail(8,true)" /> Yes</label></div></div>
       </div>
 
-      <!-- ADDITIONAL HEALTH INFO -->
-      <div class="form-section">
+      <div class="form-section" data-aos="fade-up">
         <p class="form-section-label">Additional health information</p>
-        <div class="form-group">
-          <label for="current-injuries">Current injuries or niggles (if any)</label>
-          <textarea id="current-injuries" name="current_injuries" placeholder="Describe any current injuries, pain, discomfort, or areas of concern — include location, duration, and any treatment received. Write 'None' if not applicable."></textarea>
-        </div>
-        <div class="form-group">
-          <label for="past-injuries">Significant past injuries or surgeries (if any)</label>
-          <textarea id="past-injuries" name="past_injuries" placeholder="List any previous significant injuries, surgeries, or medical events that may be relevant to your training. Write 'None' if not applicable."></textarea>
-        </div>
-        <div class="form-group">
-          <label for="medications">Current medications (if any)</label>
-          <textarea id="medications" name="medications" placeholder="List any medications you are currently taking that may affect your ability to exercise or your response to training. Write 'None' if not applicable."></textarea>
-        </div>
+        <div class="form-group"><label>Current injuries or niggles (if any)</label><textarea name="current_injuries" placeholder="Describe any current injuries, pain, or discomfort. Write 'None' if not applicable."></textarea></div>
+        <div class="form-group"><label>Significant past injuries or surgeries (if any)</label><textarea name="past_injuries" placeholder="List any previous significant injuries or surgeries. Write 'None' if not applicable."></textarea></div>
+        <div class="form-group"><label>Current medications (if any)</label><textarea name="medications" placeholder="List any medications that may affect your ability to exercise. Write 'None' if not applicable."></textarea></div>
       </div>
 
-      <!-- DECLARATION -->
-      <div class="form-section">
+      <div class="form-section" data-aos="fade-up">
         <p class="form-section-label">Declaration</p>
-        <div class="declaration-box">
+        <div class="decl-box">
           <p>By submitting this form, I confirm that:</p>
           <ul>
             <li>I have answered all questions honestly and to the best of my knowledge</li>
             <li>I understand that Performance Rebuilt Aus coaches are not registered medical practitioners and nothing provided constitutes medical advice</li>
-            <li>I will inform my coach of any changes in my health status that may affect the suitability of my program</li>
-            <li>I will cease any exercise that causes pain, discomfort, or unusual symptoms and seek medical advice before continuing</li>
+            <li>I will inform my coach of any changes in my health status that may affect my program</li>
+            <li>I will cease any exercise that causes pain or unusual symptoms and seek medical advice before continuing</li>
             <li>I am 18 years of age or older</li>
           </ul>
-          <div class="checkbox-group" style="margin-top:1.25rem;">
-            <input type="checkbox" id="agree-waiver" name="agree_waiver" required />
-            <label for="agree-waiver">I have read and agree to the <a href="waiver.html" target="_blank">Health, Fitness and Liability Waiver</a></label>
-          </div>
-          <div class="checkbox-group">
-            <input type="checkbox" id="agree-privacy" name="agree_privacy" required />
-            <label for="agree-privacy">I have read and agree to the <a href="privacy.html" target="_blank">Privacy Policy</a></label>
-          </div>
-          <div class="checkbox-group">
-            <input type="checkbox" id="agree-terms" name="agree_terms" required />
-            <label for="agree-terms">I have read and agree to the <a href="terms.html" target="_blank">Terms and Conditions</a></label>
+          <div style="margin-top:1.5rem;">
+            <div class="check-group"><input type="checkbox" id="agree-waiver" name="agree_waiver" required /><label for="agree-waiver">I have read and agree to the <a href="waiver.html" target="_blank">Health, Fitness and Liability Waiver</a></label></div>
+            <div class="check-group"><input type="checkbox" id="agree-privacy" name="agree_privacy" required /><label for="agree-privacy">I have read and agree to the <a href="privacy.html" target="_blank">Privacy Policy</a></label></div>
+            <div class="check-group"><input type="checkbox" id="agree-terms" name="agree_terms" required /><label for="agree-terms">I have read and agree to the <a href="terms.html" target="_blank">Terms and Conditions</a></label></div>
           </div>
         </div>
-
         <div class="sig-fields">
-          <div class="form-group">
-            <label for="sig-name">Full name (typed signature)</label>
-            <input type="text" id="sig-name" name="signature_name" placeholder="Type your full name" required />
-          </div>
-          <div class="form-group">
-            <label for="sig-date">Date</label>
-            <input type="date" id="sig-date" name="signature_date" required />
-          </div>
+          <div class="form-group"><label for="sig-name">Full name (typed signature)</label><input type="text" id="sig-name" name="signature_name" placeholder="Type your full name" required /></div>
+          <div class="form-group"><label for="sig-date">Date</label><input type="date" id="sig-date" name="signature_date" required /></div>
         </div>
-
         <button type="submit" class="submit-btn" id="submit-btn">Submit PAR-Q →</button>
       </div>
 
     </form>
-
   </div>
 
   <footer>
@@ -364,7 +162,13 @@
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
   </footer>
 
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
@@ -374,41 +178,22 @@
       menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
     document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        menuToggle.innerHTML = '☰';
-        menuToggle.setAttribute('aria-label', 'Open menu');
-      });
+      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu'); });
     });
-
     function toggleDetail(num, show) {
-      const detail = document.getElementById('detail-' + num);
-      if (detail) detail.style.display = show ? 'block' : 'none';
+      const d = document.getElementById('detail-' + num);
+      if (d) d.style.display = show ? 'block' : 'none';
     }
-
     async function handleSubmit(e) {
       e.preventDefault();
       const btn = document.getElementById('submit-btn');
-      btn.textContent = 'Submitting...';
-      btn.disabled = true;
+      btn.textContent = 'Submitting...'; btn.disabled = true;
       try {
-        const response = await fetch('https://formspree.io/f/mykawkpl', {
-          method: 'POST',
-          body: new FormData(e.target),
-          headers: { 'Accept': 'application/json' }
-        });
-        if (response.ok) {
-          btn.textContent = 'Submitted — thank you!';
-        } else {
-          btn.textContent = 'Something went wrong — please try again';
-          btn.disabled = false;
-        }
-      } catch {
-        btn.textContent = 'Something went wrong — please try again';
-        btn.disabled = false;
-      }
+        const r = await fetch('https://formspree.io/f/mykawkpl', { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+        if (r.ok) { btn.textContent = 'Submitted — thank you!'; }
+        else { btn.textContent = 'Something went wrong — please try again'; btn.disabled = false; }
+      } catch { btn.textContent = 'Something went wrong — please try again'; btn.disabled = false; }
     }
   </script>
-
 </body>
 </html>
