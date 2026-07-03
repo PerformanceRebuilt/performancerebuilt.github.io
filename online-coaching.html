@@ -116,6 +116,52 @@
       .process-grid { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
+
+    /* COMPARISON TABLE */
+    .comparison { padding: 6rem 3rem; background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.06); }
+    .comp-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .comp-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+
+    .comp-table th { padding: 0; vertical-align: bottom; }
+    .comp-table th:first-child { width: 28%; }
+
+    .tier-head { padding: 1.75rem 1.5rem 1.25rem; text-align: center; }
+    .tier-head .t-name { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
+    .tier-head .t-price { font-size: 1.8rem; font-weight: 800; color: var(--white); letter-spacing: -0.02em; line-height: 1; }
+    .tier-head .t-price span { font-size: 0.85rem; font-weight: 400; color: var(--dim); }
+    .tier-head .t-commit { font-size: 0.72rem; color: var(--dim); margin-top: 0.35rem; }
+    .tier-head.featured-head { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.25); border-bottom: none; border-radius: 14px 14px 0 0; }
+    .most-pop { display: inline-block; background: var(--blue); color: #fff; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.5rem; }
+
+    .comp-table td, .comp-table th { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .comp-table tr:last-child td { border-bottom: none; }
+
+    .row-label { padding: 1rem 0; font-size: 0.875rem; color: var(--off); font-weight: 400; }
+    .row-label.row-group { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 1.75rem; padding-bottom: 0.5rem; border-bottom: none; }
+
+    .row-val { text-align: center; padding: 1rem 0.5rem; font-size: 0.875rem; color: var(--off); font-weight: 300; vertical-align: middle; }
+    .row-val.featured-col { background: rgba(26,107,255,0.05); border-left: 1px solid rgba(26,107,255,0.15); border-right: 1px solid rgba(26,107,255,0.15); }
+    .row-val.featured-col.last-row { border-bottom: 1px solid rgba(26,107,255,0.25); border-radius: 0 0 14px 14px; }
+
+    .check { color: var(--blue); font-size: 1rem; }
+    .cross { color: rgba(255,255,255,0.18); font-size: 0.9rem; }
+    .val-pill { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 2rem; }
+    .val-limited { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.1); }
+    .val-full { background: rgba(26,107,255,0.15); color: #6aaeff; border: 1px solid rgba(26,107,255,0.25); }
+    .val-freq { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+    .app-access-note { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .access-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
+    .access-card-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+    .access-card-title.limited { color: rgba(255,255,255,0.45); }
+    .access-card-title.full { color: var(--blue); }
+    .access-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+    .access-list li { font-size: 0.82rem; color: var(--off); font-weight: 300; display: flex; align-items: center; gap: 0.5rem; }
+    .access-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .access-list.limited-list li::before { background: rgba(255,255,255,0.25); }
+    .access-list.full-list li::before { background: var(--blue); }
+    .access-list li.locked { color: rgba(255,255,255,0.25); text-decoration: line-through; }
+    @media (max-width: 700px) { .comparison { padding: 4rem 1.5rem; } .app-access-note { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -153,10 +199,9 @@
         <p class="tier-desc">The foundations of great coaching. A custom program, nutrition information, and direct access to your coach — built for those who want expert structure with steady support.</p>
         <ul class="tier-features">
           <li>Fully custom training program</li>
-          <li>Nutrition advice &amp; guidance</li>
+          <li>Limited app access (program &amp; logging only)</li>
           <li>Direct messaging with your coach</li>
           <li>Video call check-in every 2 months</li>
-          <li>Limited app access</li>
           <li>Program updates as you progress</li>
         </ul>
         <a href="index.html#contact" class="tier-cta ghost">Get started</a>
@@ -170,10 +215,10 @@
         <ul class="tier-features">
           <li>Everything in Essentials</li>
           <li>Full app access</li>
+          <li>Nutrition advice, tracking &amp; sample meal guides</li>
           <li>Monthly video call check-ins</li>
-          <li>Ongoing nutrition coaching &amp; meal guide updates</li>
-          <li>Regular program adjustments</li>
           <li>Form feedback via video submission</li>
+          <li>Regular program adjustments</li>
         </ul>
         <a href="index.html#contact" class="tier-cta">Get started</a>
       </div>
@@ -186,8 +231,7 @@
           <li>Everything in Performance</li>
           <li>Fortnightly video call check-ins</li>
           <li>Detailed movement &amp; technique reviews</li>
-          <li>Advanced performance &amp; competition support</li>
-          <li>Peak conditioning &amp; event periodisation</li>
+          <li>Advanced competition &amp; peak performance support</li>
         </ul>
         <a href="index.html#contact" class="tier-cta ghost">Get started</a>
       </div>
@@ -226,6 +270,161 @@
         <div class="disclaimer-box">
           <p><strong>Important:</strong> Nutrition guidance provided through Performance Rebuilt is for educational purposes only, designed for generally healthy individuals, and does not replace advice from a registered dietitian or medical professional. If you have a diagnosed medical condition, eating disorder, or specific clinical dietary requirement, please consult a qualified healthcare professional before commencing any nutrition program.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="comparison">
+    <h2 class="section-heading" data-aos="fade-up">Compare <span>all plans</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Everything side by side so you can find the right fit.</p>
+    <div class="comp-wrap" data-aos="fade-up" data-aos-delay="120">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th><div class="tier-head"><div class="t-name">Program + App</div><div class="t-price">$60 <span>one-off</span></div><div class="t-commit">No commitment</div></div></th>
+            <th><div class="tier-head"><div class="t-name">Essentials</div><div class="t-price">$45 <span>/ week</span></div><div class="t-commit">1 month minimum</div></div></th>
+            <th><div class="tier-head featured-head"><div class="most-pop">Most popular</div><div class="t-name">Performance</div><div class="t-price">$70 <span>/ week</span></div><div class="t-commit">1 month minimum</div></div></th>
+            <th><div class="tier-head"><div class="t-name">Elite</div><div class="t-price">$120 <span>/ week</span></div><div class="t-commit">1 month minimum</div></div></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- PROGRAM -->
+          <tr>
+            <td class="row-label row-group">Programming</td>
+            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
+          </tr>
+          <tr>
+            <td class="row-label">Fully custom training program</td>
+            <td class="row-val"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Program updates</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Form feedback via video</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Movement &amp; technique reviews</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val featured-col"><span class="cross">—</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <!-- APP -->
+          <tr>
+            <td class="row-label row-group">App Access</td>
+            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
+          </tr>
+          <tr>
+            <td class="row-label">App access</td>
+            <td class="row-val"><span class="val-pill val-limited">Limited</span></td>
+            <td class="row-val"><span class="val-pill val-limited">Limited</span></td>
+            <td class="row-val featured-col"><span class="val-pill val-full">Full</span></td>
+            <td class="row-val"><span class="val-pill val-full">Full</span></td>
+          </tr>
+          <!-- NUTRITION -->
+          <tr>
+            <td class="row-label row-group">Nutrition</td>
+            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
+          </tr>
+          <tr>
+            <td class="row-label">Nutrition advice &amp; tracking</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Sample meal guides</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <!-- COACHING -->
+          <tr>
+            <td class="row-label row-group">Coaching &amp; Support</td>
+            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
+          </tr>
+          <tr>
+            <td class="row-label">Direct messaging</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Video call check-ins</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="val-freq">Every 2 months</span></td>
+            <td class="row-val featured-col"><span class="val-freq">Monthly</span></td>
+            <td class="row-val"><span class="val-freq">Fortnightly</span></td>
+          </tr>
+          <tr>
+            <td class="row-label">Advanced performance support</td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val featured-col"><span class="cross">—</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
+          </tr>
+          <!-- COMMITMENT -->
+          <tr>
+            <td class="row-label row-group">Commitment</td>
+            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
+          </tr>
+          <tr>
+            <td class="row-label">Minimum commitment</td>
+            <td class="row-val"><span class="val-freq">One-off</span></td>
+            <td class="row-val"><span class="val-freq">1 month</span></td>
+            <td class="row-val featured-col last-row"><span class="val-freq">1 month</span></td>
+            <td class="row-val last-row"><span class="val-freq">1 month</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- APP ACCESS BREAKDOWN -->
+    <div class="app-access-note" data-aos="fade-up" data-aos-delay="100">
+      <div class="access-card">
+        <div class="access-card-title limited">Limited access — Program + App &amp; Essentials</div>
+        <ul class="access-list limited-list">
+          <li>Home</li>
+          <li>My Program</li>
+          <li>Settings</li>
+          <li>Profile</li>
+          <li class="locked">Nutrition tracking</li>
+          <li class="locked">Progress tracking</li>
+          <li class="locked">Progress photos</li>
+          <li class="locked">Goal events</li>
+          <li class="locked">Flag issue</li>
+        </ul>
+      </div>
+      <div class="access-card">
+        <div class="access-card-title full">Full access — Performance &amp; Elite</div>
+        <ul class="access-list full-list">
+          <li>Home</li>
+          <li>My Program</li>
+          <li>Settings</li>
+          <li>Profile</li>
+          <li>Nutrition tracking</li>
+          <li>Progress tracking</li>
+          <li>Progress photos</li>
+          <li>Goal events</li>
+          <li>Flag issue</li>
+        </ul>
       </div>
     </div>
   </section>
