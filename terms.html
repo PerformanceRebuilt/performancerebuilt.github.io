@@ -1,56 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms &amp; Conditions — Performance Rebuilt</title>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8; --border: rgba(255,255,255,0.08); --serif: "DM Serif Display", Georgia, serif; --sans: "DM Sans", system-ui, sans-serif; }
+    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(255,255,255,0.65); --dim: rgba(255,255,255,0.35); --blue: #1a6bff; --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
     html { scroll-behavior: auto; }
-    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    body { font-family: var(--sans); background: var(--bg); color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(8,12,20,0.80); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
+    nav ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
     nav ul a:hover { color: var(--white); }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
-    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; z-index: 201; }
     @media (max-width: 900px) {
-      nav { padding: 0 1.25rem; height: 72px; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
+      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(8,12,20,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.06); }
       nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
     }
-    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
-    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
-    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .effective-date { font-size: 0.82rem; color: rgba(247,245,242,0.35); letter-spacing: 0.04em; }
-    .legal-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
+    .page-hero { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.06); background: var(--bg2); }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .page-hero h1 span { color: var(--blue); }
+    .effective-date { font-size: 0.82rem; color: var(--dim); font-weight: 400; }
+    .notice-banner { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.2); border-radius: 10px; padding: 1.25rem 1.75rem; margin: 1.5rem 3rem 0; font-size: 0.875rem; color: var(--off); line-height: 1.7; }
+    .notice-banner strong { color: var(--white); font-weight: 600; }
+    .legal-body { max-width: 800px; margin: 0 auto; padding: 5rem 3rem 6rem; }
     .legal-section { margin-bottom: 3.5rem; }
-    .legal-section h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .legal-section h3 { font-family: var(--serif); font-size: 1.1rem; color: rgba(247,245,242,0.8); margin: 1.25rem 0 0.5rem; }
-    .legal-section p { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+    .legal-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; }
+    .legal-section h3 { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.8); margin: 1.25rem 0 0.5rem; }
+    .legal-section p { font-size: 0.95rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
     .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
-    .legal-section ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .section-num { font-family: var(--serif); font-size: 0.75rem; color: var(--blue-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
-    .contact-block { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); padding: 1.5rem 2rem; margin-top: 1rem; }
-    .contact-block p { margin: 0 0 0.4rem; } .contact-block p:last-child { margin: 0; }
-    .contact-block a { color: var(--blue-light); text-decoration: none; }
-    .escalation-box { background: rgba(30,58,138,0.08); border: 0.5px solid rgba(30,58,138,0.25); padding: 1.5rem 2rem; margin-top: 1rem; }
-    .escalation-box p { font-size: 0.9rem; color: rgba(247,245,242,0.6); line-height: 1.75; font-weight: 300; margin: 0; }
-    .escalation-box p + p { margin-top: 0.6rem; }
-    .escalation-box a { color: var(--blue-light); text-decoration: none; }
-    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
-    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--white); }
+    .legal-section ul li { font-size: 0.95rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; display: block; }
+    .contact-block { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; backdrop-filter: blur(12px); }
+    .contact-block p { margin: 0 0 0.4rem; font-size: 0.9rem; } .contact-block p:last-child { margin: 0; }
+    .contact-block a { color: var(--blue); text-decoration: none; }
+    .escalation-box { background: rgba(26,107,255,0.06); border: 1px solid rgba(26,107,255,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; }
+    .escalation-box p { font-size: 0.9rem; color: var(--off); line-height: 1.75; font-weight: 300; margin: 0; }
+    .escalation-box p + p { margin-top: 0.5rem; }
+    .escalation-box a { color: var(--blue); text-decoration: none; }
+    .ack-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 2rem; margin-top: 1rem; backdrop-filter: blur(12px); }
+    .ack-box p { font-size: 0.9rem; color: var(--off); margin-bottom: 0.75rem; }
+    .ack-box ul { margin: 0.5rem 0 0 1.25rem; }
+    .ack-box ul li { font-size: 0.9rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .sig-block { display: flex; flex-direction: column; gap: 0.5rem; }
+    .sig-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); font-weight: 600; }
+    .sig-line { height: 1px; background: rgba(255,255,255,0.15); margin-top: 2.5rem; }
+    .sig-name { font-size: 0.875rem; color: var(--off); margin-top: 0.5rem; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; margin: 1.25rem 0; }
+    .info-cell { background: rgba(8,12,20,0.6); backdrop-filter: blur(12px); padding: 1.25rem 1.5rem; }
+    .info-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; font-weight: 600; }
+    .info-value { font-size: 1rem; color: var(--white); font-weight: 700; }
+    .info-detail { font-size: 0.8rem; color: var(--dim); margin-top: 0.3rem; font-weight: 300; }
+    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.75rem; background: var(--bg); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--white); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    @media (max-width: 600px) { .page-hero { padding: 8rem 1.25rem 3rem; } .legal-body { padding: 3rem 1.25rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
+    @media (max-width: 900px) { .notice-banner { margin: 1.5rem 1.5rem 0; } .sig-grid { grid-template-columns: 1fr; } .info-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .page-hero { padding: 8rem 1.5rem 3rem; } .legal-body { padding: 3rem 1.5rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
   </style>
 </head>
 <body>
@@ -65,27 +80,20 @@
       <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
     </ul>
   </nav>
-
   <div class="page-hero">
-    <span class="hero-eyebrow">Legal</span>
-    <h1>Terms &amp; Conditions</h1>
+    <h1 data-aos="fade-up">Terms &amp; <span>Conditions</span></h1>
     <p class="effective-date">Effective Date: 1 July 2026</p>
   </div>
-
   <div class="legal-body">
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 01</span>
+      <span class="section-tag">01</span>
       <h2>Introduction</h2>
-      <p>Welcome to Performance Rebuilt Aus ("we", "us", "our"). These Terms and Conditions govern your access to and use of the Performance Rebuilt Aus fitness coaching platform, including our web application, mobile progressive web application, and any related services (collectively, the "Platform").</p>
-      <p>These Terms constitute a legally binding agreement between you and Performance Rebuilt Aus, operated under ABN 88 571 749 763. Access to the Platform is granted only upon your explicit acceptance of these Terms, the Privacy Policy, and the Health, Fitness &amp; Liability Waiver via the checkboxes provided during account activation.</p>
-      <p>These Terms are also subject to the Fair Trading (Fitness Industry Code of Practice) Regulations 2020 (WA). A copy is available free of charge at <a href="https://www.consumerprotection.wa.gov.au" target="_blank" style="color:var(--blue-light);">consumerprotection.wa.gov.au</a>.</p>
+      <p>These Terms and Conditions govern your access to and use of the Performance Rebuilt Aus fitness coaching platform. These Terms constitute a legally binding agreement between you and Performance Rebuilt Aus, operated under ABN 88 571 749 763. Access is granted only upon your explicit acceptance of these Terms, the Privacy Policy, and the Liability Waiver during account activation.</p>
+      <p>These Terms are also subject to the Fair Trading (Fitness Industry Code of Practice) Regulations 2020 (WA). A copy is available at <a href="https://www.consumerprotection.wa.gov.au" target="_blank" style="color:var(--blue);">consumerprotection.wa.gov.au</a>.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 02</span>
+      <span class="section-tag">02</span>
       <h2>Eligibility</h2>
-      <p>To use the Platform, you must:</p>
       <ul>
         <li>Be at least 18 years of age</li>
         <li>Be a resident of Australia or another jurisdiction where the Platform is available</li>
@@ -95,172 +103,108 @@
         <li>Not have been previously suspended or removed from the Platform</li>
       </ul>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 03</span>
-      <h2>Account Access and Invite-Only Registration</h2>
-      <p>The Platform operates on an invite-only basis. Access is granted solely at the discretion of a Performance Rebuilt Aus coach. You must not share your login credentials with any other person. You are responsible for all activity that occurs under your account.</p>
-      <p>Performance Rebuilt Aus reserves the right to suspend or revoke access for breach of these Terms, non-payment of fees, or any other reason deemed necessary. Where access is revoked due to our breach or a change in service availability, any prepaid unused fees will be refunded on a pro-rata basis.</p>
+      <span class="section-tag">03</span>
+      <h2>Account Access</h2>
+      <p>The Platform operates on an invite-only basis. You must not share your login credentials with any other person. You are responsible for all activity that occurs under your account. Where access is revoked due to our breach or a change in service availability, any prepaid unused fees will be refunded on a pro-rata basis.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 04</span>
-      <h2>Platform Access and Availability</h2>
-      <p>We provide access to the Platform on a reasonable endeavours basis. You acknowledge that:</p>
+      <span class="section-tag">04</span>
+      <h2>Platform Availability</h2>
       <ul>
-        <li>The Platform may be temporarily unavailable due to maintenance, updates, or circumstances outside our control</li>
-        <li>We will endeavour to provide advance notice of scheduled maintenance where practicable</li>
-        <li>We are not liable for loss arising from Platform unavailability, except where this results from our negligence or breach of these Terms</li>
-        <li>We reserve the right to modify, update, or discontinue Platform features with reasonable notice</li>
-        <li>Upon termination of your account, you may request an export of your personal data within 30 days of account closure by emailing <a href="mailto:performancerebuilt@gmail.com" style="color:var(--blue-light);">performancerebuilt@gmail.com</a></li>
+        <li>The Platform may be temporarily unavailable due to maintenance or circumstances outside our control</li>
+        <li>We will endeavour to provide advance notice of scheduled maintenance</li>
+        <li>We reserve the right to modify or discontinue Platform features with reasonable notice</li>
+        <li>Upon termination, you may request a data export within 30 days by emailing <a href="mailto:performancerebuilt@gmail.com" style="color:var(--blue);">performancerebuilt@gmail.com</a></li>
       </ul>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 05</span>
-      <h2>Services Provided</h2>
-      <p>The Platform provides the following features to eligible users:</p>
+      <span class="section-tag">05</span>
+      <h2>Services</h2>
       <ul>
-        <li>Personalised training program creation and assignment by coaches</li>
+        <li>Personalised training program creation and assignment</li>
         <li>Workout logging and tracking</li>
         <li>Nutrition and macro tracking</li>
         <li>Body weight and progress photo logging</li>
         <li>Direct messaging and flagging between coaches and clients</li>
         <li>Goal tracking and progress analytics</li>
       </ul>
-      <p>Performance Rebuilt Aus coaches provide general fitness guidance only. Nothing on the Platform constitutes medical advice, diagnosis, or treatment.</p>
+      <p>Nothing on the Platform constitutes medical advice, diagnosis, or treatment.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 06</span>
+      <span class="section-tag">06</span>
       <h2>Fees and Payment</h2>
-      <p>Current subscription fees are publicly displayed on our website at the time of onboarding. All fees are in Australian Dollars (AUD). Payment terms, billing cycle, and any applicable package inclusions will be confirmed in writing at the time of your onboarding invitation.</p>
-      <p>Where we intend to change our fees, we will provide you with no less than 14 days' written notice before the change takes effect. Continued use of the Platform after a fee change constitutes acceptance of the new fee.</p>
-      <p>Late or failed payments may result in suspension of Platform access until the outstanding amount is paid.</p>
+      <p>All fees are in Australian Dollars (AUD). Payment terms and billing cycle will be confirmed in writing at onboarding. We will provide no less than 14 days written notice before any fee change. Late or failed payments may result in suspension of access.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 07</span>
-      <h2>Cancellation, Termination and Refunds</h2>
-      <h3>7.1 Your right to cancel</h3>
-      <p>You may cancel your subscription at any time by contacting your coach directly in writing. Cancellation will take effect at the end of your current billing period. No partial refunds will be issued for unused time within a billing period, unless required by law.</p>
-      <h3>7.2 Cooling-off period</h3>
-      <p>In accordance with the WA Fitness Code, you have a right to cancel during the cooling-off period without penalty. If you exercise this right, any fees paid will be refunded within 14 days. Full details are available at <a href="https://www.consumerprotection.wa.gov.au" target="_blank" style="color:var(--blue-light);">consumerprotection.wa.gov.au</a>.</p>
-      <h3>7.3 Permanent illness or incapacity</h3>
-      <p>If you suffer a permanent illness or physical incapacity that prevents you from using the Platform, you may terminate your membership agreement without a termination fee. We may request reasonable evidence before processing this termination.</p>
-      <h3>7.4 Termination fees</h3>
-      <p>Where a termination fee applies, that fee will be disclosed in your onboarding confirmation and will not exceed the amount that reasonably reflects the financial loss incurred by us as a result of the early termination, as required by the WA Fitness Code.</p>
-      <h3>7.5 Australian Consumer Law refunds</h3>
-      <p>Under the Australian Consumer Law, you may be entitled to a refund if the service is not fit for purpose, not of acceptable quality, or not as described. These rights cannot be excluded.</p>
-      <h3>7.6 Our right to terminate</h3>
-      <p>We may terminate your access immediately for: non-payment of fees for more than 7 days after the due date; breach of these Terms; provision of false health information; or conduct that poses a risk to safety. Where we terminate for reasons other than your breach, any prepaid unused fees will be refunded.</p>
+      <span class="section-tag">07</span>
+      <h2>Cancellation and Refunds</h2>
+      <h3>Your right to cancel</h3>
+      <p>You may cancel at any time by contacting your coach in writing. Cancellation takes effect at the end of your current billing period.</p>
+      <h3>Cooling-off period</h3>
+      <p>In accordance with the WA Fitness Code, you have the right to cancel during the cooling-off period without penalty. Any fees paid will be refunded within 14 days. See <a href="https://www.consumerprotection.wa.gov.au" target="_blank" style="color:var(--blue);">consumerprotection.wa.gov.au</a>.</p>
+      <h3>Permanent illness or incapacity</h3>
+      <p>You may terminate without a fee if you suffer a permanent illness or physical incapacity preventing use of the Platform. Reasonable evidence may be requested.</p>
+      <h3>Australian Consumer Law</h3>
+      <p>You may be entitled to a refund if the service is not fit for purpose, not of acceptable quality, or not as described. These rights cannot be excluded.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 08</span>
+      <span class="section-tag">08</span>
       <h2>User Responsibilities</h2>
-      <p>You agree to:</p>
       <ul>
         <li>Use the Platform only for lawful purposes</li>
-        <li>Complete the PAR-Q health screening honestly and update your coach if your health status changes</li>
-        <li>Provide accurate health and fitness information to the best of your knowledge</li>
-        <li>Consult a qualified medical professional before commencing any exercise or nutrition program if you have any health concerns</li>
-        <li>Notify your coach if you experience pain, discomfort, or unusual symptoms during any exercise</li>
-        <li>Not upload any content that is offensive, unlawful, or infringes the rights of others</li>
-        <li>Not attempt to reverse-engineer, hack, or disrupt the Platform</li>
+        <li>Complete the PAR-Q honestly and update your coach if your health status changes</li>
+        <li>Consult a qualified medical professional before commencing any exercise or nutrition program if you have health concerns</li>
+        <li>Notify your coach if you experience pain, discomfort, or unusual symptoms</li>
         <li>Not share your login credentials or allow another person to access your account</li>
       </ul>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 09</span>
+      <span class="section-tag">09</span>
       <h2>Health Disclaimer</h2>
-      <p>Exercise and nutrition programs carry inherent risks. You acknowledge that:</p>
       <ul>
         <li>You participate in any exercise or nutrition program at your own risk</li>
-        <li>You have completed, or will complete, the PAR-Q health screening and have consulted, or will consult, a qualified medical professional if required</li>
         <li>Performance Rebuilt Aus coaches are not registered medical practitioners, physiotherapists, or dietitians unless expressly stated</li>
         <li>Performance Rebuilt Aus accepts no liability for injury, illness, or adverse outcomes arising from use of the Platform, to the maximum extent permitted by law</li>
       </ul>
-      <p>Any general nutrition guidance provided through the Platform follows the Australian Dietary Guidelines and does not constitute clinical dietary advice. Clients with specific medical or dietary requirements should consult a registered dietitian.</p>
+      <p>Any general nutrition guidance follows the Australian Dietary Guidelines and does not constitute clinical dietary advice.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 10</span>
+      <span class="section-tag">10</span>
       <h2>Complaints</h2>
-      <p>We are committed to resolving complaints quickly and fairly in accordance with the WA Fitness Code. If you have a complaint, please contact us at:</p>
-      <div class="contact-block">
-        <p>Email: <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a></p>
-        <p>Or via our <a href="complaints.html">Complaints page</a></p>
-      </div>
-      <p style="margin-top:1rem;">We will acknowledge receipt of your complaint within 7 days and work to resolve it promptly and fairly. If you are not satisfied with our response, you may escalate to:</p>
+      <p>If you have a complaint, please contact us at <a href="mailto:performancerebuilt@gmail.com" style="color:var(--blue);">performancerebuilt@gmail.com</a> or via our <a href="complaints.html" style="color:var(--blue);">Complaints page</a>. We will acknowledge within 7 days. If you are not satisfied:</p>
       <div class="escalation-box">
-        <p><strong style="color:var(--white);">Consumer Protection WA</strong></p>
-        <p>Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a><br />Phone: 1300 30 40 54</p>
+        <p><strong style="color:#fff;">Consumer Protection WA</strong></p>
+        <p>Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a> &nbsp;|&nbsp; Phone: 1300 30 40 54</p>
       </div>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 11</span>
+      <span class="section-tag">11</span>
       <h2>Intellectual Property</h2>
-      <p>All content on the Platform, including training programs, templates, video content, written materials, and software, is the intellectual property of Performance Rebuilt Aus or its licensors. You are granted a limited, non-exclusive, non-transferable, personal licence to access and use the Platform for your own coaching purposes only.</p>
-      <p>You must not reproduce, distribute, share, sell, or create derivative works from any Platform content without prior written consent. Breach of this clause may result in immediate termination of your account and legal action.</p>
+      <p>All content on the Platform is the intellectual property of Performance Rebuilt Aus or its licensors. You are granted a limited, non-exclusive, personal licence to access and use the Platform for your own coaching purposes only. You must not reproduce or distribute Platform content without written consent.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 12</span>
-      <h2>User-Generated Content</h2>
-      <p>By uploading content to the Platform (including progress photos, workout data, or messages), you grant Performance Rebuilt Aus a non-exclusive, royalty-free licence to store and use that content solely for the purpose of delivering the service to you. We will never share your personal content publicly without your explicit written consent.</p>
-    </div>
-
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 13</span>
-      <h2>Privacy</h2>
-      <p>Your use of the Platform is also governed by our <a href="privacy.html" style="color:var(--blue-light);">Privacy Policy</a>, which is incorporated into these Terms by reference. Please review our Privacy Policy for information on how we collect, use, and protect your personal information, including health information collected via the PAR-Q.</p>
-    </div>
-
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 14</span>
+      <span class="section-tag">12</span>
       <h2>Limitation of Liability</h2>
-      <p>To the maximum extent permitted by Australian law, Performance Rebuilt Aus's liability for any claim arising from your use of the Platform is limited to the total amount you have paid in subscription fees in the three months preceding the claim.</p>
-      <p>We are not liable for any indirect, incidental, special, or consequential losses, including loss of data, loss of income, or loss of opportunity, even if advised of the possibility of such losses.</p>
-      <p>Nothing in this clause limits liability for death or personal injury caused by our negligence, fraud, or any other liability that cannot be excluded or limited under Australian law including the Australian Consumer Law.</p>
+      <p>To the maximum extent permitted by Australian law, our liability is limited to the total amount you have paid in subscription fees in the three months preceding the claim. We are not liable for indirect, incidental, or consequential losses. Nothing limits liability for death or personal injury caused by our negligence.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 15</span>
+      <span class="section-tag">13</span>
       <h2>Dispute Resolution</h2>
-      <p>If a dispute arises in connection with these Terms, the parties agree to the following process before commencing legal proceedings:</p>
       <ul>
-        <li>The party raising the dispute will notify the other in writing, describing the dispute and the outcome sought</li>
-        <li>The parties will negotiate in good faith for a period of 14 days from the date of that notice</li>
-        <li>If the dispute is not resolved within 14 days, either party may refer it to mediation through a mutually agreed mediator or a mediator appointed by the WA Mediator Accreditation Society</li>
-        <li>If mediation fails, either party may pursue their legal remedies</li>
+        <li>The party raising the dispute will notify the other in writing describing the dispute and outcome sought</li>
+        <li>The parties will negotiate in good faith for 14 days</li>
+        <li>If unresolved, either party may refer to mediation</li>
+        <li>If mediation fails, either party may pursue legal remedies</li>
       </ul>
-      <p>Nothing in this clause prevents either party from seeking urgent injunctive or interlocutory relief.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 16</span>
-      <h2>General</h2>
-      <h3>16.1 Entire agreement</h3>
-      <p>These Terms, together with the Privacy Policy, the Health, Fitness &amp; Liability Waiver, and your onboarding fee confirmation, constitute the entire agreement between you and us with respect to the Platform.</p>
-      <h3>16.2 Variations</h3>
-      <p>We may update these Terms from time to time. Where changes are material, you will be required to re-accept the updated Terms before continuing to use the Platform.</p>
-      <h3>16.3 Severability</h3>
-      <p>If any provision of these Terms is found to be invalid, unlawful, or unenforceable, that provision will be severed from the remaining Terms, which will continue in full force and effect.</p>
-      <h3>16.4 No waiver</h3>
-      <p>Our failure to enforce any right or provision of these Terms will not constitute a waiver of that right or provision.</p>
-    </div>
-
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 17</span>
+      <span class="section-tag">14</span>
       <h2>Governing Law</h2>
       <p>These Terms are governed by the laws of Western Australia, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of Western Australia.</p>
     </div>
-
     <div class="legal-section" data-aos="fade-up">
-      <span class="section-num">Section 18</span>
+      <span class="section-tag">15</span>
       <h2>Contact Us</h2>
       <div class="contact-block">
         <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</p>
@@ -268,9 +212,7 @@
         <p>Western Australia, Australia</p>
       </div>
     </div>
-
   </div>
-
   <footer>
     <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
     <div class="footer-legal">
@@ -281,28 +223,23 @@
     </div>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
   </footer>
-
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
+    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
       const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.innerHTML = isOpen ? '\u2715' : '\u2630';
       menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
     document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        menuToggle.innerHTML = '☰';
-        menuToggle.setAttribute('aria-label', 'Open menu');
-      });
+      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '\u2630'; menuToggle.setAttribute('aria-label', 'Open menu'); });
     });
   </script>
 </body>
