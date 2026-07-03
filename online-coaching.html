@@ -7,7 +7,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://performancerebuilt.github.io/online-coaching.html" />
   <meta property="og:title" content="Online Coaching — Performance Rebuilt" />
-  <meta property="og:description" content="Custom programming, regular check-ins, form feedback, and full app access. $75/week, cancel anytime." />
+  <meta property="og:description" content="Three coaching tiers built around your goals. From $45/week. 1 month minimum." />
   <meta property="og:image" content="https://performancerebuilt.github.io/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://performancerebuilt.github.io/og-image.png" />
@@ -26,7 +26,6 @@
     nav ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; }
     nav ul a:hover { color: var(--white); }
     .nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
-    .nav-cta:hover { opacity: 0.88; }
     .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; z-index: 201; }
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
@@ -35,55 +34,86 @@
       nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
       .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
     }
-    .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 12rem 3rem 5rem; background: var(--bg2); position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22rem; font-weight: 800; color: rgba(26,107,255,0.03); pointer-events: none; white-space: nowrap; letter-spacing: -0.05em; }
-    .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+
+    /* HERO */
+    .hero { min-height: 65vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 12rem 3rem 5rem; background: var(--bg2); position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22rem; font-weight: 800; color: rgba(26,107,255,0.03); pointer-events: none; white-space: nowrap; }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero h1 span { color: var(--blue); }
     .hero-sub { font-size: 1.05rem; color: var(--off); max-width: 560px; font-weight: 300; line-height: 1.7; margin-bottom: 2.5rem; }
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
     .btn-primary { background: var(--blue); color: var(--white); padding: 0.9rem 2.2rem; border-radius: 2rem; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
-    .btn-ghost { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 400; display: inline-flex; align-items: center; gap: 0.4rem; opacity: 0.6; transition: opacity 0.2s; }
+    .btn-ghost { color: var(--white); text-decoration: none; font-size: 0.9rem; font-weight: 400; opacity: 0.6; transition: opacity 0.2s; }
     .btn-ghost:hover { opacity: 1; }
-    .price-strip { display: grid; grid-template-columns: repeat(3, 1fr); background: var(--bg); border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .price-item { padding: 2.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.06); text-align: center; }
-    .price-item:last-child { border-right: none; }
-    .price-num { font-size: 2.8rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
-    .price-num span { color: var(--blue); font-size: 1.4rem; vertical-align: super; font-weight: 400; }
-    .price-label { font-size: 0.72rem; color: var(--dim); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
-    .cancel-note { text-align:center; font-size:0.8rem; color:var(--dim); padding:0.85rem 3rem; border-bottom:1px solid rgba(255,255,255,0.06); background: var(--bg); }
-    .section { padding: 6rem 3rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
-    .section:nth-child(even) { background: var(--bg2); }
-    .section:nth-child(odd) { background: var(--bg); }
+
+    /* TIER CARDS */
+    .tiers { padding: 6rem 3rem; background: var(--bg); }
     .section-heading { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; color: var(--white); }
     .section-heading span { color: var(--blue); }
-    .section-sub { font-size: 0.95rem; color: var(--off); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 2rem; }
-    .includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+    .section-sub { font-size: 1rem; color: var(--off); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 3rem; }
+    .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .tier-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 18px; padding: 2.5rem; backdrop-filter: blur(16px); display: flex; flex-direction: column; transition: border-color 0.25s, transform 0.2s, background 0.2s; position: relative; }
+    .tier-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-5px); }
+    .tier-card.featured { border-color: rgba(26,107,255,0.5); background: rgba(26,107,255,0.07); }
+    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 2rem; white-space: nowrap; }
+    .tier-name { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .tier-price { font-size: 3rem; font-weight: 800; color: var(--white); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+    .tier-price span { font-size: 1.1rem; font-weight: 400; color: var(--dim); }
+    .tier-desc { font-size: 0.875rem; color: var(--off); font-weight: 300; line-height: 1.65; margin: 1.25rem 0 1.75rem; flex: 1; }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .tier-features li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.875rem; color: var(--off); font-weight: 300; line-height: 1.5; }
+    .tier-features li::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
+    .tier-cta { background: var(--blue); color: var(--white); padding: 0.85rem 1.5rem; border-radius: 2rem; text-decoration: none; font-size: 0.9rem; font-weight: 700; text-align: center; transition: opacity 0.2s; display: block; margin-top: auto; }
+    .tier-cta:hover { opacity: 0.88; }
+    .tier-cta.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: var(--white); }
+    .tier-cta.ghost:hover { background: rgba(255,255,255,0.06); }
+
+    /* NUTRITION SECTION */
+    .nutrition { padding: 6rem 3rem; background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.06); }
+    .nutrition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 1rem; }
+    .nutrition-body p { font-size: 0.975rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
+    .nutrition-body p strong { color: var(--white); font-weight: 600; }
+    .nutrition-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .nutrition-feat { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
+    .nutrition-feat-title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .nutrition-feat-desc { font-size: 0.85rem; color: var(--off); font-weight: 300; line-height: 1.6; }
+    .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
+    .disclaimer-box p { font-size: 0.78rem; color: var(--dim); line-height: 1.7; font-weight: 300; margin: 0; }
+    .disclaimer-box strong { color: rgba(255,255,255,0.5); font-weight: 600; }
+
+    /* INCLUDES */
+    .includes { padding: 6rem 3rem; background: var(--bg); border-top: 1px solid rgba(255,255,255,0.06); }
+    .includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2rem; }
     .include-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); transition: background 0.2s, transform 0.2s; }
     .include-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
     .include-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
     .include-desc { font-size: 0.875rem; color: var(--off); line-height: 1.6; font-weight: 300; }
-    .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
-    .who-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); }
-    .who-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; margin-bottom: 0.75rem; }
-    .who-text { font-size: 0.9rem; color: var(--off); line-height: 1.55; font-weight: 300; }
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+
+    /* HOW IT WORKS */
+    .how { padding: 6rem 3rem; background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.06); }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
     .process-card { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 14px; padding: 1.75rem; backdrop-filter: blur(12px); transition: background 0.2s, transform 0.2s; }
     .process-card:hover { background: rgba(255,255,255,0.09); transform: translateY(-3px); }
     .process-dot { width: 32px; height: 32px; background: rgba(26,107,255,0.15); border: 1px solid rgba(26,107,255,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem; }
     .process-title { font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
     .process-desc { font-size: 0.82rem; color: var(--off); line-height: 1.6; font-weight: 300; }
-    .cta-section { padding: 6rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; background: var(--bg2); }
+
+    /* CTA */
+    .cta-section { padding: 6rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; background: var(--bg); border-top: 1px solid rgba(255,255,255,0.06); }
     .cta-section p { font-size: 1rem; color: var(--off); max-width: 440px; font-weight: 300; }
+
     footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.75rem; background: var(--bg); }
     footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--white); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+
     @media (max-width: 900px) {
       .hero { padding: 9rem 1.5rem 4rem; }
-      .includes-grid, .who-grid { grid-template-columns: 1fr; }
+      .tiers, .nutrition, .includes, .how, .cta-section { padding: 4rem 1.5rem; }
+      .tiers-grid { grid-template-columns: 1fr; }
+      .nutrition-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .includes-grid { grid-template-columns: 1fr; }
       .process-grid { grid-template-columns: 1fr 1fr; }
-      .price-strip { grid-template-columns: 1fr; }
-      .section { padding: 4rem 1.5rem; }
     }
     @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
   </style>
@@ -104,57 +134,129 @@
   <section class="hero">
     <div class="hero-bg">01</div>
     <h1 data-aos="fade-up" data-aos-duration="700">Your coach,<br /><span>in your corner.</span></h1>
-    <p class="hero-sub" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">Our most hands-on service. Regular check-ins, form feedback, and ongoing program adjustments — built around you and your goals, every single week.</p>
+    <p class="hero-sub" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">Three tiers of coaching built around your goals, your lifestyle, and how much support you need. All include a fully custom program and full app access. 1 month minimum commitment.</p>
     <div class="hero-actions" data-aos="fade-up" data-aos-duration="700" data-aos-delay="240">
       <a href="index.html#contact" class="btn-primary">Apply now</a>
       <a href="index.html#services" class="btn-ghost">← All services</a>
     </div>
   </section>
 
-  <div class="price-strip">
-    <div class="price-item"><div class="price-num"><span>$</span>75</div><div class="price-label">Per week</div></div>
-    <div class="price-item"><div class="price-num">None</div><div class="price-label">Minimum commitment</div></div>
-    <div class="price-item"><div class="price-num">48h</div><div class="price-label">Response time</div></div>
-  </div>
-  <p class="cancel-note">Cancel anytime — no lock-in.</p>
+  <!-- TIER CARDS -->
+  <section class="tiers" id="tiers">
+    <h2 class="section-heading" data-aos="fade-up">Choose your <span>coaching tier</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">All plans include a fully custom program and full app access. 1 month minimum commitment.</p>
+    <div class="tiers-grid">
 
-  <section class="section">
-    <h2 class="section-heading" data-aos="fade-up">What's <span>included</span></h2>
+      <div class="tier-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="tier-name">Essentials</div>
+        <div class="tier-price">$45 <span>/ week</span></div>
+        <p class="tier-desc">The foundations of great coaching. A custom program, nutrition information, and direct access to your coach — built for those who want expert structure with steady support.</p>
+        <ul class="tier-features">
+          <li>Fully custom training program</li>
+          <li>Nutrition information &amp; sample meal guides</li>
+          <li>Direct messaging with your coach</li>
+          <li>Video call check-in every 2 months</li>
+          <li>Full app access</li>
+          <li>Program updates as you progress</li>
+        </ul>
+        <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+      </div>
+
+      <div class="tier-card featured" data-aos="fade-up" data-aos-delay="160">
+        <div class="featured-badge">Most popular</div>
+        <div class="tier-name">Performance</div>
+        <div class="tier-price">$70 <span>/ week</span></div>
+        <p class="tier-desc">The full coaching experience. Monthly video calls, ongoing nutrition coaching, and a coach who knows your training inside out — adjusted every step of the way.</p>
+        <ul class="tier-features">
+          <li>Everything in Essentials</li>
+          <li>Monthly video call check-ins</li>
+          <li>Ongoing nutrition coaching &amp; meal guide updates</li>
+          <li>Regular program adjustments</li>
+          <li>Form feedback via video submission</li>
+          <li>Priority messaging response</li>
+        </ul>
+        <a href="index.html#contact" class="tier-cta">Get started</a>
+      </div>
+
+      <div class="tier-card" data-aos="fade-up" data-aos-delay="240">
+        <div class="tier-name">Elite</div>
+        <div class="tier-price">$120 <span>/ week</span></div>
+        <p class="tier-desc">Built for competitive athletes and those with serious performance goals. Fortnightly calls, detailed movement reviews, and advanced support for sport, competition, or peak conditioning.</p>
+        <ul class="tier-features">
+          <li>Everything in Performance</li>
+          <li>Fortnightly video call check-ins</li>
+          <li>Detailed movement &amp; technique reviews</li>
+          <li>Faster response times (within 12 hours)</li>
+          <li>Advanced performance &amp; competition support</li>
+          <li>Peak conditioning &amp; event periodisation</li>
+        </ul>
+        <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NUTRITION -->
+  <section class="nutrition">
+    <div class="nutrition-grid">
+      <div>
+        <h2 class="section-heading" data-aos="fade-up">Nutrition <span>support</span></h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="80" style="margin-bottom:0;">Practical, evidence-based nutrition guidance built around your training — not generic advice.</p>
+      </div>
+      <div class="nutrition-body" data-aos="fade-left" data-aos-delay="100">
+        <p>Nutrition is a core part of how you perform, recover, and change your body. All coaching plans include some level of nutrition support — tailored to your goals, your schedule, and what's realistic for you to actually follow.</p>
+        <p>Guidance is built around <strong>Australian Dietary Guidelines</strong> and delivered as educational frameworks — giving you the knowledge to make better decisions, not just a rigid meal plan to follow blindly.</p>
+        <div class="nutrition-features">
+          <div class="nutrition-feat">
+            <div class="nutrition-feat-title">Sample meal guides</div>
+            <div class="nutrition-feat-desc">Practical, flexible meal guides built around your calorie and protein targets — designed as educational templates, not strict prescriptions.</div>
+          </div>
+          <div class="nutrition-feat">
+            <div class="nutrition-feat-title">Calorie &amp; macro targets</div>
+            <div class="nutrition-feat-desc">Goal-specific targets calculated for your body, training load, and timeline — whether that's fat loss, muscle building, or performance fuelling.</div>
+          </div>
+          <div class="nutrition-feat">
+            <div class="nutrition-feat-title">Nutrition education</div>
+            <div class="nutrition-feat-desc">Understanding why the numbers are what they are — so you're making informed decisions, not just following a plan you don't understand.</div>
+          </div>
+          <div class="nutrition-feat">
+            <div class="nutrition-feat-title">Ongoing adjustments</div>
+            <div class="nutrition-feat-desc">Nutrition guidance is reviewed and adjusted alongside your training program as your body adapts and your goals evolve.</div>
+          </div>
+        </div>
+        <div class="disclaimer-box">
+          <p><strong>Important:</strong> Nutrition guidance provided through Performance Rebuilt is for educational purposes only, designed for generally healthy individuals, and does not replace advice from a registered dietitian or medical professional. If you have a diagnosed medical condition, eating disorder, or specific clinical dietary requirement, please consult a qualified healthcare professional before commencing any nutrition program.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S ALWAYS INCLUDED -->
+  <section class="includes">
+    <h2 class="section-heading" data-aos="fade-up">Always <span>included</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Regardless of tier, every client gets these from day one.</p>
     <div class="includes-grid">
-      <div class="include-card" data-aos="fade-up" data-aos-delay="80"><div class="include-title">Fully custom program</div><p class="include-desc">Written from scratch around your goals, training history, schedule, and available equipment. Nothing generic, ever.</p></div>
-      <div class="include-card" data-aos="fade-up" data-aos-delay="140"><div class="include-title">Regular check-ins</div><p class="include-desc">Structured check-ins to review your progress, adjust loads, and keep the program aligned with how your body is responding.</p></div>
-      <div class="include-card" data-aos="fade-up" data-aos-delay="200"><div class="include-title">Form feedback</div><p class="include-desc">Submit videos of your lifts and receive detailed technique coaching — fixing issues before they become injuries.</p></div>
-      <div class="include-card" data-aos="fade-up" data-aos-delay="260"><div class="include-title">Ongoing adjustments</div><p class="include-desc">Your program evolves as you do. We adapt training based on fatigue, life stress, and progress — not a rigid 8-week block.</p></div>
-      <div class="include-card" data-aos="fade-up" data-aos-delay="320"><div class="include-title">Direct messaging</div><p class="include-desc">Access to your coach between check-ins. Questions answered, issues addressed — you're never training in the dark.</p></div>
-      <div class="include-card" data-aos="fade-up" data-aos-delay="380"><div class="include-title">App access included</div><p class="include-desc">Full access to the Performance Rebuilt app — log workouts, track nutrition, monitor progress, and stay connected with your coach.</p></div>
+      <div class="include-card" data-aos="fade-up" data-aos-delay="80"><div class="include-title">Fully custom program</div><p class="include-desc">Written from scratch around your goals, training history, schedule, and equipment. Nothing generic, ever.</p></div>
+      <div class="include-card" data-aos="fade-up" data-aos-delay="140"><div class="include-title">Full app access</div><p class="include-desc">Log workouts, track nutrition, monitor body weight trends, and stay connected with your coach — all in one place.</p></div>
+      <div class="include-card" data-aos="fade-up" data-aos-delay="200"><div class="include-title">Ongoing program updates</div><p class="include-desc">Your program evolves as you do. Adjustments are made based on how your body is responding and how your goals develop.</p></div>
+      <div class="include-card" data-aos="fade-up" data-aos-delay="260"><div class="include-title">Direct messaging</div><p class="include-desc">Access to your coach between sessions. Questions answered, issues addressed — you're never training in the dark.</p></div>
     </div>
   </section>
 
-  <section class="section">
-    <h2 class="section-heading" data-aos="fade-up">Who this is <span>for</span></h2>
-    <div class="who-grid">
-      <div class="who-card" data-aos="fade-up" data-aos-delay="80"><div class="who-dot"></div><p class="who-text">You want accountability and a coach who knows your training inside out</p></div>
-      <div class="who-card" data-aos="fade-up" data-aos-delay="140"><div class="who-dot"></div><p class="who-text">You're serious about making progress but not sure how to structure your training</p></div>
-      <div class="who-card" data-aos="fade-up" data-aos-delay="200"><div class="who-dot"></div><p class="who-text">You've been training alone and feel like you've hit a ceiling</p></div>
-      <div class="who-card" data-aos="fade-up" data-aos-delay="260"><div class="who-dot"></div><p class="who-text">You want form coaching and regular feedback, not just a plan to follow</p></div>
-      <div class="who-card" data-aos="fade-up" data-aos-delay="320"><div class="who-dot"></div><p class="who-text">You're preparing for a specific goal — a competition, a season, or a transformation</p></div>
-      <div class="who-card" data-aos="fade-up" data-aos-delay="380"><div class="who-dot"></div><p class="who-text">You're ready to commit to a process and trust the programming</p></div>
-    </div>
-  </section>
-
-  <section class="section">
+  <!-- HOW IT WORKS -->
+  <section class="how">
     <h2 class="section-heading" data-aos="fade-up">How it <span>works</span></h2>
     <div class="process-grid">
-      <div class="process-card" data-aos="fade-up" data-aos-delay="80"><div class="process-dot">1</div><div class="process-title">Apply &amp; connect</div><p class="process-desc">Fill in the enquiry form. We'll be in touch within 24 hours to talk goals and see if we're a good fit.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="160"><div class="process-dot">2</div><div class="process-title">Intake &amp; assessment</div><p class="process-desc">We go deep on your training history, schedule, lifestyle, and what success looks like for you.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="240"><div class="process-dot">3</div><div class="process-title">Program delivered</div><p class="process-desc">Your custom program is built and sent — ready to execute from week one with full context and coaching notes.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="320"><div class="process-dot">4</div><div class="process-title">Check in &amp; evolve</div><p class="process-desc">Regular check-ins keep the program sharp. We adjust, progress, and push as you grow.</p></div>
+      <div class="process-card" data-aos="fade-up" data-aos-delay="80"><div class="process-dot">1</div><div class="process-title">Apply &amp; connect</div><p class="process-desc">Fill in the enquiry form. We'll be in touch within 24 hours to chat about your goals and which tier suits you best.</p></div>
+      <div class="process-card" data-aos="fade-up" data-aos-delay="160"><div class="process-dot">2</div><div class="process-title">Intake &amp; assessment</div><p class="process-desc">We go deep on your training history, schedule, lifestyle, nutrition habits, and what success looks like for you.</p></div>
+      <div class="process-card" data-aos="fade-up" data-aos-delay="240"><div class="process-dot">3</div><div class="process-title">Program delivered</div><p class="process-desc">Your custom program is built and delivered through the app — ready to execute from week one.</p></div>
+      <div class="process-card" data-aos="fade-up" data-aos-delay="320"><div class="process-dot">4</div><div class="process-title">Check in &amp; evolve</div><p class="process-desc">Regular check-ins keep everything sharp. We adjust, progress, and push as you grow and your goals evolve.</p></div>
     </div>
   </section>
 
   <section class="cta-section">
     <h2 class="section-heading" data-aos="fade-up">Ready to stop<br /><span style="color:var(--blue);">going it alone?</span></h2>
-    <p data-aos="fade-up" data-aos-delay="100">Fill in a short enquiry form and we'll get back to you within 24 hours to talk goals and get started.</p>
+    <p data-aos="fade-up" data-aos-delay="100">Fill in a short enquiry form and we'll get back to you within 24 hours to talk goals and find the right tier for you.</p>
     <a href="index.html#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="180">Apply now →</a>
   </section>
 
@@ -168,6 +270,7 @@
     </div>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
   </footer>
+
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -180,11 +283,11 @@
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
       const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '\u2715' : '\u2630';
+      menuToggle.innerHTML = isOpen ? '✕' : '☰';
       menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
     document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '\u2630'; menuToggle.setAttribute('aria-label', 'Open menu'); });
+      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu'); });
     });
   </script>
 </body>
