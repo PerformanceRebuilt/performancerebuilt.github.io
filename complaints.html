@@ -6,83 +6,72 @@
   <title>Complaints Procedure — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --white: #f7f5f2; --accent: #1e3a8a; --blue-light: #90a8e8;
-      --border: rgba(255,255,255,0.08);
-      --serif: "DM Serif Display", Georgia, serif;
-      --sans: "DM Sans", system-ui, sans-serif;
-    }
+    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(255,255,255,0.65); --dim: rgba(255,255,255,0.35); --blue: #1a6bff; --glass-bg: rgba(255,255,255,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
     html { scroll-behavior: auto; }
-    body { font-family: var(--sans); background: linear-gradient(180deg, #0e0e0e 0%, #1a1a1a 25%, #242424 50%, #2a2a2a 75%, #1f1f1f 100%); background-attachment: fixed; color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 0 2.5rem; height: 85px; background: rgba(14,14,14,0.85); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--border); }
+    body { font-family: var(--sans); background: var(--bg); color: var(--white); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(8,12,20,0.80); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
     .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
-    nav ul a { text-decoration: none; font-size: 0.875rem; color: rgba(247,245,242,0.7); letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
+    nav ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; font-weight: 400; transition: color 0.2s; }
     nav ul a:hover { color: var(--white); }
-    .nav-cta { background: var(--accent) !important; color: var(--white) !important; padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 500 !important; }
-    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; line-height: 1; z-index: 101; }
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
+    .nav-cta:hover { opacity: 0.88; }
+    .menu-toggle { display: none; background: none; border: none; color: var(--white); font-size: 1.75rem; cursor: pointer; z-index: 201; }
     @media (max-width: 900px) {
-      nav { padding: 0 1.25rem; height: 72px; }
-      .nav-logo-img { height: 42px; }
-      .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(14,14,14,0.98); backdrop-filter: blur(12px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 0.5px solid var(--border); }
-      nav ul.active { max-height: 500px; }
-      nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; width: 100%; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; border-radius: 2rem; padding: 0.75rem 1.25rem; }
+      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(8,12,20,0.98); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.06); }
+      nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
     }
-
-    .page-hero { padding: 10rem 2.5rem 4rem; border-bottom: 0.5px solid var(--border); }
-    .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 1.25rem; }
-    .hero-eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--blue-light); }
-    h1 { font-family: var(--serif); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.06; letter-spacing: -0.02em; margin-bottom: 1rem; }
-    .effective-date { font-size: 0.82rem; color: rgba(247,245,242,0.35); letter-spacing: 0.04em; }
-
-    .legal-body { max-width: 760px; margin: 0 auto; padding: 5rem 2.5rem 6rem; }
+    .page-hero { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.06); background: var(--bg2); }
+    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+    .page-hero h1 span { color: var(--blue); }
+    .effective-date { font-size: 0.82rem; color: var(--dim); letter-spacing: 0.04em; font-weight: 400; }
+    .notice-banner { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.2); border-radius: 10px; padding: 1.25rem 1.75rem; margin: 0 3rem; font-size: 0.875rem; color: var(--off); line-height: 1.7; }
+    .notice-banner strong { color: var(--white); font-weight: 600; }
+    .legal-body { max-width: 800px; margin: 0 auto; padding: 5rem 3rem 6rem; }
     .legal-section { margin-bottom: 3.5rem; }
-    .legal-section h2 { font-family: var(--serif); font-size: 1.5rem; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .legal-section p { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
+    .legal-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--white); margin-bottom: 1rem; letter-spacing: -0.01em; }
+    .legal-section h3 { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.8); margin: 1.25rem 0 0.5rem; }
+    .legal-section p { font-size: 0.95rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
     .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
-    .legal-section ul li { font-size: 0.95rem; color: rgba(247,245,242,0.55); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .section-num { font-family: var(--serif); font-size: 0.75rem; color: var(--blue-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; display: block; }
-    .contact-block { background: rgba(255,255,255,0.03); border: 0.5px solid var(--border); padding: 1.5rem 2rem; margin-top: 1rem; }
-    .contact-block p { margin: 0 0 0.5rem; }
-    .contact-block p:last-child { margin: 0; }
-    .contact-block a { color: var(--blue-light); text-decoration: none; }
-    .contact-block a:hover { opacity: 0.8; }
-    .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); margin-top: 1.5rem; }
-    .step-item { background: rgba(255,255,255,0.02); padding: 1.75rem 2rem; }
-    .step-num { font-family: var(--serif); font-size: 2rem; color: rgba(30,58,138,0.7); line-height: 1; margin-bottom: 0.75rem; }
-    .step-title { font-family: var(--serif); font-size: 1.05rem; color: var(--white); margin-bottom: 0.4rem; }
-    .step-desc { font-size: 0.85rem; color: rgba(247,245,242,0.45); line-height: 1.7; font-weight: 300; }
-    .escalation-box { background: rgba(30,58,138,0.08); border: 0.5px solid rgba(30,58,138,0.25); padding: 1.5rem 2rem; margin-top: 1rem; }
-    .escalation-box p { font-size: 0.9rem; color: rgba(247,245,242,0.6); line-height: 1.75; font-weight: 300; margin: 0; }
-    .escalation-box a { color: var(--blue-light); text-decoration: none; }
-
-    footer { padding: 2rem 2.5rem; border-top: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(247,245,242,0.4); flex-wrap: wrap; gap: 0.5rem; }
-    footer a { color: rgba(247,245,242,0.4); text-decoration: none; transition: color 0.2s; }
-    footer a:hover { color: var(--white); }
+    .legal-section ul li { font-size: 0.95rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .section-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; display: block; }
+    .contact-block { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; backdrop-filter: blur(12px); }
+    .contact-block p { margin: 0 0 0.4rem; font-size: 0.9rem; } .contact-block p:last-child { margin: 0; }
+    .contact-block a { color: var(--blue); text-decoration: none; }
+    .escalation-box { background: rgba(26,107,255,0.06); border: 1px solid rgba(26,107,255,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; }
+    .escalation-box p { font-size: 0.9rem; color: var(--off); line-height: 1.75; font-weight: 300; margin: 0; }
+    .escalation-box p + p { margin-top: 0.6rem; }
+    .escalation-box a { color: var(--blue); text-decoration: none; }
+    .ack-box { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; padding: 2rem; margin-top: 1rem; backdrop-filter: blur(12px); }
+    .ack-box ul { margin: 0.75rem 0 0 1.25rem; }
+    .ack-box ul li { font-size: 0.9rem; color: var(--off); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; overflow: hidden; margin-top: 1.5rem; }
+    .step-card { background: rgba(8,12,20,0.6); backdrop-filter: blur(12px); padding: 1.75rem; }
+    .step-num { font-size: 1.8rem; font-weight: 800; color: rgba(26,107,255,0.5); line-height: 1; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
+    .step-title { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+    .step-desc { font-size: 0.85rem; color: var(--off); line-height: 1.65; font-weight: 300; }
+    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+    .sig-block { display: flex; flex-direction: column; gap: 0.5rem; }
+    .sig-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); font-weight: 600; }
+    .sig-line { height: 1px; background: rgba(255,255,255,0.15); margin-top: 2.5rem; }
+    .sig-name { font-size: 0.875rem; color: var(--off); margin-top: 0.5rem; }
+    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.75rem; background: var(--bg); }
+    footer a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--white); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    @media (max-width: 600px) {
-      .page-hero { padding: 8rem 1.25rem 3rem; }
-      .legal-body { padding: 3rem 1.25rem 4rem; }
-      .steps-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; text-align: center; }
-      .footer-legal { justify-content: center; }
-    }
+    @media (max-width: 900px) { .notice-banner { margin: 0 1.5rem; } .steps-grid { grid-template-columns: 1fr; } .sig-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .page-hero { padding: 8rem 1.5rem 3rem; } .legal-body { padding: 3rem 1.5rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
   </style>
 </head>
 <body>
-
   <nav>
-    <a href="index.html" class="nav-logo">
-      <img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" />
-    </a>
+    <a href="index.html" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
       <li><a href="about.html">About</a></li>
@@ -92,77 +81,51 @@
       <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
     </ul>
   </nav>
-
   <div class="page-hero">
-    <span class="hero-eyebrow">Legal</span>
-    <h1>Complaints Procedure</h1>
-    <p class="effective-date">Effective Date: 18 June 2026</p>
+    <h1 data-aos="fade-up">Complaints <span>Procedure</span></h1>
+    <p class="effective-date">Effective Date: 1 July 2026</p>
   </div>
-
   <div class="legal-body">
-
-    <div class="legal-section">
-      <span class="section-num">Our commitment</span>
+    <div class="legal-section" data-aos="fade-up">
+      <span class="section-tag">Our Commitment</span>
       <h2>We take complaints seriously.</h2>
-      <p>Performance Rebuilt Aus is committed to providing a high standard of service. If something hasn't met your expectations, we want to hear about it and work to put it right. This procedure sets out how to raise a complaint and what you can expect from us in response.</p>
+            <p>Performance Rebuilt Aus is committed to providing a high standard of service. If something hasn't met your expectations, we want to hear about it and work to put it right.</p>
     </div>
-
-    <div class="legal-section">
-      <span class="section-num">How it works</span>
-      <h2>The process, step by step.</h2>
-      <div class="steps-grid">
-        <div class="step-item">
-          <div class="step-num">01</div>
-          <div class="step-title">Submit your complaint</div>
-          <p class="step-desc">Contact us by email at performancerebuilt@gmail.com or through the contact form on this website. Please include your name, a description of the issue, and any relevant dates or details.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">02</div>
-          <div class="step-title">Acknowledgement</div>
-          <p class="step-desc">We will acknowledge receipt of your complaint within 7 business days of receiving it. You will be advised of who is handling your complaint and the next steps.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">03</div>
-          <div class="step-title">Investigation</div>
-          <p class="step-desc">We will review the circumstances of your complaint thoroughly and fairly. We may contact you during this process to gather any additional information needed.</p>
-        </div>
-        <div class="step-item">
-          <div class="step-num">04</div>
-          <div class="step-title">Resolution</div>
-          <p class="step-desc">We will work to resolve your complaint promptly and keep you informed throughout. Our goal is to reach a fair outcome that addresses your concerns as quickly as possible.</p>
-        </div>
+    <div class="legal-section" data-aos="fade-up">
+      <span class="section-tag">The Process</span>
+      <h2>Step by step.</h2>
+            <div class="steps-grid">
+        <div class="step-card"><div class="step-num">01</div><div class="step-title">Submit your complaint</div><p class="step-desc">Contact us by email at <a href="mailto:performancerebuilt@gmail.com" style="color:var(--blue);">performancerebuilt@gmail.com</a> or through the contact form on this website. Please include your name, a description of the issue, and any relevant dates.</p></div>
+        <div class="step-card"><div class="step-num">02</div><div class="step-title">Acknowledgement</div><p class="step-desc">We will acknowledge receipt of your complaint within 7 business days of receiving it.</p></div>
+        <div class="step-card"><div class="step-num">03</div><div class="step-title">Investigation</div><p class="step-desc">We will review the circumstances of your complaint thoroughly and fairly, and may contact you for additional information.</p></div>
+        <div class="step-card"><div class="step-num">04</div><div class="step-title">Resolution</div><p class="step-desc">We will work to resolve your complaint promptly and keep you informed throughout. Our goal is a fair outcome as quickly as possible.</p></div>
       </div>
     </div>
-
-    <div class="legal-section">
-      <span class="section-num">How to contact us</span>
+    <div class="legal-section" data-aos="fade-up">
+      <span class="section-tag">Contact</span>
       <h2>Get in touch.</h2>
-      <p>You can submit a complaint through any of the following:</p>
+            <p>You can submit a complaint through any of the following:</p>
       <div class="contact-block">
+        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</p>
         <p>Email: <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a></p>
-        <p>Contact form: <a href="index.html#contact">performancerebuilt.github.io</a></p>
-        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763 &nbsp;|&nbsp; Western Australia, Australia</p>
+        <p>Western Australia, Australia</p>
       </div>
     </div>
-
-    <div class="legal-section">
-      <span class="section-num">External escalation</span>
+    <div class="legal-section" data-aos="fade-up">
+      <span class="section-tag">External Escalation</span>
       <h2>If you're not satisfied.</h2>
-      <p>We hope to resolve all complaints directly. However, if you are not satisfied with the outcome of your complaint after engaging with us, you have the right to escalate your matter to an external body.</p>
+            <p>If you are not satisfied with the outcome of your complaint after engaging with us, you have the right to escalate to:</p>
       <div class="escalation-box">
-        <p><strong style="color:var(--white);">Consumer Protection WA</strong> handles complaints about businesses operating in Western Australia and can assist with disputes relating to consumer services.</p>
-        <p style="margin-top:0.75rem;">Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a><br />Phone: 1300 304 054</p>
+        <p><strong style="color:#fff;">Consumer Protection WA</strong></p>
+        <p>Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a><br />Phone: 1300 304 054</p>
       </div>
     </div>
-
-    <div class="legal-section">
-      <span class="section-num">Australian Consumer Law</span>
+    <div class="legal-section" data-aos="fade-up">
+      <span class="section-tag">Australian Consumer Law</span>
       <h2>Your rights are protected.</h2>
-      <p>Nothing in this complaints procedure limits your rights under the Australian Consumer Law (Schedule 2 of the Competition and Consumer Act 2010 (Cth)). You are entitled to remedies including repair, replacement, or refund where a service fails to meet consumer guarantees.</p>
+            <p>Nothing in this complaints procedure limits your rights under the Australian Consumer Law. You are entitled to remedies including repair, replacement, or refund where a service fails to meet consumer guarantees.</p>
     </div>
-
   </div>
-
   <footer>
     <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
     <div class="footer-legal">
@@ -173,34 +136,24 @@
     </div>
     <a href="mailto:performancerebuilt@gmail.com">performancerebuilt@gmail.com</a>
   </footer>
-
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
       const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '✕' : '☰';
+      menuToggle.innerHTML = isOpen ? '\u2715' : '\u2630';
       menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
     });
     document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        menuToggle.innerHTML = '☰';
-        menuToggle.setAttribute('aria-label', 'Open menu');
-      });
+      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '\u2630'; menuToggle.setAttribute('aria-label', 'Open menu'); });
     });
-  </script>
-
-  <!-- Lenis smooth scroll -->
-  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <!-- AOS scroll animations -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smooth: true });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
-    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 60 });
   </script>
 </body>
 </html>
