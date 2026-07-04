@@ -224,102 +224,25 @@
       font-weight: 600;
     }
 
-    /* ── SERVICES ── */
-    .services {
-      padding: 7rem 3rem;
-      background: var(--bg2);
-    }
 
-    .section-heading {
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      color: var(--white);
-    }
-
-    .section-sub {
-      font-size: 1rem;
-      color: var(--off);
-      font-weight: 300;
-      max-width: 540px;
-      line-height: 1.75;
-      margin-bottom: 3.5rem;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-
-    .service-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-radius: 16px;
-      padding: 2.5rem;
-      text-decoration: none;
-      display: block;
-      transition: background 0.25s, transform 0.2s, border-color 0.2s;
-    }
-    .service-card:hover {
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(26,107,255,0.4);
-      transform: translateY(-4px);
-    }
-
-    .service-price {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--blue);
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-    }
-    .service-price span { font-size: 1rem; font-weight: 400; color: var(--dim); }
-
-    .service-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.01em;
-    }
-
-    .service-desc {
-      font-size: 0.9rem;
-      color: var(--off);
-      line-height: 1.7;
-      font-weight: 300;
-      margin-bottom: 1.5rem;
-    }
-
-    .service-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      background: rgba(26,107,255,0.15);
-      color: #6aaeff;
-      border: 1px solid rgba(26,107,255,0.25);
-      padding: 4px 12px;
-      border-radius: 2rem;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .service-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1.25rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--blue);
-      letter-spacing: 0.02em;
-    }
+    /* Service carousel */
+    .services { padding: 7rem 0 7rem 3rem; background: var(--bg2); overflow: hidden; }
+    .services-header { padding-right: 3rem; margin-bottom: 3rem; }
+    .services-carousel { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1rem; padding-right: 3rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; }
+    .services-carousel::-webkit-scrollbar { display: none; }
+    .services-carousel.dragging { cursor: grabbing; user-select: none; }
+    .service-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); border-radius: 16px; padding: 2.25rem; text-decoration: none; display: flex; flex-direction: column; flex-shrink: 0; width: 280px; scroll-snap-align: start; transition: background 0.25s, border-color 0.2s; }
+    .service-card:hover { background: rgba(255,255,255,0.09); border-color: rgba(26,107,255,0.4); }
+    .service-card.featured-card { border-color: rgba(26,107,255,0.5); background: rgba(26,107,255,0.07); }
+    .service-price { font-size: 2rem; font-weight: 800; color: var(--blue); margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .service-price span { font-size: 0.95rem; font-weight: 400; color: var(--dim); }
+    .service-title { font-size: 1.2rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+    .service-desc { font-size: 0.875rem; color: var(--off); line-height: 1.65; font-weight: 300; margin-bottom: 1.25rem; flex: 1; }
+    .service-tag { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(26,107,255,0.12); color: #6aaeff; border: 1px solid rgba(26,107,255,0.22); padding: 3px 10px; border-radius: 2rem; margin-right: 0.35rem; margin-bottom: 0.35rem; }
+    .service-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--blue); }
+    .services-hint { font-size: 0.75rem; color: var(--dim); margin-top: 1rem; padding-right: 3rem; display: flex; align-items: center; gap: 0.5rem; }
+    .services-hint::before { content: ''; display: block; width: 20px; height: 1px; background: var(--dim); }
+    @media (max-width: 600px) { .services { padding-left: 1.5rem; } .services-header { padding-right: 1.5rem; } .services-carousel { padding-right: 1.5rem; } .services-hint { padding-right: 1.5rem; } .service-card { width: 260px; } }
 
     /* ── HOW IT WORKS ── */
     .how {
@@ -531,53 +454,59 @@
 
   <!-- SERVICES -->
   <section class="services" id="services">
-    <h2 class="section-heading" data-aos="fade-up">Built around you.<br />Not a template.</h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Three coaching tiers and a one-off program option — all built from scratch around your goals, schedule, and body. 1 month minimum.</p>
-    <div class="services-grid" style="grid-template-columns: repeat(3, 1fr);">
-      <a href="online-coaching.html" class="service-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="service-price">$45 <span>/ week</span></div>
-        <div class="service-title">Essentials</div>
-        <p class="service-desc">Custom program, nutrition advice, direct messaging, and limited app access. Video call check-in every 2 months.</p>
+    <div class="services-header">
+      <h2 class="section-heading" data-aos="fade-up">Built around you.<br />Not a template.</h2>
+      <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Four ways to work together — from a one-off program to full elite coaching. Swipe to explore.</p>
+    </div>
+    <div class="services-carousel" id="servicesCarousel">
+
+      <a href="online-coaching.html" class="service-card">
+        <div class="service-price">$99 <span>one-off</span></div>
+        <div class="service-title">Program Only</div>
+        <p class="service-desc">A fully custom training program with limited app access. No check-ins, no follow-ups — just expert structure built for you, ready to execute.</p>
         <div>
           <span class="service-tag">Limited app access</span>
-          <span class="service-tag">Nutrition advice</span>
+          <span class="service-tag">No commitment</span>
         </div>
         <div class="service-link">Learn more →</div>
       </a>
-      <a href="online-coaching.html" class="service-card" style="border-color:rgba(26,107,255,0.4);background:rgba(26,107,255,0.06);" data-aos="fade-up" data-aos-delay="160">
-        <div style="font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Most popular</div>
-        <div class="service-price">$70 <span>/ week</span></div>
+
+      <a href="online-coaching.html" class="service-card">
+        <div class="service-price">$45 <span>/ week</span></div>
+        <div class="service-title">Essentials</div>
+        <p class="service-desc">A custom program, recipe library, and most app features. Structure and resources without the ongoing check-in commitment.</p>
+        <div>
+          <span class="service-tag">Most app features</span>
+          <span class="service-tag">Recipe library</span>
+        </div>
+        <div class="service-link">Learn more →</div>
+      </a>
+
+      <a href="online-coaching.html" class="service-card featured-card">
+        <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--blue);margin-bottom:0.5rem;">Most popular</div>
+        <div class="service-price">$75 <span>/ week</span></div>
         <div class="service-title">Performance</div>
-        <p class="service-desc">Full app access, monthly video calls, personalised training, ongoing nutrition coaching, program updates, and direct messaging.</p>
+        <p class="service-desc">The full coaching experience. Monthly check-ins, nutrition tracking, and a coach genuinely invested in your progress every step of the way.</p>
         <div>
-          <span class="service-tag">Monthly calls</span>
-          <span class="service-tag">Nutrition coaching</span>
+          <span class="service-tag">Monthly check-ins</span>
+          <span class="service-tag">Nutrition tracking</span>
         </div>
         <div class="service-link">Learn more →</div>
       </a>
-      <a href="online-coaching.html" class="service-card" data-aos="fade-up" data-aos-delay="240">
-        <div class="service-price">$120 <span>/ week</span></div>
+
+      <a href="online-coaching.html" class="service-card">
+        <div class="service-price">$105 <span>/ week</span></div>
         <div class="service-title">Elite</div>
-        <p class="service-desc">Everything in Performance plus fortnightly calls, detailed movement reviews, and advanced competition or peak performance support.</p>
+        <p class="service-desc">Full access including Run Log. Built for field sport athletes, runners, and anyone needing running prescription alongside their strength work.</p>
         <div>
+          <span class="service-tag">Full app incl. Run Log</span>
           <span class="service-tag">Fortnightly calls</span>
-          <span class="service-tag">Competition prep</span>
         </div>
         <div class="service-link">Learn more →</div>
       </a>
+
     </div>
-    <div style="margin-top:1.5rem;" data-aos="fade-up" data-aos-delay="100">
-      <a href="custom-programming.html" class="service-card" style="display:flex;align-items:center;justify-content:space-between;gap:2rem;">
-        <div>
-          <div class="service-title" style="margin-bottom:0.4rem;">Program + App Access</div>
-          <p class="service-desc" style="margin:0;max-width:560px;">The most accessible entry point. A fully personalised program with limited app access — no check-ins, no messaging. Expert structure, delivered to your phone, no commitment required.</p>
-        </div>
-        <div style="text-align:right;flex-shrink:0;">
-          <div class="service-price">$99 <span>one-off</span></div>
-          <div class="service-link" style="margin-top:0.5rem;">Learn more →</div>
-        </div>
-      </a>
-    </div>
+    <p class="services-hint">Swipe to compare all plans</p>
   </section>
 
   <!-- HOW IT WORKS -->
@@ -710,6 +639,16 @@
         btn.textContent = 'Something went wrong — try again';
         btn.disabled = false;
       }
+    }
+  
+    // Services carousel drag
+    const sc = document.getElementById('servicesCarousel');
+    if (sc) {
+      let isDown = false, startX, scrollLeft;
+      sc.addEventListener('mousedown', e => { isDown = true; sc.classList.add('dragging'); startX = e.pageX - sc.offsetLeft; scrollLeft = sc.scrollLeft; });
+      sc.addEventListener('mouseleave', () => { isDown = false; sc.classList.remove('dragging'); });
+      sc.addEventListener('mouseup', () => { isDown = false; sc.classList.remove('dragging'); });
+      sc.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); sc.scrollLeft = scrollLeft - (e.pageX - sc.offsetLeft - startX) * 1.5; });
     }
   </script>
 </body>
