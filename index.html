@@ -377,15 +377,22 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 4rem 1.5rem 2rem; }
-      .hero-right { padding: 2rem 1.5rem 3rem; }
+      body { overflow-x: hidden; }
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 5rem 1.5rem 2rem; }
+      .hero-right { padding: 1.5rem 1.5rem 3rem; }
       .services, .how, .contact-section { padding: 5rem 1.5rem; }
       .services-grid { grid-template-columns: 1fr; }
       .how-grid { grid-template-columns: 1fr 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 600px) {
+      .hero { padding-top: 72px; }
+      .hero-left { padding: 3rem 1.25rem 1.5rem; }
+      .hero-left h1 { font-size: clamp(2.4rem, 11vw, 3.5rem); letter-spacing: -0.025em; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 2rem; }
+      .hero-right { padding: 1rem 1.25rem 2.5rem; }
+      .stat-num { font-size: 2rem; }
       .how-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; }
       .footer-legal { justify-content: center; }
@@ -438,7 +445,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">1:1</div>
-          <div class="stat-label">Individualised coaching</div>
+          <div class="stat-label">Individualised Coaching</div>
         </div>
         <div class="stat-card">
           <div class="stat-num" style="font-size:1.4rem;padding-top:0.2rem;">Gym<br/>programming</div>
