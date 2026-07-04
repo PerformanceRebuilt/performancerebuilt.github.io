@@ -37,7 +37,7 @@
 
     /* HERO */
     .hero { min-height: 65vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 12rem 3rem 5rem; background: var(--bg2); position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 22rem; font-weight: 800; color: rgba(26,107,255,0.03); pointer-events: none; white-space: nowrap; }
+    .hero-bg { position: absolute; top: 50%; right: -5%; transform: translateY(-50%); width: 55%; max-width: 600px; opacity: 0.055; pointer-events: none; filter: grayscale(100%) brightness(2); }
     .hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
     .hero h1 span { color: var(--blue); }
     .hero-sub { font-size: 1.05rem; color: var(--off); max-width: 560px; font-weight: 300; line-height: 1.7; margin-bottom: 2.5rem; }
@@ -229,7 +229,7 @@
   </nav>
 
   <section class="hero">
-    <div class="hero-bg">01</div>
+    <img src="PR_Logo_only.png" alt="" class="hero-bg" />
     <h1 data-aos="fade-up" data-aos-duration="700">Your coach,<br /><span>in your corner.</span></h1>
     <p class="hero-sub" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">Three tiers of coaching built around your goals, your lifestyle, and how much support you need. All include a fully custom program and full app access. 1 month minimum commitment.</p>
     <div class="hero-actions" data-aos="fade-up" data-aos-duration="700" data-aos-delay="240">
