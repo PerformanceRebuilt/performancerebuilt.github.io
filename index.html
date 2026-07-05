@@ -144,11 +144,10 @@
     .hero-sub {
       font-size: 1.1rem;
       color: var(--off);
-      max-width: min(440px, 100%);
+      max-width: 440px;
       margin-bottom: 2.5rem;
       font-weight: 300;
       line-height: 1.75;
-      word-break: break-word;
     }
 
     .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
@@ -226,10 +225,11 @@
     }
 
 
-    /* Service carousel */
-    .services { padding: 7rem 0 7rem 3rem; background: var(--bg2); overflow: hidden; }
+    /* Service carousel — contained, no page bleed */
+    .services { padding: 7rem 0 7rem 3rem; background: var(--bg2); }
     .services-header { padding-right: 3rem; margin-bottom: 3rem; }
-    .services-carousel { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1rem; padding-right: 3rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; }
+    .carousel-outer { overflow: hidden; width: 100%; }
+    .services-carousel { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1.25rem; padding-right: 3rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; }
     .services-carousel::-webkit-scrollbar { display: none; }
     .services-carousel.dragging { cursor: grabbing; user-select: none; }
     .service-card { background: var(--glass-bg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); border-radius: 16px; padding: 2.25rem; text-decoration: none; display: flex; flex-direction: column; flex-shrink: 0; width: 280px; scroll-snap-align: start; transition: background 0.25s, border-color 0.2s; }
@@ -243,7 +243,8 @@
     .service-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: var(--blue); }
     .services-hint { font-size: 0.75rem; color: var(--dim); margin-top: 1rem; padding-right: 3rem; display: flex; align-items: center; gap: 0.5rem; }
     .services-hint::before { content: ''; display: block; width: 20px; height: 1px; background: var(--dim); }
-    @media (max-width: 600px) { .services { padding-left: 1.5rem; } .services-header { padding-right: 1.5rem; } .services-carousel { padding-right: 1.5rem; } .services-hint { padding-right: 1.5rem; } .service-card { width: 260px; } }
+    @media (max-width: 900px) { .services { padding-left: 1.5rem; } .services-header { padding-right: 1.5rem; } .services-carousel { padding-right: 1.5rem; } .services-hint { padding-right: 1.5rem; } }
+    @media (max-width: 600px) { .service-card { width: 260px; padding: 1.75rem; } }
 
     /* ── HOW IT WORKS ── */
     .how {
@@ -378,24 +379,14 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      body { overflow-x: hidden; }
-      .hero { grid-template-columns: 1fr; min-height: auto; }
-      .hero-left { padding: 5rem 1.5rem 2rem; }
-      .hero-right { padding: 1.5rem 1.5rem 3rem; }
-      .services, .how, .contact-section { padding: 5rem 1.5rem; }
-      .services-grid { grid-template-columns: 1fr; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 4rem 1.5rem 2rem; }
+      .hero-right { padding: 2rem 1.5rem 3rem; }
+      .how, .contact-section { padding: 5rem 1.5rem; }
       .how-grid { grid-template-columns: 1fr 1fr; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 600px) {
-      .hero { padding-top: 72px; overflow: hidden; }
-      .hero-left { padding: 2.5rem 1.25rem 1.5rem; width: 100%; }
-      .hero-left h1 { font-size: clamp(2.2rem, 9.5vw, 3rem); letter-spacing: -0.025em; }
-      .hero-sub { font-size: 0.875rem; margin-bottom: 1.75rem; max-width: 100%; width: 100%; }
-      .hero-actions { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-      .btn-primary { width: 100%; text-align: center; }
-      .hero-right { padding: 1rem 1.25rem 2.5rem; }
-      .stat-num { font-size: 2rem; }
       .how-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; }
       .footer-legal { justify-content: center; }
@@ -468,6 +459,7 @@
       <h2 class="section-heading" data-aos="fade-up">Built around you.<br />Not a template.</h2>
       <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Four ways to work together — from a one-off program to full elite coaching. Swipe to explore.</p>
     </div>
+    <div class="carousel-outer">
     <div class="services-carousel" id="servicesCarousel">
 
       <a href="online-coaching.html" class="service-card">
@@ -515,6 +507,7 @@
         <div class="service-link">Learn more →</div>
       </a>
 
+    </div>
     </div>
     <p class="services-hint">Swipe to compare all plans</p>
   </section>
