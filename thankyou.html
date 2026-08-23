@@ -22,16 +22,16 @@
     body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(42,47,61,0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(0,0,0,0.97); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .nav-logo-img { height: 80px; width: auto; display: block; }
     nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; }
-    nav ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; }
+    nav ul a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s; }
     nav ul a:hover { color: #ffffff; }
     .nav-cta { background: var(--blue) !important; color: var(--ink) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
     .menu-toggle { display: none; background: none; border: none; color: #ffffff; font-size: 1.6rem; cursor: pointer; z-index: 201; }
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(42,47,61,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.07); }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(0,0,0,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.07); }
       nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
       nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
       .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
@@ -83,7 +83,7 @@
     /* STATS STRIP */
     .stats-strip {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       background: var(--cream);
     }
     .stat-item {
@@ -101,7 +101,7 @@
     }
 
     /* TESTIMONIAL SECTION */
-    .testimonials { padding: 7rem 3rem; background: var(--white); border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .testimonials { padding: 7rem 3rem; background: var(--white); border-bottom: 1px solid rgba(255,255,255,0.1); }
     .section-heading { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; color: var(--ink); }
     .section-heading span { color: var(--blue); }
     .section-sub { font-size: 1rem; color: var(--grey); font-weight: 300; max-width: 540px; line-height: 1.75; margin-bottom: 3rem; }
@@ -175,7 +175,7 @@
     /* INSTAGRAM CTA */
     .ig-cta {
       padding: 7rem 3rem; background: var(--cream);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       text-align: center; display: flex; flex-direction: column;
       align-items: center; gap: 1.5rem;
     }
@@ -197,7 +197,7 @@
       .testimonials, .ig-cta { padding: 5rem 1.5rem; }
     }
     @media (max-width: 600px) {
-      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
       footer { flex-direction: column; text-align: center; }
       .footer-legal { justify-content: center; }
     }
