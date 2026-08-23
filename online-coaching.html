@@ -148,16 +148,16 @@
     .row-label { padding: 1rem 0; font-size: 0.875rem; color: var(--grey); font-weight: 400; }
     .row-label.row-group { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 1.75rem; padding-bottom: 0.5rem; border-bottom: none; }
 
-    .row-val { text-align: center; padding: 1rem 0.5rem; font-size: 0.875rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
+    .row-val { text-align: center; padding: 0; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
     .row-val.featured-col { background: rgba(26,107,255,0.05); border-left: 1px solid rgba(13,18,32,0.06); border-right: 1px solid rgba(13,18,32,0.06); }
     .row-val.featured-col.last-row { border-bottom: 1px solid rgba(26,107,255,0.25); border-radius: 0 0 14px 14px; }
 
     .check { color: var(--blue); font-size: 1rem; }
-    .cross { color: rgba(255,255,255,0.18); font-size: 0.9rem; }
+    .cross { color: rgba(13,18,32,0.2); font-size: 0.9rem; }
     .val-pill { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 2rem; }
     .val-limited { background: rgba(13,18,32,0.06); color: rgba(13,18,32,0.38); border: 1px solid rgba(13,18,32,0.08); }
     .val-full { background: rgba(13,18,32,0.06); color: #6aaeff; border: 1px solid rgba(26,107,255,0.25); }
-    .val-freq { font-size: 0.78rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+    .val-freq { font-size: 0.72rem; color: rgba(13,18,32,0.4); font-weight: 400; }
 
     .app-access-note { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     .access-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
@@ -187,18 +187,18 @@
     .most-pop { display: inline-block; background: var(--blue); color: #fff; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.4rem; }
     .comp-table td, .comp-table th { border-bottom: 1px solid rgba(13,18,32,0.07); }
     .comp-table tr:last-child td { border-bottom: none; }
-    .row-label { padding: 0.9rem 0; font-size: 0.85rem; color: var(--grey); font-weight: 400; }
+    .row-label { padding: 0 0 0 0.5rem; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 400; vertical-align: middle; }
     .row-label.row-group { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 1.5rem; padding-bottom: 0.5rem; border-bottom: none; }
-    .row-val { text-align: center; padding: 0.9rem 0.5rem; font-size: 0.85rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
+    .row-val { text-align: center; padding: 0; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
     .row-val.featured-col { background: rgba(26,107,255,0.05); border-left: 1px solid rgba(13,18,32,0.06); border-right: 1px solid rgba(13,18,32,0.06); }
     .row-val.featured-col.last-row { border-bottom: 1px solid rgba(26,107,255,0.25); border-radius: 0 0 14px 14px; }
     .check { color: var(--blue); font-size: 1rem; }
-    .cross { color: rgba(255,255,255,0.18); font-size: 0.9rem; }
+    .cross { color: rgba(13,18,32,0.2); font-size: 0.9rem; }
     .val-pill { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 2rem; }
     .val-limited { background: rgba(13,18,32,0.06); color: rgba(13,18,32,0.38); border: 1px solid rgba(13,18,32,0.08); }
     .val-most { background: rgba(26,107,255,0.12); color: #6aaeff; border: 1px solid rgba(26,107,255,0.22); }
     .val-full { background: rgba(26,107,255,0.2); color: #90c0ff; border: 1px solid rgba(26,107,255,0.35); }
-    .val-freq { font-size: 0.75rem; color: rgba(255,255,255,0.5); font-weight: 400; }
+    .val-freq { font-size: 0.72rem; color: rgba(13,18,32,0.4); font-weight: 400; }
     .app-access-note { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .access-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
     .access-card-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
@@ -254,6 +254,7 @@
           <li>Fully custom training program</li>
           <li>Limited app access</li>
           <li>1 round of revisions</li>
+          <li>Direct messaging</li>
           <li>No check-ins or follow-ups</li>
           <li>No minimum commitment</li>
         </ul>
@@ -394,7 +395,7 @@
           </tr>
           <tr>
             <td class="row-label">Direct messaging</td>
-            <td class="row-val"><span class="cross">—</span></td>
+            <td class="row-val"><span class="check">✓</span></td>
             <td class="row-val"><span class="check">✓</span></td>
             <td class="row-val featured-col"><span class="check">✓</span></td>
             <td class="row-val"><span class="check">✓</span></td>
@@ -403,8 +404,8 @@
             <td class="row-label">Video call check-ins</td>
             <td class="row-val"><span class="cross">—</span></td>
             <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="val-freq">Monthly</span></td>
-            <td class="row-val"><span class="val-freq">Fortnightly</span></td>
+            <td class="row-val featured-col"><span class="check">✓</span><br/><span class="val-freq">Monthly</span></td>
+            <td class="row-val"><span class="check">✓</span><br/><span class="val-freq">Fortnightly</span></td>
           </tr>
           <tr>
             <td class="row-label">Running prescription</td>
@@ -435,54 +436,7 @@
       </table>
     </div>
 
-    <!-- APP ACCESS BREAKDOWN -->
-    <div class="app-access-note" data-aos="fade-up" data-aos-delay="100">
-      <div class="access-card">
-        <div class="access-card-title limited">Limited — Program Only</div>
-        <ul class="access-list lim-list">
-          <li>Home</li>
-          <li>My Program</li>
-          <li>Settings &amp; Profile</li>
-          <li class="locked">Nutrition tracking</li>
-          <li class="locked">Progress tracking</li>
-          <li class="locked">Progress photos</li>
-          <li class="locked">Goal events</li>
-          <li class="locked">Recipe library</li>
-          <li class="locked">Run Log</li>
-          <li class="locked">Flag issue</li>
-        </ul>
-      </div>
-      <div class="access-card">
-        <div class="access-card-title most">Most — Essentials &amp; Performance</div>
-        <ul class="access-list most-list">
-          <li>Home</li>
-          <li>My Program</li>
-          <li>Settings &amp; Profile</li>
-          <li>Nutrition tracking</li>
-          <li>Progress tracking</li>
-          <li>Progress photos</li>
-          <li>Goal events</li>
-          <li>Recipe library</li>
-          <li>Flag issue</li>
-          <li class="locked">Run Log</li>
-        </ul>
-      </div>
-      <div class="access-card">
-        <div class="access-card-title full">Full — Elite</div>
-        <ul class="access-list full-list">
-          <li>Home</li>
-          <li>My Program</li>
-          <li>Settings &amp; Profile</li>
-          <li>Nutrition tracking</li>
-          <li>Progress tracking</li>
-          <li>Progress photos</li>
-          <li>Goal events</li>
-          <li>Recipe library</li>
-          <li>Flag issue</li>
-          <li>Run Log</li>
-        </ul>
-      </div>
-    </div>
+
   </section>
 
   <!-- NUTRITION -->
