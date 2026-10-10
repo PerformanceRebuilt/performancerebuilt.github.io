@@ -20,7 +20,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,6 +39,23 @@
     html { scroll-behavior: auto; overflow-x: hidden; }
     body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
 
+    /* ── REVEAL ANIMATIONS (Inform-style) ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 200;
@@ -53,7 +69,7 @@
     }
     .nav-logo-img { height: 64px; width: auto; display: block; }
     nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
-    nav ul a { color: #ffffff !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; background: rgba(255,255,255,0.12); padding: 0.4rem 1rem; border-radius: 2rem; transition: color 0.2s; }
+    nav ul a { color: #ffffff !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; background: rgba(255,255,255,0.12); padding: 0.4rem 1rem; border-radius: 2rem; transition: background 0.2s; }
     nav ul a:hover { background: rgba(255,255,255,0.22); color: #ffffff !important; }
     .nav-cta { background: var(--blue) !important; color: #ffffff !important; padding: 0.4rem 1.2rem; border-radius: 2rem; font-weight: 700 !important; font-size: 0.875rem !important; letter-spacing: 0.02em; transition: background 0.2s, transform 0.15s !important; }
     .nav-cta:hover { background: var(--ink-mid) !important; transform: translateY(-1px); color: var(--white) !important; }
@@ -106,6 +122,7 @@
       font-size: clamp(3.2rem, 5.5vw, 5.2rem);
       font-weight: 800; line-height: 1.03; letter-spacing: -0.04em;
       margin-bottom: 1.75rem; color: #ffffff;
+      opacity: 1; transform: none; /* Hero text not revealed — visible from load */
     }
     .hero-left h1 em { font-style: italic; color: var(--blue); }
     .hero-sub {
@@ -211,15 +228,107 @@
     .how-card h4 { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
     .how-card p { font-size: 0.875rem; color: var(--grey); line-height: 1.7; font-weight: 400; }
 
+    /* ── ABOUT / COACH SECTION ── */
+    .about-section { padding: 7rem 3.5rem; background: var(--white); }
+    .about-intro-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem;
+      align-items: start; margin-bottom: 5rem;
+    }
+    .about-intro-left {}
+    .about-intro-left .section-heading { margin-bottom: 1.25rem; }
+    .about-body { display: flex; flex-direction: column; gap: 1.1rem; }
+    .about-body p { font-size: 0.975rem; color: var(--grey); line-height: 1.8; font-weight: 300; }
+    .about-body p strong { color: var(--ink); font-weight: 600; }
+    .about-pull {
+      border-left: 3px solid var(--blue); padding: 1rem 1.5rem;
+      font-size: 1.05rem; color: var(--ink-mid); line-height: 1.55;
+      font-weight: 600; font-style: italic; margin: 0.25rem 0;
+      background: rgba(13,18,32,0.03); border-radius: 0 8px 8px 0;
+    }
+
+    /* Differentiator strip inside about */
+    .about-diff {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: rgba(13,18,32,0.07);
+      border: 1px solid rgba(13,18,32,0.07); border-radius: 16px;
+      overflow: hidden; margin-bottom: 5rem;
+    }
+    .diff-item {
+      padding: 2.25rem; background: var(--cream);
+      transition: background 0.2s;
+    }
+    .diff-item:hover { background: rgba(255,255,255,0.75); }
+    .diff-tag {
+      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; background: rgba(26,107,255,0.08);
+      color: var(--blue); border: 1px solid rgba(26,107,255,0.22);
+      padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.75rem;
+    }
+    .diff-heading { font-size: 0.975rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
+    .diff-body { font-size: 0.85rem; color: var(--grey); line-height: 1.65; font-weight: 300; }
+
+    /* Who I work with */
+    .about-who-heading { margin-bottom: 2rem; }
+    .about-who-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem; margin-bottom: 5rem;
+    }
+    .who-card {
+      background: var(--cream); border: 1px solid rgba(13,18,32,0.08);
+      border-radius: 16px; padding: 2rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .who-card:hover { border-color: rgba(13,18,32,0.15); transform: translateY(-3px); }
+    .who-tag {
+      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; background: rgba(26,107,255,0.08);
+      color: var(--blue); border: 1px solid rgba(26,107,255,0.22);
+      padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.8rem;
+    }
+    .who-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.45rem; }
+    .who-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.7; font-weight: 300; }
+
+    /* Philosophy */
+    .about-phil-heading { margin-bottom: 2rem; }
+    .phil-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem; margin-bottom: 5rem;
+    }
+    .phil-card {
+      background: var(--cream); border: 1px solid rgba(13,18,32,0.08);
+      border-radius: 16px; padding: 2.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .phil-card:hover { border-color: rgba(13,18,32,0.15); transform: translateY(-3px); }
+    .phil-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+    .phil-desc { font-size: 0.875rem; color: var(--grey); line-height: 1.7; font-weight: 300; }
+
+    /* Qualifications */
+    .quals-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    }
+    .qual-card {
+      background: var(--cream); border: 1px solid rgba(13,18,32,0.08);
+      border-radius: 16px; padding: 2rem;
+    }
+    .qual-tag {
+      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; background: rgba(26,107,255,0.08);
+      color: var(--blue); border: 1px solid rgba(26,107,255,0.22);
+      padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.8rem;
+    }
+    .qual-title { font-size: 0.975rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3; }
+    .qual-detail { font-size: 0.82rem; color: var(--grey-light); font-weight: 300; line-height: 1.6; }
+
     /* ── CONTACT ── */
-    .contact-section { padding: 7rem 3.5rem; background: var(--white); }
+    .contact-section { padding: 7rem 3.5rem; background: var(--cream); }
     .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; max-width: 1100px; margin: 0 auto; }
     .contact-left p { font-size: 1rem; color: var(--grey); font-weight: 400; line-height: 1.8; margin-top: 1rem; }
     .contact-form { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
     .contact-form input, .contact-form textarea {
       width: 100%; padding: 0.9rem 1.1rem;
       border: 1px solid rgba(13,18,32,0.12);
-      background: var(--cream); font-family: var(--sans);
+      background: var(--white); font-family: var(--sans);
       font-size: 0.9rem; color: var(--ink); outline: none;
       border-radius: 10px; transition: border-color 0.2s, background 0.2s;
     }
@@ -258,6 +367,12 @@
       .services-hint { padding-right: 1.5rem; }
       .how { padding: 5rem 1.5rem; }
       .how-grid { grid-template-columns: 1fr 1fr; }
+      .about-section { padding: 5rem 1.5rem; }
+      .about-intro-grid { grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3rem; }
+      .about-diff { grid-template-columns: 1fr; }
+      .about-who-grid { grid-template-columns: 1fr 1fr; margin-bottom: 3rem; }
+      .phil-grid { grid-template-columns: 1fr; margin-bottom: 3rem; }
+      .quals-grid { grid-template-columns: 1fr; }
       .contact-section { padding: 5rem 1.5rem; }
       .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
       footer { padding: 2rem 1.5rem; }
@@ -269,6 +384,7 @@
       .hero-right { flex-direction: column; }
       .stat-card { min-width: unset; }
       .how-grid { grid-template-columns: 1fr; }
+      .about-who-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; text-align: center; }
       .footer-legal { justify-content: center; }
     }
@@ -280,7 +396,7 @@
     <a href="#" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
-      <li><a href="about.html">About</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#how">How it works</a></li>
       <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
@@ -293,14 +409,14 @@
     <div class="hero-photo"><img src="hero-bg.jpg" alt="" /></div>
     <div class="hero-overlay"></div>
     <div class="hero-left">
-      <h1 data-aos="fade-up" data-aos-duration="800">Train smarter.<br /><em>Rebuild</em><br />stronger.</h1>
-      <p class="hero-sub" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">Expert programming for athletes and gym-goers — built around your goals, your schedule, and your body.</p>
-      <div class="hero-actions" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+      <h1>Train smarter.<br /><em>Rebuild</em><br />stronger.</h1>
+      <p class="hero-sub reveal">Expert programming for athletes and gym-goers — built around your goals, your schedule, and your body.</p>
+      <div class="hero-actions reveal reveal-delay-1">
         <a href="#contact" class="btn-primary">Start your program</a>
         <a href="#services" class="btn-ghost">See services →</a>
       </div>
     </div>
-    <div class="hero-right" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+    <div class="hero-right reveal reveal-delay-2">
       <div class="stat-card">
         <div class="stat-num">14+</div>
         <div class="stat-label">Years coaching</div>
@@ -325,12 +441,12 @@
   <!-- SERVICES -->
   <section class="services" id="services">
     <div class="services-header">
-      <div class="blue-rule" data-aos="fade-up"></div>
-      <h2 class="section-heading" data-aos="fade-up">Built around you.<br />Not a template.</h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Four ways to work together — from a one-off program to full elite coaching.</p>
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">Built around you.<br />Not a template.</h2>
+      <p class="section-sub reveal reveal-delay-1">Four ways to work together — from a one-off program to full elite coaching.</p>
     </div>
     <div class="carousel-outer">
-      <div class="services-carousel" id="servicesCarousel">
+      <div class="services-carousel reveal reveal-delay-1" id="servicesCarousel">
 
         <a href="online-coaching.html" class="service-card">
           <div class="service-price">$99 <span>one-off</span></div>
@@ -386,26 +502,26 @@
 
   <!-- HOW IT WORKS -->
   <section class="how" id="how">
-    <div class="blue-rule" data-aos="fade-up"></div>
-    <h2 class="section-heading" data-aos="fade-up">How it works</h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">From enquiry to executing your first session — here's the process.</p>
+    <div class="blue-rule reveal"></div>
+    <h2 class="section-heading reveal">How it works</h2>
+    <p class="section-sub reveal reveal-delay-1">From enquiry to executing your first session — here's the process.</p>
     <div class="how-grid">
-      <div class="how-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="how-card reveal reveal-delay-1">
         <div class="how-num">01</div>
         <h4>Apply & connect</h4>
         <p>Fill in the form below. We'll get back to you within 24 hours to chat about your goals.</p>
       </div>
-      <div class="how-card" data-aos="fade-up" data-aos-delay="160">
+      <div class="how-card reveal reveal-delay-2">
         <div class="how-num">02</div>
         <h4>Intake & assessment</h4>
         <p>We learn everything about your training history, schedule, and what you want to achieve.</p>
       </div>
-      <div class="how-card" data-aos="fade-up" data-aos-delay="240">
+      <div class="how-card reveal reveal-delay-3">
         <div class="how-num">03</div>
         <h4>Program delivered</h4>
         <p>Your custom plan is built and delivered — ready to execute from week one.</p>
       </div>
-      <div class="how-card" data-aos="fade-up" data-aos-delay="320">
+      <div class="how-card reveal reveal-delay-4">
         <div class="how-num">04</div>
         <h4>Adapt & progress</h4>
         <p>Ongoing check-ins, adjustments, and support as you grow and your goals evolve.</p>
@@ -415,15 +531,134 @@
 
   <div class="section-rule"></div>
 
+  <!-- ABOUT / THE COACH -->
+  <section class="about-section" id="about">
+
+    <!-- Intro: story + pull quote -->
+    <div class="about-intro-grid">
+      <div class="about-intro-left">
+        <div class="blue-rule reveal"></div>
+        <h2 class="section-heading reveal">14 years.<br />Two degrees.<br /><span style="color:var(--blue);">One standard.</span></h2>
+        <p class="section-sub reveal reveal-delay-1" style="margin-top:1rem;">Performance Rebuilt grew from a simple belief: great coaching changes people — not just physically, but in how they move, how they think about training, and what they believe they're capable of.</p>
+      </div>
+      <div class="about-body reveal reveal-delay-1">
+        <p>Most people find their way into fitness coaching through a single passion. For me, it started earlier and went deeper. <strong>From my teenage years I was already coaching</strong> — helping others train, understanding what worked, and developing an instinct for programming that only comes from years of doing the work yourself.</p>
+        <p>Playing many sports growing up gave me something textbooks can't: <strong>a genuine understanding of how different bodies move, respond to load, and break down under pressure.</strong></p>
+        <div class="about-pull">"The best coaches aren't just educated — they've lived it. Every program I write is shaped by 14 years of real coaching, real people, and real results."</div>
+        <p>With a <strong>Bachelor of Science in Exercise and Sports Science</strong> and 14+ years of applied coaching, the science of how the body works has merged with the art of making it perform.</p>
+      </div>
+    </div>
+
+    <!-- Differentiators -->
+    <div class="about-diff reveal">
+      <div class="diff-item">
+        <div class="diff-tag">Not generic</div>
+        <div class="diff-heading">Built around you, not a template</div>
+        <p class="diff-body">Every program here is written specifically for you — your schedule, your history, your goals. No copy-paste, no one-size-fits-all.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-tag">Science-backed</div>
+        <div class="diff-heading">Progress that doesn't cost you your health</div>
+        <p class="diff-body">A background in Exercise &amp; Sports Science means programming for results and longevity — understanding injury risk and how to build a body that performs long-term.</p>
+      </div>
+      <div class="diff-item">
+        <div class="diff-tag">Real experience</div>
+        <div class="diff-heading">14 years in, not just certified</div>
+        <p class="diff-body">A certificate takes weeks. Real coaching expertise takes years. 14+ years working with athletes and gym-goers means the experience to handle almost any situation.</p>
+      </div>
+    </div>
+
+    <!-- Who I work with -->
+    <div class="about-who-heading">
+      <div class="blue-rule reveal"></div>
+      <h3 class="section-heading reveal">Thousands of people.<br /><span style="color:var(--blue);">Every starting point.</span></h3>
+    </div>
+    <div class="about-who-grid">
+      <div class="who-card reveal reveal-delay-1">
+        <div class="who-tag">Runners</div>
+        <div class="who-title">Recreational to world major marathons</div>
+        <p class="who-desc">From first-time runners building their base to competitive athletes chasing world major marathon qualifiers. Running performance is built in the gym as much as on the road.</p>
+      </div>
+      <div class="who-card reveal reveal-delay-2">
+        <div class="who-tag">Elite sport</div>
+        <div class="who-title">High performance athletes</div>
+        <p class="who-desc">Experience working across elite sporting environments means understanding the demands, pressures, and physical standards required to perform at the highest level.</p>
+      </div>
+      <div class="who-card reveal reveal-delay-3">
+        <div class="who-tag">All levels</div>
+        <div class="who-title">Brand new to the gym</div>
+        <p class="who-desc">Thousands of people across 14 years means experience with every starting point — whether you've never trained before or you've hit a wall after years in the gym.</p>
+      </div>
+      <div class="who-card reveal reveal-delay-1">
+        <div class="who-tag">Hybrid training</div>
+        <div class="who-title">HYROX, CrossFit &amp; functional fitness</div>
+        <p class="who-desc">Hybrid athletes need strength, endurance, and the capacity to put both together under fatigue. Programming that understands energy systems, periodisation, and recovery.</p>
+      </div>
+      <div class="who-card reveal reveal-delay-2">
+        <div class="who-tag">Body recomposition</div>
+        <div class="who-title">Fat loss, leaning up &amp; hypertrophy</div>
+        <p class="who-desc">Whether the goal is fat loss, building muscle, or a full body recomposition — the approach is built around your training history, lifestyle, and what's actually sustainable.</p>
+      </div>
+    </div>
+
+    <!-- Philosophy -->
+    <div class="about-phil-heading">
+      <div class="blue-rule reveal"></div>
+      <h3 class="section-heading reveal">How I believe<br /><span style="color:var(--blue);">training should work.</span></h3>
+    </div>
+    <div class="phil-grid" style="margin-bottom:4rem;">
+      <div class="phil-card reveal reveal-delay-1">
+        <div class="phil-title">Master the basics first</div>
+        <p class="phil-desc">The fundamentals are fundamental for a reason. Before complexity, before intensity — bread and butter movements, done well and done consistently, will take you further than any advanced protocol ever could.</p>
+      </div>
+      <div class="phil-card reveal reveal-delay-2">
+        <div class="phil-title">Consistency over novelty</div>
+        <p class="phil-desc">The best program is the one you actually follow. Results are built across months and years of showing up, applying effort, and recovering properly. I design programs that fit your life.</p>
+      </div>
+      <div class="phil-card reveal reveal-delay-3">
+        <div class="phil-title">Build to last</div>
+        <p class="phil-desc">Getting strong matters. Staying healthy enough to keep getting strong matters more. Longevity is a core principle of every program — built in from day one, not bolted on as an afterthought.</p>
+      </div>
+      <div class="phil-card reveal reveal-delay-4">
+        <div class="phil-title">Evidence over trend</div>
+        <p class="phil-desc">The fitness industry is full of noise. I cut through it. Every method I use is grounded in sports science and evidence — not whatever is trending on social media this week.</p>
+      </div>
+    </div>
+
+    <!-- Qualifications -->
+    <div class="blue-rule reveal"></div>
+    <h3 class="section-heading reveal" style="margin-bottom:2rem;">The education<br /><span style="color:var(--blue);">behind the coaching.</span></h3>
+    <div class="quals-grid">
+      <div class="qual-card reveal reveal-delay-1">
+        <div class="qual-tag">University</div>
+        <div class="qual-title">Bachelor of Science — Exercise &amp; Sports Science</div>
+        <div class="qual-detail">Strength &amp; conditioning, sport physiology, performance testing, program design &amp; periodisation</div>
+      </div>
+      <div class="qual-card reveal reveal-delay-2">
+        <div class="qual-tag">Experience</div>
+        <div class="qual-title">Every Sport. Every Starting Point.</div>
+        <div class="qual-detail">14+ years coaching athletes across dozens of sports and every experience level — from first-timers to competitors</div>
+      </div>
+      <div class="qual-card reveal reveal-delay-3">
+        <div class="qual-tag">Certification</div>
+        <div class="qual-title">Certificate III &amp; IV in Fitness</div>
+        <div class="qual-detail">Personal training, exercise prescription, client assessment &amp; professional coaching practice</div>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="section-rule"></div>
+
   <!-- CONTACT -->
   <section class="contact-section" id="contact">
     <div class="contact-inner">
       <div class="contact-left">
-        <div class="blue-rule" data-aos="fade-up"></div>
-        <h2 class="section-heading" data-aos="fade-up">Ready to start<br />rebuilding?</h2>
-        <p data-aos="fade-up" data-aos-delay="100">Drop your details below and we'll be in touch within 24 hours to discuss your goals and how we can help.</p>
+        <div class="blue-rule reveal"></div>
+        <h2 class="section-heading reveal">Ready to start<br />rebuilding?</h2>
+        <p class="reveal reveal-delay-1">Drop your details below and we'll be in touch within 24 hours to discuss your goals and how we can help.</p>
       </div>
-      <div data-aos="fade-up" data-aos-delay="120">
+      <div class="reveal reveal-delay-1">
         <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
           <input type="text" name="name" placeholder="Your name" required />
           <input type="email" name="email" placeholder="Email address" required />
@@ -447,14 +682,33 @@
   </footer>
 
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    /* ── Lenis smooth scroll ── */
     const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
 
-    AOS.init({ duration: 800, easing: 'ease-out-cubic', once: true, offset: 60 });
+    /* ── Inform-style reveal (IntersectionObserver) ── */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
+    revealEls.forEach(el => observer.observe(el));
+
+    /* Trigger hero reveals on load */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach(el => {
+        setTimeout(() => el.classList.add('revealed'), 200);
+      });
+    });
+
+    /* ── Mobile nav ── */
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
@@ -467,6 +721,7 @@
       link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu'); });
     });
 
+    /* ── Contact form ── */
     async function handleSubmit(e) {
       e.preventDefault();
       const form = e.target;
@@ -480,6 +735,7 @@
       } catch { btn.textContent = 'Something went wrong — try again'; btn.disabled = false; }
     }
 
+    /* ── Services carousel drag ── */
     const sc = document.getElementById('servicesCarousel');
     if (sc) {
       let isDown = false, startX, scrollLeft;
