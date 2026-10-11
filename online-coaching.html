@@ -4,223 +4,328 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online Coaching — Performance Rebuilt</title>
+  <meta name="description" content="Four tiers of expert online coaching built around your goals. From $45/week. 1 month minimum." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://performancerebuilt.com.au/online-coaching.html" />
   <meta property="og:title" content="Online Coaching — Performance Rebuilt" />
-  <meta property="og:description" content="Three coaching tiers built around your goals. From $45/week. 1 month minimum." />
+  <meta property="og:description" content="Four tiers of coaching built around your goals. From $45/week. 1 month minimum." />
   <meta property="og:image" content="https://performancerebuilt.com.au/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="https://performancerebuilt.com.au/og-image.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(13,18,32,0.5); --dim: rgba(13,18,32,0.28); --blue: #1a6bff; --glass-bg: rgba(13,18,32,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
-    html { scroll-behavior: auto; overflow-x: hidden; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(0,0,0,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
-    nav ul a { color: #ffffff !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.02em; background: rgba(255,255,255,0.12); padding: 0.4rem 1rem; border-radius: 2rem; transition: color 0.2s; }
-    nav ul a:hover { background: rgba(255,255,255,0.22); color: #ffffff !important; }
-    .nav-cta { background: var(--blue) !important; color: var(--ink) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
-    .menu-toggle { display: none; background: none; border: none; color: #ffffff; font-size: 1.6rem; cursor: pointer; z-index: 201; }
-    @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(0,0,0,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.07); }
-      nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
+
+    :root {
+      --bg:          #0a0c12;
+      --bg2:         #0f1118;
+      --bg3:         #13161f;
+      --surface:     rgba(255,255,255,0.05);
+      --surface-hover: rgba(255,255,255,0.09);
+      --border:      rgba(255,255,255,0.09);
+      --border-mid:  rgba(255,255,255,0.14);
+      --text:        #f0ede8;
+      --text-mid:    rgba(240,237,232,0.6);
+      --text-dim:    rgba(240,237,232,0.35);
+      --blue:        #1a6bff;
+      --blue-dim:    rgba(26,107,255,0.18);
+      --blue-border: rgba(26,107,255,0.3);
+      --sans: 'Open Sans', system-ui, sans-serif;
     }
 
-    /* HERO */
-    .hero { min-height: 65vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 12rem 3rem 5rem; background: var(--white); position: relative; overflow: hidden; }
-    .hero-bg { position: absolute; top: 50%; right: -5%; transform: translateY(-50%); width: 55%; max-width: 600px; opacity: 0.055; pointer-events: none; filter: grayscale(100%) brightness(2); }
-    .hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
-    .hero h1 span { color: var(--blue); }
-    .hero-sub { font-size: 1.05rem; color: var(--grey); max-width: 560px; font-weight: 300; line-height: 1.7; margin-bottom: 2.5rem; }
-    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
-    .btn-primary { background: var(--blue); color: var(--ink); padding: 0.9rem 2.2rem; border-radius: 2rem; text-decoration: none; font-size: 0.95rem; font-weight: 700; transition: opacity 0.2s, transform 0.15s; display: inline-block; }
+    html { scroll-behavior: auto; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    /* ── REVEAL ANIMATIONS ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3.5rem; height: 80px;
+      background: rgba(10,12,18,0.96);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo-img { height: 64px; width: auto; display: block; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
+    nav ul a { color: var(--text) !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; background: var(--surface); padding: 0.4rem 1rem; border-radius: 2rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
+    nav ul a:hover { background: var(--surface-hover); border-color: var(--border-mid); }
+    .nav-cta { background: var(--blue) !important; color: #fff !important; border-color: var(--blue) !important; font-weight: 700 !important; transition: opacity 0.2s, transform 0.15s !important; }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; z-index: 201; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; height: 72px; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(10,12,18,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; border-top: 1px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; border-bottom: 1px solid var(--border); }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; border-radius: 0; border: none; background: transparent; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; border-radius: 2rem; border: none !important; }
+    }
+
+    /* ── SHARED ── */
+    .section-wrap { max-width: 1100px; margin: 0 auto; padding: 0 3.5rem; }
+    .section-rule { width: 100%; height: 1px; background: var(--border); }
+    .blue-rule { width: 32px; height: 3px; background: var(--blue); border-radius: 2px; margin: 0 auto 1.75rem; }
+    .section-heading {
+      font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800;
+      letter-spacing: -0.03em; color: var(--text); line-height: 1.1; margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      font-size: 1rem; color: var(--text-mid); font-weight: 400;
+      max-width: 540px; line-height: 1.75; margin: 0 auto;
+    }
+    .tag-pill {
+      display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.09em;
+      text-transform: uppercase; background: var(--blue-dim);
+      color: #6aaeff; border: 1px solid var(--blue-border);
+      padding: 3px 10px; border-radius: 2rem;
+    }
+    .btn-primary {
+      background: var(--blue); color: #fff;
+      padding: 0.95rem 2.4rem; border-radius: 2rem;
+      text-decoration: none; font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.02em; transition: opacity 0.2s, transform 0.15s; display: inline-block;
+    }
     .btn-primary:hover { opacity: 0.88; transform: translateY(-2px); }
-    .btn-ghost { color: var(--ink); text-decoration: none; font-size: 0.9rem; font-weight: 400; opacity: 0.6; transition: opacity 0.2s; }
-    .btn-ghost:hover { opacity: 1; }
+    .btn-ghost-link {
+      color: var(--text-mid); text-decoration: none; font-size: 0.9rem;
+      font-weight: 400; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s;
+    }
+    .btn-ghost-link:hover { color: var(--text); }
 
-    /* TIER CAROUSEL */
-    .tiers { padding: 6rem 0 6rem 3rem; background: var(--cream); overflow: hidden; max-width: 100vw; }
-    .tiers-header { padding-right: 3rem; margin-bottom: 3rem; }
-    .section-heading { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; color: var(--ink); }
-    .section-heading span { color: var(--blue); }
-    .section-sub { font-size: 1rem; color: var(--grey); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 0; }
-    .carousel-wrap { display: flex; gap: 1.25rem; overflow-x: auto; padding-top: 20px; padding-bottom: 1.5rem; padding-right: 3rem; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab; user-select: none; }
+    /* ── HERO ── */
+    .hero {
+      min-height: 62vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 10rem 2rem 5rem; text-align: center;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, black 20%, transparent 75%);
+    }
+    .hero-glow {
+      position: absolute; z-index: 1; pointer-events: none;
+      width: 130vw; height: 130vh; top: 50%; left: 50%;
+      transform: translate(-50%, -55%);
+      background: radial-gradient(ellipse at center,
+        rgba(26,107,255,0.16) 0%,
+        rgba(26,107,255,0.06) 35%,
+        transparent 65%);
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.75; transform: translate(-50%, -55%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -55%) scale(1.06); }
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 140px; height: 1px; z-index: 3;
+      background: linear-gradient(to right, transparent, rgba(26,107,255,0.6), transparent);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; }
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem); font-weight: 800;
+      line-height: 1.02; letter-spacing: -0.04em; margin-bottom: 1.25rem; color: var(--text);
+    }
+    .hero h1 em { font-style: italic; color: var(--blue); }
+    .hero-sub {
+      font-size: 1.05rem; color: var(--text-mid); max-width: 520px;
+      margin: 0 auto 2.5rem; font-weight: 400; line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+    /* ── TIER CAROUSEL ── */
+    .tiers { padding: 7rem 0; background: var(--bg2); text-align: center; }
+    .tiers-header { margin-bottom: 3.5rem; }
+    .carousel-outer { overflow: hidden; width: 100%; }
+    .carousel-wrap {
+      display: flex; gap: 1.25rem; overflow-x: auto;
+      padding: 0.5rem 3.5rem 1.5rem; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; cursor: grab;
+      justify-content: center;
+    }
     .carousel-wrap::-webkit-scrollbar { display: none; }
-    .carousel-wrap.dragging { cursor: grabbing; }
-    .tier-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 18px; padding: 2.5rem;  display: flex; flex-direction: column; position: relative; flex-shrink: 0; width: 300px; scroll-snap-align: start; transition: border-color 0.25s, background 0.2s; }
-    .tier-card:hover { background: rgba(13,18,32,0.06); }
-    .tier-card.featured { border-color: rgba(13,18,32,0.35); background: var(--cream); }
-    .featured-badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 2rem; white-space: nowrap; }
-    .tier-name { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
-    .tier-price { font-size: 3rem; font-weight: 800; color: var(--ink); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
-    .tier-price span { font-size: 1.1rem; font-weight: 400; color: var(--grey-light); }
-    .tier-desc { font-size: 0.875rem; color: var(--grey); font-weight: 300; line-height: 1.65; margin: 1.25rem 0 1.75rem; flex: 1; }
-    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
-    .tier-features li { display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.875rem; color: var(--grey); font-weight: 300; line-height: 1.5; }
-    .tier-features li::before { content: ''; display: block; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
-    .tier-cta { background: var(--blue); color: var(--ink); padding: 0.85rem 1.5rem; border-radius: 2rem; text-decoration: none; font-size: 0.9rem; font-weight: 700; text-align: center; transition: opacity 0.2s; display: block; margin-top: auto; }
+    .carousel-wrap.dragging { cursor: grabbing; user-select: none; }
+
+    .tier-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 18px; padding: 2.5rem; display: flex; flex-direction: column;
+      flex-shrink: 0; width: 285px; scroll-snap-align: start; position: relative;
+      text-align: left; transition: border-color 0.25s, transform 0.2s, background 0.2s;
+    }
+    .tier-card:hover { border-color: var(--border-mid); transform: translateY(-3px); background: var(--surface-hover); }
+    .tier-card.featured { background: var(--blue); border-color: var(--blue); }
+    .tier-card.featured:hover { background: #1560e8; border-color: #1560e8; }
+
+    .featured-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: #fff; color: var(--blue); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px;
+      border-radius: 2rem; white-space: nowrap;
+    }
+    .tier-name { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6aaeff; margin-bottom: 0.65rem; }
+    .tier-card.featured .tier-name { color: rgba(255,255,255,0.75); }
+    .tier-price { font-size: 2.8rem; font-weight: 800; color: var(--text); line-height: 1; letter-spacing: -0.03em; margin-bottom: 0.25rem; }
+    .tier-price span { font-size: 1rem; font-weight: 400; color: var(--text-dim); }
+    .tier-card.featured .tier-price { color: #fff; }
+    .tier-card.featured .tier-price span { color: rgba(255,255,255,0.6); }
+    .tier-desc { font-size: 0.875rem; color: var(--text-mid); font-weight: 300; line-height: 1.7; margin: 1.25rem 0 1.5rem; flex: 1; }
+    .tier-card.featured .tier-desc { color: rgba(255,255,255,0.75); }
+    .tier-features { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: 2rem; }
+    .tier-features li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.85rem; color: var(--text-mid); font-weight: 300; line-height: 1.5; }
+    .tier-features li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 5px; }
+    .tier-card.featured .tier-features li { color: rgba(255,255,255,0.8); }
+    .tier-card.featured .tier-features li::before { background: rgba(255,255,255,0.7); }
+    .tier-cta {
+      background: var(--blue); color: #fff; padding: 0.85rem 1.5rem;
+      border-radius: 2rem; text-decoration: none; font-size: 0.875rem; font-weight: 700;
+      text-align: center; transition: opacity 0.2s; display: block; margin-top: auto;
+    }
     .tier-cta:hover { opacity: 0.88; }
-    .tier-cta.ghost { background: transparent; border: 1px solid rgba(13,18,32,0.15); color: var(--ink); }
-    .tier-cta.ghost:hover { background: rgba(13,18,32,0.06); }
-    .carousel-hint { font-size: 0.75rem; color: var(--grey-light); margin-top: 1rem; padding-right: 3rem; display: flex; align-items: center; gap: 0.5rem; }
-    .carousel-hint::before { content: ''; display: block; width: 20px; height: 1px; background: var(--dim); }
+    .tier-cta.ghost { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+    .tier-cta.ghost:hover { background: var(--surface-hover); }
+    .tier-card.featured .tier-cta { background: #fff; color: var(--blue); }
+    .tier-card.featured .tier-cta:hover { opacity: 0.9; }
 
-    /* NUTRITION SECTION */
-    .nutrition { padding: 6rem 3rem; background: var(--white); border-top: 1px solid rgba(255,255,255,0.07); }
-    .nutrition-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 1rem; }
-    .nutrition-body p { font-size: 0.975rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 1rem; }
-    .nutrition-body p strong { color: var(--ink); font-weight: 600; }
-    .nutrition-features { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
-    .nutrition-feat { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
-    .nutrition-feat-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.3rem; }
-    .nutrition-feat-desc { font-size: 0.85rem; color: var(--grey); font-weight: 300; line-height: 1.6; }
-    .disclaimer-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(13,18,32,0.05); border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
-    .disclaimer-box p { font-size: 0.78rem; color: var(--grey-light); line-height: 1.7; font-weight: 300; margin: 0; }
-    .disclaimer-box strong { color: rgba(255,255,255,0.5); font-weight: 600; }
+    /* ── COMPARISON TABLE ── */
+    .comparison { padding: 7rem 0; background: var(--bg); text-align: center; }
+    .comp-inner { max-width: 1100px; margin: 0 auto; padding: 0 3.5rem; }
+    .comp-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 3rem; border: 1px solid var(--border); border-radius: 16px; }
+    .comp-table { width: 100%; border-collapse: collapse; min-width: 700px; }
+    .comp-table th { padding: 0; vertical-align: bottom; }
+    .comp-table th:first-child { width: 28%; text-align: left; }
+    .tier-head { padding: 1.75rem 1.25rem 1.25rem; text-align: center; }
+    .t-name { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6aaeff; margin-bottom: 0.4rem; }
+    .t-price { font-size: 1.7rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; line-height: 1; }
+    .t-price span { font-size: 0.78rem; font-weight: 400; color: var(--text-dim); }
+    .t-commit { font-size: 0.68rem; color: var(--text-dim); margin-top: 0.3rem; }
+    .tier-head.featured-head { background: rgba(26,107,255,0.1); border-left: 1px solid rgba(26,107,255,0.25); border-right: 1px solid rgba(26,107,255,0.25); }
+    .most-pop { display: inline-block; background: var(--blue); color: #fff; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.4rem; }
+    .comp-table td, .comp-table th { border-bottom: 1px solid var(--border); }
+    .comp-table tr:last-child td { border-bottom: none; }
+    .row-label { padding: 0 0 0 1.5rem; height: 48px; font-size: 0.85rem; color: var(--text-mid); font-weight: 400; vertical-align: middle; text-align: left; }
+    .row-label.row-group { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6aaeff; height: auto; padding: 1.5rem 0 0.5rem 1.5rem; border-bottom: none; }
+    .row-val { text-align: center; padding: 0; height: 48px; font-size: 0.85rem; color: var(--text-mid); font-weight: 300; vertical-align: middle; }
+    .row-val.featured-col { background: rgba(26,107,255,0.07); border-left: 1px solid rgba(26,107,255,0.18); border-right: 1px solid rgba(26,107,255,0.18); }
+    .check { color: var(--blue); font-size: 1rem; }
+    .cross { color: var(--text-dim); font-size: 0.9rem; }
+    .val-pill { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 2rem; }
+    .val-limited { background: var(--surface); color: var(--text-dim); border: 1px solid var(--border); }
+    .val-most { background: var(--blue-dim); color: #6aaeff; border: 1px solid var(--blue-border); }
+    .val-full { background: rgba(26,107,255,0.28); color: #90c0ff; border: 1px solid rgba(26,107,255,0.4); }
+    .val-freq { font-size: 0.7rem; color: var(--text-dim); font-weight: 400; display: block; }
 
-    /* INCLUDES */
-    .includes { padding: 6rem 3rem; background: var(--cream); border-top: 1px solid rgba(255,255,255,0.07); }
-    .includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin-top: 2rem; }
-    .include-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 14px; padding: 1.75rem;  transition: background 0.2s, transform 0.2s; }
-    .include-card:hover { background: rgba(13,18,32,0.06); transform: translateY(-3px); }
-    .include-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
-    .include-desc { font-size: 0.875rem; color: var(--grey); line-height: 1.6; font-weight: 300; }
+    /* ── NUTRITION ── */
+    .nutrition { padding: 7rem 0; background: var(--bg2); }
+    .nutrition .section-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .nutrition-left { text-align: left; }
+    .nutrition-left .blue-rule { margin: 0 0 1.75rem; }
+    .nutrition-left .section-heading { margin-bottom: 0.75rem; }
+    .nutrition-left .section-sub { margin: 0; max-width: 100%; text-align: left; }
+    .nutrition-body { display: flex; flex-direction: column; gap: 1rem; }
+    .nutrition-body p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; }
+    .nutrition-body p strong { color: var(--text); font-weight: 600; }
+    .nutrition-feats { display: flex; flex-direction: column; gap: 0.85rem; margin-top: 0.5rem; }
+    .nutrition-feat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .nutrition-feat:hover { border-color: var(--border-mid); background: var(--surface-hover); }
+    .nutrition-feat-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.3rem; }
+    .nutrition-feat-desc { font-size: 0.84rem; color: var(--text-mid); font-weight: 300; line-height: 1.65; }
+    .disclaimer-box {
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.25rem 1.5rem; margin-top: 1.25rem;
+    }
+    .disclaimer-box p { font-size: 0.78rem; color: var(--text-dim); line-height: 1.7; font-weight: 300; margin: 0; }
+    .disclaimer-box strong { color: var(--text-mid); font-weight: 600; }
 
-    /* HOW IT WORKS */
-    .how { padding: 6rem 3rem; background: var(--white); border-top: 1px solid rgba(255,255,255,0.07); }
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 2rem; }
-    .process-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 14px; padding: 1.75rem;  transition: background 0.2s, transform 0.2s; }
-    .process-card:hover { background: rgba(13,18,32,0.06); transform: translateY(-3px); }
-    .process-dot { width: 32px; height: 32px; background: rgba(13,18,32,0.06); border: 1px solid rgba(13,18,32,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; color: var(--blue); margin-bottom: 1rem; }
-    .process-title { font-size: 0.95rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
-    .process-desc { font-size: 0.82rem; color: var(--grey); line-height: 1.6; font-weight: 300; }
+    /* ── HOW IT WORKS ── */
+    .how { padding: 7rem 0; background: var(--bg); text-align: center; }
+    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3.5rem; }
+    .process-card {
+      background: var(--surface-hover); border: 1px solid var(--border-mid);
+      border-radius: 16px; padding: 2rem 1.75rem; text-align: left;
+      transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,0.28);
+      transition: border-color 0.2s, transform 0.25s, background 0.2s, box-shadow 0.25s;
+    }
+    .process-card:hover { border-color: rgba(26,107,255,0.35); transform: translateY(-8px); background: rgba(255,255,255,0.11); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
+    .process-num { font-size: 2.5rem; font-weight: 800; color: rgba(26,107,255,0.22); letter-spacing: -0.04em; line-height: 1; margin-bottom: 1.25rem; transition: color 0.2s; }
+    .process-card:hover .process-num { color: var(--blue); }
+    .process-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .process-desc { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
 
-    /* CTA */
-    .cta-section { padding: 6rem 3rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; background: var(--cream); border-top: 1px solid rgba(255,255,255,0.07); }
-    .cta-section p { font-size: 1rem; color: var(--grey); max-width: 440px; font-weight: 300; }
+    /* ── CTA ── */
+    .cta-section { padding: 7rem 0; background: var(--bg2); text-align: center; }
+    .cta-section p { font-size: 1rem; color: var(--text-mid); max-width: 440px; margin: 0 auto 2rem; font-weight: 300; line-height: 1.75; }
 
-    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--grey-light); flex-wrap: wrap; gap: 0.75rem; background: var(--cream); }
-    footer a { color: var(--grey-light); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--ink); }
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--text-dim); flex-wrap: wrap; gap: 0.75rem;
+      background: var(--bg);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero { padding: 9rem 1.5rem 4rem; }
-      .tiers { padding: 4rem 0 4rem 1.25rem; max-width: 100vw; }
-      .tiers-header { padding-right: 1.25rem; }
-      .carousel-wrap { padding-right: 1.25rem; }
-      .carousel-hint { padding-right: 1.25rem; }
-      .tier-card { width: 265px; padding: 2rem 1.75rem; }
-      .nutrition, .includes, .how, .cta-section { padding: 4rem 1.5rem; }
-      .nutrition-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .includes-grid { grid-template-columns: 1fr; }
+      .section-wrap { padding: 0 1.5rem; }
+      .hero { padding: 8rem 1.5rem 4rem; }
+      .tiers { padding: 5rem 0; }
+      .carousel-wrap { padding: 0.5rem 1.5rem 1.5rem; justify-content: flex-start; }
+      .comparison { padding: 5rem 0; }
+      .comp-inner { padding: 0 1.5rem; }
+      .nutrition { padding: 5rem 0; }
+      .nutrition .section-wrap { grid-template-columns: 1fr; gap: 3rem; }
+      .nutrition-left .blue-rule { margin: 0 auto 1.75rem; }
+      .nutrition-left { text-align: center; }
+      .nutrition-left .section-sub { text-align: center; max-width: 540px; }
+      .how { padding: 5rem 0; }
       .process-grid { grid-template-columns: 1fr 1fr; }
+      .cta-section { padding: 5rem 0; }
+      footer { padding: 2rem 1.5rem; }
     }
-    @media (max-width: 600px) { .process-grid { grid-template-columns: 1fr; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
-
-    /* COMPARISON TABLE */
-    .comparison { padding: 6rem 3rem; background: var(--white); border-top: 1px solid rgba(255,255,255,0.07); }
-    .comp-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .comp-table { width: 100%; border-collapse: collapse; min-width: 700px; }
-
-    .comp-table th { padding: 0; vertical-align: bottom; }
-    .comp-table th:first-child { width: 28%; }
-
-    .tier-head { padding: 1.75rem 1.5rem 1.25rem; text-align: center; }
-    .tier-head .t-name { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
-    .tier-head .t-price { font-size: 1.8rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
-    .tier-head .t-price span { font-size: 0.85rem; font-weight: 400; color: var(--grey-light); }
-    .tier-head .t-commit { font-size: 0.72rem; color: var(--grey-light); margin-top: 0.35rem; }
-    .tier-head.featured-head { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.25); border-bottom: none; border-radius: 14px 14px 0 0; }
-    .most-pop { display: inline-block; background: var(--blue); color: #fff; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.5rem; }
-
-    .comp-table td, .comp-table th { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .comp-table tr:last-child td { border-bottom: none; }
-
-    .row-label { padding: 1rem 0; font-size: 0.875rem; color: var(--grey); font-weight: 400; }
-    .row-label.row-group { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 1.75rem; padding-bottom: 0.5rem; border-bottom: none; }
-
-    .row-val { text-align: center; padding: 0; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
-    .row-val.featured-col { background: rgba(26,107,255,0.05); border-left: 1px solid rgba(13,18,32,0.06); border-right: 1px solid rgba(13,18,32,0.06); }
-    .row-val.featured-col.last-row { border-bottom: 1px solid rgba(26,107,255,0.25); border-radius: 0 0 14px 14px; }
-
-    .check { color: var(--blue); font-size: 1rem; }
-    .cross { color: rgba(13,18,32,0.2); font-size: 0.9rem; }
-    .val-pill { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 3px 10px; border-radius: 2rem; }
-    .val-limited { background: rgba(13,18,32,0.06); color: rgba(13,18,32,0.38); border: 1px solid rgba(13,18,32,0.08); }
-    .val-full { background: rgba(13,18,32,0.06); color: #6aaeff; border: 1px solid rgba(26,107,255,0.25); }
-    .val-freq { font-size: 0.72rem; color: rgba(13,18,32,0.4); font-weight: 400; }
-
-    .app-access-note { margin-top: 2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .access-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
-    .access-card-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-    .access-card-title.limited { color: rgba(13,18,32,0.38); }
-    .access-card-title.full { color: var(--blue); }
-    .access-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .access-list li { font-size: 0.82rem; color: var(--grey); font-weight: 300; display: flex; align-items: center; gap: 0.5rem; }
-    .access-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .access-list.limited-list li::before { background: rgba(13,18,32,0.22); }
-    .access-list.full-list li::before { background: var(--blue); }
-    .access-list li.locked { color: rgba(13,18,32,0.22); text-decoration: line-through; }
-    @media (max-width: 700px) { .comparison { padding: 4rem 1.5rem; } .app-access-note { grid-template-columns: 1fr; } }
-
-    /* COMPARISON TABLE */
-    .comparison { padding: 6rem 3rem; background: var(--white); border-top: 1px solid rgba(255,255,255,0.07); }
-    .comp-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .comp-table { width: 100%; border-collapse: collapse; min-width: 760px; }
-    .comp-table th { padding: 0; vertical-align: bottom; }
-    .comp-table th:first-child { width: 26%; }
-    .tier-head { padding: 1.5rem 1.25rem 1.25rem; text-align: center; }
-    .tier-head .t-name { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
-    .tier-head .t-price { font-size: 1.6rem; font-weight: 800; color: var(--ink); letter-spacing: -0.02em; line-height: 1; }
-    .tier-head .t-price span { font-size: 0.78rem; font-weight: 400; color: var(--grey-light); }
-    .tier-head .t-commit { font-size: 0.68rem; color: var(--grey-light); margin-top: 0.3rem; }
-    .tier-head.featured-head { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.25); border-bottom: none; border-radius: 14px 14px 0 0; }
-    .most-pop { display: inline-block; background: var(--blue); color: #fff; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 2rem; margin-bottom: 0.4rem; }
-    .comp-table td, .comp-table th { border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .comp-table tr:last-child td { border-bottom: none; }
-    .row-label { padding: 0 0 0 0.5rem; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 400; vertical-align: middle; }
-    .row-label.row-group { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); padding-top: 1.5rem; padding-bottom: 0.5rem; border-bottom: none; }
-    .row-val { text-align: center; padding: 0; height: 48px; font-size: 0.85rem; color: var(--grey); font-weight: 300; vertical-align: middle; }
-    .row-val.featured-col { background: rgba(26,107,255,0.05); border-left: 1px solid rgba(13,18,32,0.06); border-right: 1px solid rgba(13,18,32,0.06); }
-    .row-val.featured-col.last-row { border-bottom: 1px solid rgba(26,107,255,0.25); border-radius: 0 0 14px 14px; }
-    .check { color: var(--blue); font-size: 1rem; }
-    .cross { color: rgba(13,18,32,0.2); font-size: 0.9rem; }
-    .val-pill { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 9px; border-radius: 2rem; }
-    .val-limited { background: rgba(13,18,32,0.06); color: rgba(13,18,32,0.38); border: 1px solid rgba(13,18,32,0.08); }
-    .val-most { background: rgba(26,107,255,0.12); color: #6aaeff; border: 1px solid rgba(26,107,255,0.22); }
-    .val-full { background: rgba(26,107,255,0.2); color: #90c0ff; border: 1px solid rgba(26,107,255,0.35); }
-    .val-freq { font-size: 0.72rem; color: rgba(13,18,32,0.4); font-weight: 400; }
-    .app-access-note { margin-top: 2.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    .access-card { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.25rem 1.5rem; backdrop-filter: blur(10px); }
-    .access-card-title { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
-    .access-card-title.limited { color: var(--grey-light); }
-    .access-card-title.most { color: #6aaeff; }
-    .access-card-title.full { color: #90c0ff; }
-    .access-list { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-    .access-list li { font-size: 0.8rem; color: var(--grey); font-weight: 300; display: flex; align-items: center; gap: 0.5rem; }
-    .access-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .access-list.lim-list li::before { background: rgba(13,18,32,0.15); }
-    .access-list.most-list li::before { background: #6aaeff; }
-    .access-list.full-list li::before { background: #90c0ff; }
-    .access-list li.locked { color: rgba(13,18,32,0.15); text-decoration: line-through; }
-    @media (max-width: 700px) { .comparison { padding: 4rem 1.5rem; } .app-access-note { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="index.html" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#how">How it works</a></li>
       <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
@@ -228,267 +333,291 @@
     </ul>
   </nav>
 
+  <!-- ── HERO ── -->
   <section class="hero">
-    <img src="PR_Logo_only.png" alt="" class="hero-bg" />
-    <h1 data-aos="fade-up" data-aos-duration="700">Your coach,<br /><span>in your corner.</span></h1>
-    <p class="hero-sub" data-aos="fade-up" data-aos-duration="700" data-aos-delay="120">Three tiers of coaching built around your goals, your lifestyle, and how much support you need. All include a fully custom program and full app access. 1 month minimum commitment.</p>
-    <div class="hero-actions" data-aos="fade-up" data-aos-duration="700" data-aos-delay="240">
-      <a href="index.html#contact" class="btn-primary">Apply now</a>
-      <a href="index.html#services" class="btn-ghost">← All services</a>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <h1 class="reveal">Your coach,<br /><em>in your corner.</em></h1>
+      <p class="hero-sub reveal reveal-delay-1">Four tiers of coaching built around your goals, your lifestyle, and how much support you need. All include a fully custom program and full app access. 1 month minimum commitment.</p>
+      <div class="hero-actions reveal reveal-delay-2">
+        <a href="index.html#contact" class="btn-primary">Apply now</a>
+        <a href="index.html#services" class="btn-ghost-link">← All services</a>
+      </div>
     </div>
   </section>
 
-  <!-- TIER CAROUSEL -->
+  <div class="section-rule"></div>
+
+  <!-- ── TIER CARDS ── -->
   <section class="tiers" id="tiers">
-    <div class="tiers-header">
-      <h2 class="section-heading" data-aos="fade-up">Choose your <span>plan</span></h2>
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Four ways to work together — from a one-off program to full elite coaching. Swipe to explore all plans.</p>
+    <div class="tiers-header section-wrap">
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">Choose your plan</h2>
+      <p class="section-sub reveal reveal-delay-1">Four ways to work together — from a one-off program to full elite coaching.</p>
     </div>
-    <div class="carousel-wrap" id="tierCarousel">
+    <div class="carousel-outer">
+      <div class="carousel-wrap reveal reveal-delay-1" id="tierCarousel">
 
-      <div class="tier-card">
-        <div class="tier-name">Program Only</div>
-        <div class="tier-price">$99 <span>one-off</span></div>
-        <p class="tier-desc">A fully custom training program delivered through the app. No follow-ups, no check-ins — just expert structure, built for you, ready to execute from day one.</p>
-        <ul class="tier-features">
-          <li>Fully custom training program</li>
-          <li>Limited app access</li>
-          <li>1 round of revisions</li>
-          <li>Direct messaging</li>
-          <li>No check-ins or follow-ups</li>
-          <li>No minimum commitment</li>
-        </ul>
-        <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+        <div class="tier-card">
+          <div class="tier-name">Program Only</div>
+          <div class="tier-price">$99 <span>one-off</span></div>
+          <p class="tier-desc">A fully custom training program delivered through the app. No follow-ups, no check-ins — just expert structure, built for you, ready to execute from day one.</p>
+          <ul class="tier-features">
+            <li>Fully custom training program</li>
+            <li>Limited app access</li>
+            <li>1 round of revisions</li>
+            <li>Direct messaging</li>
+            <li>No check-ins or follow-ups</li>
+            <li>No minimum commitment</li>
+          </ul>
+          <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-name">Essentials</div>
+          <div class="tier-price">$45 <span>/ week</span></div>
+          <p class="tier-desc">Expert programming backed by a full nutrition toolkit — recipe library, nutrition tracking, and most app features. Built for self-motivated athletes who want the resources to train hard and fuel it properly.</p>
+          <ul class="tier-features">
+            <li>Fully custom training program</li>
+            <li>Nutrition tracking via the app</li>
+            <li>Full recipe library access</li>
+            <li>Most app features (excl. Run Log)</li>
+            <li>Direct messaging</li>
+            <li>No recurring check-ins</li>
+            <li>1 month minimum</li>
+          </ul>
+          <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+        </div>
+
+        <div class="tier-card featured">
+          <div class="featured-badge">Most popular</div>
+          <div class="tier-name">Performance</div>
+          <div class="tier-price">$75 <span>/ week</span></div>
+          <p class="tier-desc">The full coaching experience. Monthly check-ins, nutrition tracking, and a coach invested in your progress — adjusted every step of the way.</p>
+          <ul class="tier-features">
+            <li>Everything in Essentials</li>
+            <li>Nutrition advice &amp; tracking</li>
+            <li>Monthly video call check-ins</li>
+            <li>Form feedback via video</li>
+            <li>Regular program adjustments</li>
+            <li>1 month minimum</li>
+          </ul>
+          <a href="index.html#contact" class="tier-cta">Get started</a>
+        </div>
+
+        <div class="tier-card">
+          <div class="tier-name">Elite</div>
+          <div class="tier-price">$105 <span>/ week</span></div>
+          <p class="tier-desc">Full app access including Run Log — built for field sport athletes, runners, and anyone needing running prescription alongside their strength work.</p>
+          <ul class="tier-features">
+            <li>Everything in Performance</li>
+            <li>Full app access incl. Run Log</li>
+            <li>Fortnightly video call check-ins</li>
+            <li>Running prescription &amp; sport-specific support</li>
+            <li>Advanced competition &amp; peak performance support</li>
+            <li>1 month minimum</li>
+          </ul>
+          <a href="index.html#contact" class="tier-cta ghost">Get started</a>
+        </div>
+
       </div>
-
-      <div class="tier-card">
-        <div class="tier-name">Essentials</div>
-        <div class="tier-price">$45 <span>/ week</span></div>
-        <p class="tier-desc">Expert programming backed by a full nutrition toolkit — recipe library, nutrition tracking, and most app features. Built for self-motivated athletes who want the resources to train hard and fuel it properly, without the ongoing check-in commitment.</p>
-        <ul class="tier-features">
-          <li>Fully custom training program</li>
-          <li>Nutrition tracking via the app</li>
-          <li>Full recipe library access</li>
-          <li>Most app features (excl. Run Log)</li>
-          <li>Direct messaging</li>
-          <li>No recurring check-ins</li>
-          <li>1 month minimum</li>
-        </ul>
-        <a href="index.html#contact" class="tier-cta ghost">Get started</a>
-      </div>
-
-      <div class="tier-card featured">
-        <div class="featured-badge">Most popular</div>
-        <div class="tier-name">Performance</div>
-        <div class="tier-price">$75 <span>/ week</span></div>
-        <p class="tier-desc">The full coaching experience. Monthly check-ins, nutrition tracking, and a coach invested in your progress — adjusted every step of the way.</p>
-        <ul class="tier-features">
-          <li>Everything in Essentials</li>
-          <li>Nutrition advice &amp; tracking</li>
-          <li>Monthly video call check-ins</li>
-          <li>Form feedback via video</li>
-          <li>Regular program adjustments</li>
-          <li>1 month minimum</li>
-        </ul>
-        <a href="index.html#contact" class="tier-cta">Get started</a>
-      </div>
-
-      <div class="tier-card">
-        <div class="tier-name">Elite</div>
-        <div class="tier-price">$105 <span>/ week</span></div>
-        <p class="tier-desc">Full app access including Run Log — built for field sport athletes, runners, and anyone needing running prescription alongside their strength work.</p>
-        <ul class="tier-features">
-          <li>Everything in Performance</li>
-          <li>Full app access incl. Run Log</li>
-          <li>Fortnightly video call check-ins</li>
-          <li>Running prescription &amp; sport-specific support</li>
-          <li>Advanced competition &amp; peak performance support</li>
-          <li>1 month minimum</li>
-        </ul>
-        <a href="index.html#contact" class="tier-cta ghost">Get started</a>
-      </div>
-
     </div>
-    <p class="carousel-hint">Swipe to compare all plans</p>
   </section>
 
-  <!-- COMPARISON TABLE -->
+  <div class="section-rule"></div>
+
+  <!-- ── COMPARISON TABLE ── -->
   <section class="comparison">
-    <h2 class="section-heading" data-aos="fade-up">Compare <span>all plans</span></h2>
-    <p class="section-sub" data-aos="fade-up" data-aos-delay="80">Everything side by side so you can find the right fit.</p>
-    <div class="comp-wrap" data-aos="fade-up" data-aos-delay="120">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th><div class="tier-head"><div class="t-name">Program Only</div><div class="t-price">$99 <span>one-off</span></div><div class="t-commit">No commitment</div></div></th>
-            <th><div class="tier-head"><div class="t-name">Essentials</div><div class="t-price">$45 <span>/ week</span></div><div class="t-commit">1 month min</div></div></th>
-            <th><div class="tier-head featured-head"><div class="most-pop">Most popular</div><div class="t-name">Performance</div><div class="t-price">$75 <span>/ week</span></div><div class="t-commit">1 month min</div></div></th>
-            <th><div class="tier-head"><div class="t-name">Elite</div><div class="t-price">$105 <span>/ week</span></div><div class="t-commit">1 month min</div></div></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="row-label row-group">Programming</td>
-            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
-          </tr>
-          <tr>
-            <td class="row-label">Fully custom training program</td>
-            <td class="row-val"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Program updates</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Form feedback via video</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label row-group">App Access</td>
-            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
-          </tr>
-          <tr>
-            <td class="row-label">App access</td>
-            <td class="row-val"><span class="val-pill val-limited">Limited</span></td>
-            <td class="row-val"><span class="val-pill val-most">Most</span></td>
-            <td class="row-val featured-col"><span class="val-pill val-most">Most</span></td>
-            <td class="row-val"><span class="val-pill val-full">Full</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Recipe library &amp; nutrition tracker</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Run Log</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="cross">—</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label row-group">Nutrition</td>
-            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
-          </tr>
-          <tr>
-            <td class="row-label">Nutrition advice &amp; tracking</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label row-group">Coaching &amp; Support</td>
-            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
-          </tr>
-          <tr>
-            <td class="row-label">Direct messaging</td>
-            <td class="row-val"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Video call check-ins</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="check">✓</span><br/><span class="val-freq">Monthly</span></td>
-            <td class="row-val"><span class="check">✓</span><br/><span class="val-freq">Fortnightly</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Running prescription</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="cross">—</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label">Advanced performance support</td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val"><span class="cross">—</span></td>
-            <td class="row-val featured-col"><span class="cross">—</span></td>
-            <td class="row-val"><span class="check">✓</span></td>
-          </tr>
-          <tr>
-            <td class="row-label row-group">Commitment</td>
-            <td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td>
-          </tr>
-          <tr>
-            <td class="row-label">Minimum commitment</td>
-            <td class="row-val"><span class="val-freq">One-off</span></td>
-            <td class="row-val"><span class="val-freq">1 month</span></td>
-            <td class="row-val featured-col last-row"><span class="val-freq">1 month</span></td>
-            <td class="row-val last-row"><span class="val-freq">1 month</span></td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="comp-inner">
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">Compare all plans</h2>
+      <p class="section-sub reveal reveal-delay-1">Everything side by side so you can find the right fit.</p>
+      <div class="comp-wrap reveal reveal-delay-2">
+        <table class="comp-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th><div class="tier-head"><div class="t-name">Program Only</div><div class="t-price">$99 <span>one-off</span></div><div class="t-commit">No commitment</div></div></th>
+              <th><div class="tier-head"><div class="t-name">Essentials</div><div class="t-price">$45 <span>/ wk</span></div><div class="t-commit">1 month min</div></div></th>
+              <th><div class="tier-head featured-head"><div class="most-pop">Most popular</div><div class="t-name">Performance</div><div class="t-price">$75 <span>/ wk</span></div><div class="t-commit">1 month min</div></div></th>
+              <th><div class="tier-head"><div class="t-name">Elite</div><div class="t-price">$105 <span>/ wk</span></div><div class="t-commit">1 month min</div></div></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="row-label row-group">Programming</td><td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td></tr>
+            <tr>
+              <td class="row-label">Fully custom training program</td>
+              <td class="row-val"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Program updates</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Form feedback via video</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr><td class="row-label row-group">App Access</td><td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td></tr>
+            <tr>
+              <td class="row-label">App access</td>
+              <td class="row-val"><span class="val-pill val-limited">Limited</span></td>
+              <td class="row-val"><span class="val-pill val-most">Most</span></td>
+              <td class="row-val featured-col"><span class="val-pill val-most">Most</span></td>
+              <td class="row-val"><span class="val-pill val-full">Full</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Recipe library &amp; nutrition tracker</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Run Log</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="cross">—</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr><td class="row-label row-group">Nutrition</td><td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td></tr>
+            <tr>
+              <td class="row-label">Nutrition advice &amp; tracking</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr><td class="row-label row-group">Coaching &amp; Support</td><td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td></tr>
+            <tr>
+              <td class="row-label">Direct messaging</td>
+              <td class="row-val"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Video call check-ins</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="check">✓</span><span class="val-freq">Monthly</span></td>
+              <td class="row-val"><span class="check">✓</span><span class="val-freq">Fortnightly</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Running prescription</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="cross">—</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td class="row-label">Advanced performance support</td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val"><span class="cross">—</span></td>
+              <td class="row-val featured-col"><span class="cross">—</span></td>
+              <td class="row-val"><span class="check">✓</span></td>
+            </tr>
+            <tr><td class="row-label row-group">Commitment</td><td class="row-val"></td><td class="row-val"></td><td class="row-val featured-col"></td><td class="row-val"></td></tr>
+            <tr>
+              <td class="row-label">Minimum commitment</td>
+              <td class="row-val"><span class="val-freq">One-off</span></td>
+              <td class="row-val"><span class="val-freq">1 month</span></td>
+              <td class="row-val featured-col"><span class="val-freq">1 month</span></td>
+              <td class="row-val"><span class="val-freq">1 month</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-
   </section>
 
-  <!-- NUTRITION -->
+  <div class="section-rule"></div>
+
+  <!-- ── NUTRITION ── -->
   <section class="nutrition">
-    <div class="nutrition-grid">
-      <div>
-        <h2 class="section-heading" data-aos="fade-up">Nutrition <span>support</span></h2>
-        <p class="section-sub" data-aos="fade-up" data-aos-delay="80" style="margin-bottom:0;">Practical, evidence-based nutrition guidance built around your training — not generic advice.</p>
+    <div class="section-wrap">
+      <div class="nutrition-left reveal">
+        <div class="blue-rule"></div>
+        <h2 class="section-heading">Nutrition<br /><span style="color:var(--blue);">support</span></h2>
+        <p class="section-sub" style="margin-top:0.75rem;">Practical, evidence-based nutrition guidance built around your training — not generic advice.</p>
       </div>
-      <div class="nutrition-body" data-aos="fade-left" data-aos-delay="100">
-        <p>Nutrition is a core part of how you perform, recover, and change your body. All coaching plans include some level of nutrition support — tailored to your goals, your schedule, and what's realistic for you to actually follow.</p>
-        <p>Guidance is built around <strong>Australian Dietary Guidelines</strong> and delivered as educational frameworks — giving you the knowledge to make better decisions, not just a rigid meal plan to follow blindly.</p>
-        <div class="nutrition-features">
-          <div class="nutrition-feat">
+      <div class="nutrition-body">
+        <p class="reveal">Nutrition is a core part of how you perform, recover, and change your body. All coaching plans include some level of nutrition support — tailored to your goals, your schedule, and what's realistic for you to actually follow.</p>
+        <p class="reveal reveal-delay-1">Guidance is built around <strong>Australian Dietary Guidelines</strong> and delivered as educational frameworks — giving you the knowledge to make better decisions, not just a rigid meal plan to follow blindly.</p>
+        <div class="nutrition-feats">
+          <div class="nutrition-feat reveal reveal-delay-1">
             <div class="nutrition-feat-title">Sample meal guides</div>
             <div class="nutrition-feat-desc">Practical, flexible meal guides built around your calorie and protein targets — designed as educational templates, not strict prescriptions.</div>
           </div>
-          <div class="nutrition-feat">
+          <div class="nutrition-feat reveal reveal-delay-2">
             <div class="nutrition-feat-title">Calorie &amp; macro targets</div>
             <div class="nutrition-feat-desc">Goal-specific targets calculated for your body, training load, and timeline — whether that's fat loss, muscle building, or performance fuelling.</div>
           </div>
-          <div class="nutrition-feat">
+          <div class="nutrition-feat reveal reveal-delay-3">
             <div class="nutrition-feat-title">Nutrition education</div>
             <div class="nutrition-feat-desc">Understanding why the numbers are what they are — so you're making informed decisions, not just following a plan you don't understand.</div>
           </div>
-          <div class="nutrition-feat">
+          <div class="nutrition-feat reveal reveal-delay-4">
             <div class="nutrition-feat-title">Ongoing adjustments</div>
             <div class="nutrition-feat-desc">Nutrition guidance is reviewed and adjusted alongside your training program as your body adapts and your goals evolve.</div>
           </div>
         </div>
-        <div class="disclaimer-box">
+        <div class="disclaimer-box reveal">
           <p><strong>Important:</strong> Nutrition guidance provided through Performance Rebuilt is for educational purposes only, designed for generally healthy individuals, and does not replace advice from a registered dietitian or medical professional. If you have a diagnosed medical condition, eating disorder, or specific clinical dietary requirement, please consult a qualified healthcare professional before commencing any nutrition program.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <div class="section-rule"></div>
+
+  <!-- ── HOW IT WORKS ── -->
   <section class="how">
-    <h2 class="section-heading" data-aos="fade-up">How it <span>works</span></h2>
-    <div class="process-grid">
-      <div class="process-card" data-aos="fade-up" data-aos-delay="80"><div class="process-dot">1</div><div class="process-title">Apply &amp; connect</div><p class="process-desc">Fill in the enquiry form. We'll be in touch within 24 hours to chat about your goals and which tier suits you best.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="160"><div class="process-dot">2</div><div class="process-title">Intake &amp; assessment</div><p class="process-desc">We go deep on your training history, schedule, lifestyle, nutrition habits, and what success looks like for you.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="240"><div class="process-dot">3</div><div class="process-title">Program delivered</div><p class="process-desc">Your custom program is built and delivered through the app — ready to execute from week one.</p></div>
-      <div class="process-card" data-aos="fade-up" data-aos-delay="320"><div class="process-dot">4</div><div class="process-title">Check in &amp; evolve</div><p class="process-desc">Regular check-ins keep everything sharp. We adjust, progress, and push as you grow and your goals evolve.</p></div>
+    <div class="section-wrap">
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">How it works</h2>
+      <p class="section-sub reveal reveal-delay-1">From enquiry to executing your first session — here's the process.</p>
+      <div class="process-grid">
+        <div class="process-card reveal reveal-delay-1">
+          <div class="process-num">01</div>
+          <div class="process-title">Apply &amp; connect</div>
+          <p class="process-desc">Fill in the enquiry form. We'll be in touch within 24 hours to chat about your goals and which tier suits you best.</p>
+        </div>
+        <div class="process-card reveal reveal-delay-2">
+          <div class="process-num">02</div>
+          <div class="process-title">Intake &amp; assessment</div>
+          <p class="process-desc">We go deep on your training history, schedule, lifestyle, nutrition habits, and what success looks like for you.</p>
+        </div>
+        <div class="process-card reveal reveal-delay-3">
+          <div class="process-num">03</div>
+          <div class="process-title">Program delivered</div>
+          <p class="process-desc">Your custom program is built and delivered through the app — ready to execute from week one.</p>
+        </div>
+        <div class="process-card reveal reveal-delay-4">
+          <div class="process-num">04</div>
+          <div class="process-title">Check in &amp; evolve</div>
+          <p class="process-desc">Regular check-ins keep everything sharp. We adjust, progress, and push as you grow and your goals evolve.</p>
+        </div>
+      </div>
     </div>
   </section>
 
+  <div class="section-rule"></div>
+
+  <!-- ── CTA ── -->
   <section class="cta-section">
-    <h2 class="section-heading" data-aos="fade-up">Ready to stop<br /><span style="color:var(--blue);">going it alone?</span></h2>
-    <p data-aos="fade-up" data-aos-delay="100">Fill in a short enquiry form and we'll get back to you within 24 hours to talk goals and find the right tier for you.</p>
-    <a href="index.html#contact" class="btn-primary" data-aos="fade-up" data-aos-delay="180">Apply now →</a>
+    <div class="blue-rule reveal"></div>
+    <h2 class="section-heading reveal">Ready to stop<br /><span style="color:var(--blue);">going it alone?</span></h2>
+    <p class="reveal reveal-delay-1">Fill in a short enquiry form and we'll get back to you within 24 hours to talk goals and find the right tier for you.</p>
+    <a href="index.html#contact" class="btn-primary reveal reveal-delay-2">Apply now →</a>
   </section>
 
   <footer>
@@ -503,41 +632,48 @@
   </footer>
 
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    /* ── Lenis ── */
+    const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+    /* ── Reveal on scroll ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Trigger hero reveals on load */
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('revealed'), 150 + i * 100);
+      });
+    });
+
+    /* ── Mobile nav ── */
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
-      const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '✕' : '☰';
-      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      const open = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = open ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu'); });
-    });
+    document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu');
+    }));
 
-    // Carousel drag scroll
+    /* ── Carousel drag ── */
     const carousel = document.getElementById('tierCarousel');
     if (carousel) {
       let isDown = false, startX, scrollLeft;
-      carousel.addEventListener('mousedown', e => {
-        isDown = true; carousel.classList.add('dragging');
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-      });
+      carousel.addEventListener('mousedown', e => { isDown = true; carousel.classList.add('dragging'); startX = e.pageX - carousel.offsetLeft; scrollLeft = carousel.scrollLeft; });
       carousel.addEventListener('mouseleave', () => { isDown = false; carousel.classList.remove('dragging'); });
       carousel.addEventListener('mouseup', () => { isDown = false; carousel.classList.remove('dragging'); });
-      carousel.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        carousel.scrollLeft = scrollLeft - (x - startX) * 1.5;
-      });
+      carousel.addEventListener('mousemove', e => { if (!isDown) return; e.preventDefault(); carousel.scrollLeft = scrollLeft - (e.pageX - carousel.offsetLeft - startX) * 1.5; });
     }
   </script>
 </body>
