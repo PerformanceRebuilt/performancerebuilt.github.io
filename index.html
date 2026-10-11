@@ -179,7 +179,7 @@
     }
 
     /* ── SERVICES ── */
-    .services { padding: 7rem 0; background: var(--bg2); text-align: center; }
+    .services { padding: 7rem 0; background: var(--bg); text-align: center; }
     .services .section-wrap { padding-bottom: 0; }
     .services-header { margin-bottom: 3.5rem; }
     .carousel-outer { overflow: hidden; width: 100%; margin-top: 3rem; }
@@ -215,19 +215,20 @@
     .service-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.25rem; font-size: 0.82rem; font-weight: 600; color: var(--text-dim); transition: color 0.2s; }
     .service-card:hover .service-link { color: var(--text); }
     .service-card.featured-card .service-link { color: rgba(255,255,255,0.7); }
-    .services-hint { font-size: 0.75rem; color: var(--text-dim); margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem; justify-content: center; }
-    .services-hint::before { content: ''; display: block; width: 20px; height: 1px; background: var(--text-dim); }
 
     /* ── HOW IT WORKS ── */
-    .how { padding: 7rem 0; background: var(--bg); text-align: center; }
+    .how { padding: 7rem 0; background: var(--bg2); text-align: center; }
     .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3.5rem; }
     .how-card {
-      background: var(--surface); border: 1px solid var(--border);
+      background: var(--surface-hover); border: 1px solid var(--border-mid);
       border-radius: 16px; padding: 2rem 1.75rem; text-align: left;
-      transition: border-color 0.2s, transform 0.2s, background 0.2s;
+      transform: translateY(-4px);
+      transition: border-color 0.2s, transform 0.25s, background 0.2s, box-shadow 0.25s;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.28);
     }
-    .how-card:hover { border-color: var(--border-mid); transform: translateY(-3px); background: var(--surface-hover); }
-    .how-num { font-size: 2.5rem; font-weight: 800; color: rgba(255,255,255,0.06); letter-spacing: -0.04em; line-height: 1; margin-bottom: 1.25rem; }
+    .how-card:hover { border-color: rgba(26,107,255,0.35); transform: translateY(-8px); background: rgba(255,255,255,0.11); box-shadow: 0 16px 40px rgba(0,0,0,0.38); }
+    .how-num { font-size: 2.5rem; font-weight: 800; color: rgba(26,107,255,0.22); letter-spacing: -0.04em; line-height: 1; margin-bottom: 1.25rem; transition: color 0.2s; }
+    .how-card:hover .how-num { color: var(--blue); }
     .how-card h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
     .how-card p { font-size: 0.875rem; color: var(--text-mid); line-height: 1.7; font-weight: 400; }
 
@@ -409,100 +410,6 @@
 
   <div class="section-rule"></div>
 
-  <!-- ── SERVICES ── -->
-  <section class="services" id="services">
-    <div class="section-wrap services-header">
-      <div class="blue-rule reveal"></div>
-      <h2 class="section-heading reveal">Built around you.<br />Not a template.</h2>
-      <p class="section-sub reveal reveal-delay-1">Four ways to work together — from a one-off program to full elite coaching.</p>
-    </div>
-    <div class="carousel-outer">
-      <div class="services-carousel reveal reveal-delay-1" id="servicesCarousel">
-
-        <a href="online-coaching.html" class="service-card">
-          <div class="service-price">$99 <span>one-off</span></div>
-          <div class="service-title">Program Only</div>
-          <p class="service-desc">A fully custom training program with limited app access. No check-ins, no follow-ups — just expert structure built for you, ready to execute.</p>
-          <div>
-            <span class="service-tag">Limited app access</span>
-            <span class="service-tag">No commitment</span>
-          </div>
-          <div class="service-link">Learn more →</div>
-        </a>
-
-        <a href="online-coaching.html" class="service-card">
-          <div class="service-price">$45 <span>/ week</span></div>
-          <div class="service-title">Essentials</div>
-          <p class="service-desc">Expert programming with a full nutrition toolkit — recipe library, nutrition tracking, and most app features. For self-motivated athletes who want the resources to train and fuel properly.</p>
-          <div>
-            <span class="service-tag">Nutrition tracking</span>
-            <span class="service-tag">Recipe library</span>
-          </div>
-          <div class="service-link">Learn more →</div>
-        </a>
-
-        <a href="online-coaching.html" class="service-card featured-card">
-          <div class="service-badge">Most popular</div>
-          <div class="service-price">$75 <span>/ week</span></div>
-          <div class="service-title">Performance</div>
-          <p class="service-desc">The full coaching experience. Monthly check-ins, nutrition tracking, and a coach genuinely invested in your progress every step of the way.</p>
-          <div>
-            <span class="service-tag">Monthly check-ins</span>
-            <span class="service-tag">Nutrition tracking</span>
-          </div>
-          <div class="service-link">Learn more →</div>
-        </a>
-
-        <a href="online-coaching.html" class="service-card">
-          <div class="service-price">$105 <span>/ week</span></div>
-          <div class="service-title">Elite</div>
-          <p class="service-desc">Full access including Run Log. Built for field sport athletes, runners, and anyone needing running prescription alongside their strength work.</p>
-          <div>
-            <span class="service-tag">Full app incl. Run Log</span>
-            <span class="service-tag">Fortnightly calls</span>
-          </div>
-          <div class="service-link">Learn more →</div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <div class="section-rule"></div>
-
-  <!-- ── HOW IT WORKS ── -->
-  <section class="how" id="how">
-    <div class="section-wrap">
-      <div class="blue-rule reveal"></div>
-      <h2 class="section-heading reveal">How it works</h2>
-      <p class="section-sub reveal reveal-delay-1">From enquiry to executing your first session — here's the process.</p>
-      <div class="how-grid">
-        <div class="how-card reveal reveal-delay-1">
-          <div class="how-num">01</div>
-          <h4>Apply &amp; connect</h4>
-          <p>Fill in the form below. We'll get back to you within 24 hours to chat about your goals.</p>
-        </div>
-        <div class="how-card reveal reveal-delay-2">
-          <div class="how-num">02</div>
-          <h4>Intake &amp; assessment</h4>
-          <p>We learn everything about your training history, schedule, and what you want to achieve.</p>
-        </div>
-        <div class="how-card reveal reveal-delay-3">
-          <div class="how-num">03</div>
-          <h4>Program delivered</h4>
-          <p>Your custom plan is built and delivered — ready to execute from week one.</p>
-        </div>
-        <div class="how-card reveal reveal-delay-4">
-          <div class="how-num">04</div>
-          <h4>Adapt &amp; progress</h4>
-          <p>Ongoing check-ins, adjustments, and support as you grow and your goals evolve.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-rule"></div>
-
   <!-- ── ABOUT ── -->
   <section class="about-section" id="about">
     <div class="section-wrap">
@@ -623,6 +530,100 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <!-- ── SERVICES ── -->
+  <section class="services" id="services">
+    <div class="section-wrap services-header">
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">Built around you.<br />Not a template.</h2>
+      <p class="section-sub reveal reveal-delay-1">Four ways to work together — from a one-off program to full elite coaching.</p>
+    </div>
+    <div class="carousel-outer">
+      <div class="services-carousel reveal reveal-delay-1" id="servicesCarousel">
+
+        <a href="online-coaching.html" class="service-card">
+          <div class="service-price">$99 <span>one-off</span></div>
+          <div class="service-title">Program Only</div>
+          <p class="service-desc">A fully custom training program with limited app access. No check-ins, no follow-ups — just expert structure built for you, ready to execute.</p>
+          <div>
+            <span class="service-tag">Limited app access</span>
+            <span class="service-tag">No commitment</span>
+          </div>
+          <div class="service-link">Learn more →</div>
+        </a>
+
+        <a href="online-coaching.html" class="service-card">
+          <div class="service-price">$45 <span>/ week</span></div>
+          <div class="service-title">Essentials</div>
+          <p class="service-desc">Expert programming with a full nutrition toolkit — recipe library, nutrition tracking, and most app features. For self-motivated athletes who want the resources to train and fuel properly.</p>
+          <div>
+            <span class="service-tag">Nutrition tracking</span>
+            <span class="service-tag">Recipe library</span>
+          </div>
+          <div class="service-link">Learn more →</div>
+        </a>
+
+        <a href="online-coaching.html" class="service-card featured-card">
+          <div class="service-badge">Most popular</div>
+          <div class="service-price">$75 <span>/ week</span></div>
+          <div class="service-title">Performance</div>
+          <p class="service-desc">The full coaching experience. Monthly check-ins, nutrition tracking, and a coach genuinely invested in your progress every step of the way.</p>
+          <div>
+            <span class="service-tag">Monthly check-ins</span>
+            <span class="service-tag">Nutrition tracking</span>
+          </div>
+          <div class="service-link">Learn more →</div>
+        </a>
+
+        <a href="online-coaching.html" class="service-card">
+          <div class="service-price">$105 <span>/ week</span></div>
+          <div class="service-title">Elite</div>
+          <p class="service-desc">Full access including Run Log. Built for field sport athletes, runners, and anyone needing running prescription alongside their strength work.</p>
+          <div>
+            <span class="service-tag">Full app incl. Run Log</span>
+            <span class="service-tag">Fortnightly calls</span>
+          </div>
+          <div class="service-link">Learn more →</div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how" id="how">
+    <div class="section-wrap">
+      <div class="blue-rule reveal"></div>
+      <h2 class="section-heading reveal">How it works</h2>
+      <p class="section-sub reveal reveal-delay-1">From enquiry to executing your first session — here's the process.</p>
+      <div class="how-grid">
+        <div class="how-card reveal reveal-delay-1">
+          <div class="how-num">01</div>
+          <h4>Apply &amp; connect</h4>
+          <p>Fill in the form below. We'll get back to you within 24 hours to chat about your goals.</p>
+        </div>
+        <div class="how-card reveal reveal-delay-2">
+          <div class="how-num">02</div>
+          <h4>Intake &amp; assessment</h4>
+          <p>We learn everything about your training history, schedule, and what you want to achieve.</p>
+        </div>
+        <div class="how-card reveal reveal-delay-3">
+          <div class="how-num">03</div>
+          <h4>Program delivered</h4>
+          <p>Your custom plan is built and delivered — ready to execute from week one.</p>
+        </div>
+        <div class="how-card reveal reveal-delay-4">
+          <div class="how-num">04</div>
+          <h4>Adapt &amp; progress</h4>
+          <p>Ongoing check-ins, adjustments, and support as you grow and your goals evolve.</p>
+        </div>
+      </div>
     </div>
   </section>
 
