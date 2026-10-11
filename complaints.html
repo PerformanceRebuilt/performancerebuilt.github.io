@@ -3,129 +3,278 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Complaints Procedure — Performance Rebuilt</title>
+  <title>Complaints — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(13,18,32,0.5); --dim: rgba(13,18,32,0.28); --blue: #1a6bff; --glass-bg: rgba(13,18,32,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
-    html { scroll-behavior: auto; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(0,0,0,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
-    nav ul a { color: #ffffff !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.4rem 1rem; border-radius: 2rem; transition: color 0.2s; }
-    nav ul a:hover { background: rgba(255,255,255,0.22); color: #ffffff !important; }
-    .nav-cta { background: var(--blue) !important; color: var(--ink) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
-    .nav-cta:hover { opacity: 0.88; }
-    .menu-toggle { display: none; background: none; border: none; color: #ffffff; font-size: 1.6rem; cursor: pointer; z-index: 201; }
-    @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(0,0,0,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.07); }
-      nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
+
+    :root {
+      --bg:          #0a0c12;
+      --bg2:         #0f1118;
+      --bg3:         #13161f;
+      --surface:     rgba(255,255,255,0.05);
+      --surface-hover: rgba(255,255,255,0.09);
+      --border:      rgba(255,255,255,0.09);
+      --border-mid:  rgba(255,255,255,0.14);
+      --text:        #f0ede8;
+      --text-mid:    rgba(240,237,232,0.6);
+      --text-dim:    rgba(240,237,232,0.35);
+      --blue:        #1a6bff;
+      --blue-dim:    rgba(26,107,255,0.18);
+      --blue-border: rgba(26,107,255,0.3);
+      --sans: 'Open Sans', system-ui, sans-serif;
     }
-    .page-hero { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.1); background: #2a2f3d; }
-    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; color: #ffffff; }
-    .page-hero h1 span { color: var(--blue); }
-    .effective-date { font-size: 0.82rem; color: rgba(255,255,255,0.4); letter-spacing: 0.04em; font-weight: 400; }
-    .notice-banner { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.2); border-radius: 10px; padding: 1.25rem 1.75rem; margin: 0 3rem; font-size: 0.875rem; color: var(--grey); line-height: 1.7; }
-    .notice-banner strong { color: var(--ink); font-weight: 600; }
-    .legal-body { max-width: 800px; margin: 0 auto; padding: 5rem 3rem 6rem; }
-    .legal-section { margin-bottom: 3.5rem; }
-    .legal-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; letter-spacing: -0.01em; }
-    .legal-section h3 { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.8); margin: 1.25rem 0 0.5rem; }
-    .legal-section p { font-size: 0.95rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
-    .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
-    .legal-section ul li { font-size: 0.95rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .section-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; display: block; }
-    .contact-block { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem;  }
-    .contact-block p { margin: 0 0 0.4rem; font-size: 0.9rem; } .contact-block p:last-child { margin: 0; }
-    .contact-block a { color: var(--blue); text-decoration: none; }
-    .escalation-box { background: rgba(26,107,255,0.06); border: 1px solid rgba(26,107,255,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; }
-    .escalation-box p { font-size: 0.9rem; color: var(--grey); line-height: 1.75; font-weight: 300; margin: 0; }
-    .escalation-box p + p { margin-top: 0.6rem; }
-    .escalation-box a { color: var(--blue); text-decoration: none; }
-    .ack-box { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 2rem; margin-top: 1rem;  }
-    .ack-box ul { margin: 0.75rem 0 0 1.25rem; }
-    .ack-box ul li { font-size: 0.9rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(13,18,32,0.06); border: 1px solid rgba(13,18,32,0.05); border-radius: 14px; overflow: hidden; margin-top: 1.5rem; }
-    .step-card { background: rgba(8,12,20,0.6);  padding: 1.75rem; }
-    .step-num { font-size: 1.8rem; font-weight: 800; color: rgba(13,18,32,0.35); line-height: 1; margin-bottom: 0.75rem; letter-spacing: -0.02em; }
-    .step-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; }
-    .step-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.65; font-weight: 300; }
-    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-    .sig-block { display: flex; flex-direction: column; gap: 0.5rem; }
-    .sig-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); font-weight: 600; }
-    .sig-line { height: 1px; background: rgba(13,18,32,0.12); margin-top: 2.5rem; }
-    .sig-name { font-size: 0.875rem; color: var(--grey); margin-top: 0.5rem; }
-    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--grey-light); flex-wrap: wrap; gap: 0.75rem; background: var(--cream); }
-    footer a { color: var(--grey-light); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--ink); }
+
+    html { scroll-behavior: auto; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1);
+      will-change: opacity, transform;
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 3.5rem; height: 80px;
+      background: rgba(10,12,18,0.96);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo-img { height: 64px; width: auto; display: block; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
+    nav ul a { color: var(--text) !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; background: var(--surface); padding: 0.4rem 1rem; border-radius: 2rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
+    nav ul a:hover { background: var(--surface-hover); border-color: var(--border-mid); }
+    .nav-cta { background: var(--blue) !important; color: #fff !important; border-color: var(--blue) !important; font-weight: 700 !important; }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; height: 72px; }
+      .nav-logo-img { height: 42px; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(10,12,18,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; border-top: 1px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; border-bottom: 1px solid var(--border); }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; border-radius: 0; border: none; background: transparent; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; border-radius: 2rem; border: none !important; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 10rem 2rem 5rem; text-align: center;
+      background: var(--bg); position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0; z-index: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%);
+    }
+    .hero-glow {
+      position: absolute; z-index: 1; pointer-events: none;
+      width: 120vw; height: 100vh; top: 50%; left: 50%;
+      transform: translate(-50%, -60%);
+      background: radial-gradient(ellipse at center, rgba(26,107,255,0.12) 0%, rgba(26,107,255,0.04) 40%, transparent 65%);
+      animation: glowPulse 6s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.75; transform: translate(-50%, -60%) scale(1); }
+      50%       { opacity: 1;   transform: translate(-50%, -60%) scale(1.05); }
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 120px; height: 1px; z-index: 3;
+      background: linear-gradient(to right, transparent, rgba(26,107,255,0.55), transparent);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; }
+    .hero h1 em { font-style: italic; color: var(--blue); }
+    .hero-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.8; max-width: 520px; margin: 0 auto; font-weight: 300; }
+    .effective-date { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1.5rem; font-weight: 400; }
+
+    /* ── SHARED ── */
+    .section-rule { width: 100%; height: 1px; background: var(--border); }
+    .blue-rule { width: 32px; height: 3px; background: var(--blue); border-radius: 2px; margin: 0 auto 1.75rem; }
+    .section-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #6aaeff; display: block; margin-bottom: 0.6rem; }
+
+    /* ── BODY ── */
+    .page-body { max-width: 780px; margin: 0 auto; padding: 6rem 2rem 7rem; }
+    .legal-section { margin-bottom: 4rem; }
+    .legal-section h2 { font-size: 1.65rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1rem; }
+    .legal-section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.85; font-weight: 300; margin-bottom: 0.85rem; }
+    .legal-section p strong { color: var(--text); font-weight: 600; }
+    .legal-section p:last-child { margin-bottom: 0; }
+
+    /* Process steps */
+    .steps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 1.75rem; }
+    .step-card { background: var(--bg2); padding: 1.75rem; }
+    .step-num { font-size: 2rem; font-weight: 800; color: rgba(26,107,255,0.22); line-height: 1; margin-bottom: 0.75rem; letter-spacing: -0.03em; transition: color 0.2s; }
+    .step-card:hover .step-num { color: var(--blue); }
+    .step-card:hover { background: var(--bg3); }
+    .step-card { transition: background 0.2s; }
+    .step-title { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .step-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; }
+    .step-desc a { color: var(--blue); text-decoration: none; }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem 2rem; margin-top: 1.25rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .contact-card:hover { border-color: var(--border-mid); background: var(--surface-hover); }
+    .contact-card p { font-size: 0.9rem; color: var(--text-mid); margin: 0 0 0.35rem; font-weight: 300; line-height: 1.6; }
+    .contact-card p:last-child { margin: 0; }
+    .contact-card a { color: var(--blue); text-decoration: none; }
+
+    /* Escalation */
+    .escalation-card {
+      background: var(--blue-dim); border: 1px solid var(--blue-border);
+      border-radius: 14px; padding: 1.5rem 2rem; margin-top: 1.25rem;
+    }
+    .escalation-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin: 0 0 0.5rem; }
+    .escalation-card p:last-child { margin: 0; }
+    .escalation-card a { color: #6aaeff; text-decoration: none; }
+    .escalation-card strong { color: var(--text); font-weight: 600; }
+
+    /* Sincerity block */
+    .sincerity-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.25rem 2.5rem; margin-bottom: 4rem;
+      border-left: 3px solid var(--blue);
+    }
+    .sincerity-block p { font-size: 1rem; color: var(--text-mid); line-height: 1.9; font-weight: 300; margin-bottom: 0.85rem; }
+    .sincerity-block p:last-child { margin: 0; }
+    .sincerity-block p strong { color: var(--text); font-weight: 600; }
+    .sincerity-block .sig { margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 3.5rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: var(--text-dim); flex-wrap: wrap; gap: 0.75rem;
+      background: var(--bg);
+    }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    @media (max-width: 900px) { .notice-banner { margin: 0 1.5rem; } .steps-grid { grid-template-columns: 1fr; } .sig-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) { .page-hero { padding: 8rem 1.5rem 3rem; } .legal-body { padding: 3rem 1.5rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
+
+    @media (max-width: 700px) {
+      .steps-grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+      .sincerity-block { padding: 1.75rem; }
+    }
   </style>
 </head>
 <body>
+
   <nav>
     <a href="index.html" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
-      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#about">About</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#how">How it works</a></li>
       <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
     </ul>
   </nav>
-  <div class="page-hero">
-    <h1 data-aos="fade-up">Complaints <span>Procedure</span></h1>
-    <p class="effective-date">Effective Date: 1 July 2026</p>
-  </div>
-  <div class="legal-body">
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-tag">Our Commitment</span>
-      <h2>We take complaints seriously.</h2>
-            <p>Performance Rebuilt Aus is committed to providing a high standard of service. If something hasn't met your expectations, we want to hear about it and work to put it right.</p>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <h1 class="reveal">Something<br /><em>went wrong.</em></h1>
+      <p class="hero-sub reveal reveal-delay-1">We want to know about it — and we want to make it right. No runaround, no corporate language. Just a real conversation and a genuine effort to resolve it.</p>
+      <p class="effective-date reveal reveal-delay-2">Effective 1 July 2026</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+  </section>
+
+  <div class="section-rule"></div>
+
+  <div class="page-body">
+
+    <!-- Sincerity statement -->
+    <div class="sincerity-block reveal">
+      <p><strong>We genuinely care about the experience every client has with Performance Rebuilt.</strong> When something doesn't land the way it should — whether it's the coaching, the communication, or just a feeling that you weren't supported — that matters to us.</p>
+      <p>This page exists because we believe clients deserve a clear, fair way to raise concerns. And we believe that if we've fallen short, it's on us to listen, take it seriously, and do something about it. Not bury it in process.</p>
+      <p class="sig">— Performance Rebuilt</p>
+    </div>
+
+    <!-- Step by step -->
+    <div class="legal-section reveal">
       <span class="section-tag">The Process</span>
-      <h2>Step by step.</h2>
-            <div class="steps-grid">
-        <div class="step-card"><div class="step-num">01</div><div class="step-title">Submit your complaint</div><p class="step-desc">Contact us by email at <a href="mailto:admin@performancerebuilt.com.au" style="color:var(--blue);">admin@performancerebuilt.com.au</a> or through the contact form on this website. Please include your name, a description of the issue, and any relevant dates.</p></div>
-        <div class="step-card"><div class="step-num">02</div><div class="step-title">Acknowledgement</div><p class="step-desc">We will acknowledge receipt of your complaint within 7 business days of receiving it.</p></div>
-        <div class="step-card"><div class="step-num">03</div><div class="step-title">Investigation</div><p class="step-desc">We will review the circumstances of your complaint thoroughly and fairly, and may contact you for additional information.</p></div>
-        <div class="step-card"><div class="step-num">04</div><div class="step-title">Resolution</div><p class="step-desc">We will work to resolve your complaint promptly and keep you informed throughout. Our goal is a fair outcome as quickly as possible.</p></div>
+      <h2>How it works.</h2>
+      <p>If something's gone wrong, here's what happens from the moment you get in touch.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-title">Reach out</div>
+          <p class="step-desc">Email us at <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a> or use the contact form on this site. Tell us what happened, when, and how it made you feel. The more context, the better we can help.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-title">We acknowledge</div>
+          <p class="step-desc">You'll hear back from us within 7 business days confirming we've received your complaint and that we're looking into it. No automated replies — a real response from a real person.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-title">We review it fairly</div>
+          <p class="step-desc">We take the time to understand what happened from your side. We may reach out with a question or two. We won't dismiss anything without taking a proper look.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-title">We work toward resolution</div>
+          <p class="step-desc">Our goal is a fair outcome, communicated clearly. We'll let you know where things are at throughout — and if we've got it wrong, we'll say so.</p>
+        </div>
       </div>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <!-- Contact -->
+    <div class="legal-section reveal">
       <span class="section-tag">Contact</span>
       <h2>Get in touch.</h2>
-            <p>You can submit a complaint through any of the following:</p>
-      <div class="contact-block">
+      <p>You can reach us directly — we'd prefer you come straight to us first before going anywhere else.</p>
+      <div class="contact-card">
         <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</p>
         <p>Email: <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a></p>
         <p>Western Australia, Australia</p>
       </div>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <!-- Escalation -->
+    <div class="legal-section reveal">
       <span class="section-tag">External Escalation</span>
-      <h2>If you're not satisfied.</h2>
-            <p>If you are not satisfied with the outcome of your complaint after engaging with us, you have the right to escalate to:</p>
-      <div class="escalation-box">
-        <p><strong style="color:#fff;">Consumer Protection WA</strong></p>
+      <h2>If we haven't resolved it.</h2>
+      <p>If you've come to us and still don't feel the outcome was fair, you have every right to take it further. We'd always encourage a direct conversation first — but we respect that external options exist and that sometimes they're necessary.</p>
+      <div class="escalation-card">
+        <p><strong>Consumer Protection WA</strong></p>
         <p>Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a><br />Phone: 1300 304 054</p>
       </div>
     </div>
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-tag">Australian Consumer Law</span>
-      <h2>Your rights are protected.</h2>
-            <p>Nothing in this complaints procedure limits your rights under the Australian Consumer Law. You are entitled to remedies including repair, replacement, or refund where a service fails to meet consumer guarantees.</p>
+
+    <!-- ACL -->
+    <div class="legal-section reveal">
+      <span class="section-tag">Your Rights</span>
+      <h2>Australian Consumer Law applies.</h2>
+      <p>Nothing in this procedure limits your rights under the Australian Consumer Law. You're entitled to remedies — repair, replacement, or refund — where a service fails to meet consumer guarantees. We acknowledge that, and we take it seriously.</p>
     </div>
+
   </div>
+
   <footer>
     <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
     <div class="footer-legal">
@@ -136,24 +285,37 @@
     </div>
     <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a>
   </footer>
+
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+        setTimeout(() => el.classList.add('revealed'), 150 + i * 100);
+      });
+    });
+
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
-      const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '\u2715' : '\u2630';
-      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      const open = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = open ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '\u2630'; menuToggle.setAttribute('aria-label', 'Open menu'); });
-    });
+    document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu');
+    }));
   </script>
 </body>
 </html>
