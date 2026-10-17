@@ -6,7 +6,7 @@
   <title>Complaints — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,700;1,6..96,800;1,6..96,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,11 +24,14 @@
       --blue:        #1a6bff;
       --blue-dim:    rgba(26,107,255,0.18);
       --blue-border: rgba(26,107,255,0.3);
-      --sans: 'Open Sans', system-ui, sans-serif;
+      --sans:  'Inter', system-ui, sans-serif;
+      --serif: 'Bodoni Moda', Georgia, serif;
     }
 
     html { scroll-behavior: auto; overflow-x: hidden; }
     body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+    h1, h2, h3, .section-heading { font-family: var(--serif); }
 
     /* ── REVEAL ── */
     .reveal {
