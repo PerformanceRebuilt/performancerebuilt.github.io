@@ -6,7 +6,7 @@
   <title>Complaints — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -55,6 +55,13 @@
       border-bottom: 1px solid var(--border);
     }
     .nav-logo-img { height: 56px; width: 56px; display: block; object-fit: contain; }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-wordmark {
+      font-family: 'Montserrat', system-ui, sans-serif;
+      font-weight: 500; font-size: 0.78rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text); line-height: 1;
+    }
     nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
     nav ul a { color: var(--text) !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; letter-spacing: 0.01em; background: var(--surface); padding: 0.4rem 1rem; border-radius: 2rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
     nav ul a:hover { background: var(--surface-hover); border-color: var(--border-mid); }
@@ -185,7 +192,10 @@
 <body>
 
   <nav>
-    <a href="index.html" class="nav-logo"><img src="PR_Logo_new.jpg" alt="Performance Rebuilt" class="nav-logo-img" /></a>
+    <a href="index.html" class="nav-logo">
+      <img src="PR_Logo_new.jpg" alt="Performance Rebuilt" class="nav-logo-img" />
+      <span class="nav-wordmark">Performance Rebuilt</span>
+    </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
       <li><a href="index.html#about">About</a></li>
