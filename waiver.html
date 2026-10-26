@@ -1,212 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liability Waiver — Performance Rebuilt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Agreement — Performance Rebuilt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root { --bg: #080c14; --bg2: #0d1220; --white: #ffffff; --off: rgba(13,18,32,0.5); --dim: rgba(13,18,32,0.28); --blue: #1a6bff; --glass-bg: rgba(13,18,32,0.06); --glass-border: rgba(255,255,255,0.10); --sans: 'Open Sans', system-ui, sans-serif; }
-    html { scroll-behavior: auto; }
-    body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3rem; height: 85px; background: rgba(0,0,0,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .nav-logo-img { height: 80px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
-    nav ul a { color: #ffffff !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; background: rgba(255,255,255,0.12); padding: 0.4rem 1rem; border-radius: 2rem; transition: color 0.2s; }
-    nav ul a:hover { background: rgba(255,255,255,0.22); color: #ffffff !important; }
-    .nav-cta { background: var(--blue) !important; color: var(--ink) !important; padding: 0.55rem 1.4rem; border-radius: 2rem; font-weight: 600 !important; font-size: 0.85rem !important; }
-    .menu-toggle { display: none; background: none; border: none; color: #ffffff; font-size: 1.6rem; cursor: pointer; z-index: 201; }
-    @media (max-width: 900px) {
-      nav { padding: 0 1.5rem; } .nav-logo-img { height: 42px; } .menu-toggle { display: block; }
-      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(0,0,0,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; border-top: 1px solid rgba(255,255,255,0.07); }
-      nav ul.active { max-height: 500px; } nav ul li { width: 100%; }
-      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; }
-      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; }
+    :root {
+      --bg: #F3EFE5; --bg2: #EDE9DE; --bg3: #E6E1D5;
+      --surface: rgba(57,57,56,0.06); --surface-hover: rgba(57,57,56,0.10);
+      --border: rgba(57,57,56,0.12); --border-mid: rgba(57,57,56,0.20);
+      --text: #393938; --text-mid: rgba(57,57,56,0.60); --text-dim: rgba(57,57,56,0.38);
+      --blue: #1A56FD; --blue-dim: rgba(26,86,253,0.10); --blue-border: rgba(26,86,253,0.25);
+      --sans: 'Inter', system-ui, sans-serif; --serif: 'Playfair Display', Georgia, serif;
     }
-    .page-hero { padding: 10rem 3rem 4rem; border-bottom: 1px solid rgba(255,255,255,0.1); background: #2a2f3d; }
-    .page-hero h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.75rem; color: #ffffff; }
-    .page-hero h1 span { color: var(--blue); }
-    .effective-date { font-size: 0.82rem; color: rgba(255,255,255,0.4); font-weight: 400; }
-    .notice-banner { background: rgba(26,107,255,0.08); border: 1px solid rgba(26,107,255,0.2); border-radius: 10px; padding: 1.25rem 1.75rem; margin: 1.5rem 3rem 0; font-size: 0.875rem; color: var(--grey); line-height: 1.7; }
-    .notice-banner strong { color: var(--ink); font-weight: 600; }
-    .legal-body { max-width: 800px; margin: 0 auto; padding: 5rem 3rem 6rem; }
+    html { scroll-behavior: auto; overflow-x: hidden; }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 3.5rem; height: 80px; background: rgba(243,239,229,0.96); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+    .nav-logo-img { height: 56px; width: 56px; display: block; object-fit: contain; border-radius: 4px; }
+    .nav-wordmark { font-family: 'Montserrat', system-ui, sans-serif; font-weight: 500; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text); line-height: 1; }
+    nav ul { list-style: none; display: flex; align-items: center; gap: 0.75rem; }
+    nav ul a { color: var(--text) !important; text-decoration: none; font-size: 0.875rem; font-weight: 600; background: var(--surface); padding: 0.4rem 1rem; border-radius: 2rem; border: 1px solid var(--border); transition: background 0.2s, border-color 0.2s; }
+    nav ul a:hover { background: var(--surface-hover); border-color: var(--border-mid); }
+    .nav-cta { background: var(--blue) !important; color: #fff !important; border-color: var(--blue) !important; font-weight: 700 !important; }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
+    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.6rem; cursor: pointer; }
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; height: 72px; }
+      .nav-logo-img { height: 42px; width: 42px; }
+      .nav-wordmark { display: none; }
+      .menu-toggle { display: block; }
+      nav ul { position: fixed; top: 72px; left: 0; right: 0; background: rgba(243,239,229,0.99); backdrop-filter: blur(20px); flex-direction: column; align-items: stretch; gap: 0; max-height: 0; overflow: hidden; transition: max-height 0.35s ease; border-top: 1px solid var(--border); }
+      nav ul.active { max-height: 500px; }
+      nav ul li { width: 100%; border-bottom: 1px solid var(--border); }
+      nav ul a { display: block; padding: 1rem 1.5rem; font-size: 1rem; border-radius: 0; border: none; background: transparent; }
+      .nav-cta { display: block; margin: 0.75rem 1.25rem 1rem; text-align: center; padding: 0.85rem !important; border-radius: 2rem; border: none !important; }
+    }
+    .hero { padding: 10rem 2rem 5rem; text-align: center; background: var(--bg); position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background-image: radial-gradient(circle, rgba(57,57,56,0.12) 1px, transparent 1px); background-size: 28px 28px; mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 75%); }
+    .hero-glow { position: absolute; z-index: 1; pointer-events: none; width: 120vw; height: 100vh; top: 50%; left: 50%; transform: translate(-50%, -60%); background: radial-gradient(ellipse at center, rgba(26,86,253,0.10) 0%, rgba(26,86,253,0.03) 40%, transparent 65%); animation: glowPulse 6s ease-in-out infinite; }
+    @keyframes glowPulse { 0%,100% { opacity: 0.75; transform: translate(-50%,-60%) scale(1); } 50% { opacity: 1; transform: translate(-50%,-60%) scale(1.05); } }
+    .hero::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 120px; height: 1px; z-index: 3; background: linear-gradient(to right, transparent, rgba(26,86,253,0.45), transparent); }
+    .hero-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem, 5.5vw, 4.2rem); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 1.25rem; color: var(--text); }
+    .hero h1 em { font-style: italic; color: var(--blue); }
+    .hero-sub { font-size: 1.05rem; color: var(--text-mid); line-height: 1.8; max-width: 520px; margin: 0 auto; font-weight: 300; }
+    .effective-date { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 1.5rem; font-weight: 400; }
+    .section-rule { width: 100%; height: 1px; background: var(--border); }
+    .page-body { max-width: 780px; margin: 0 auto; padding: 6rem 2rem 7rem; }
     .legal-section { margin-bottom: 3.5rem; }
-    .legal-section h2 { font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; }
-    .legal-section h3 { font-size: 1.05rem; font-weight: 600; color: rgba(255,255,255,0.8); margin: 1.25rem 0 0.5rem; }
-    .legal-section p { font-size: 0.95rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.75rem; }
-    .legal-section ul { margin: 0.5rem 0 0.75rem 1.25rem; }
-    .legal-section ul li { font-size: 0.95rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .section-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; display: block; }
-    .contact-block { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem;  }
-    .contact-block p { margin: 0 0 0.4rem; font-size: 0.9rem; } .contact-block p:last-child { margin: 0; }
-    .contact-block a { color: var(--blue); text-decoration: none; }
-    .escalation-box { background: rgba(26,107,255,0.06); border: 1px solid rgba(26,107,255,0.2); border-radius: 12px; padding: 1.5rem 2rem; margin-top: 1rem; }
-    .escalation-box p { font-size: 0.9rem; color: var(--grey); line-height: 1.75; font-weight: 300; margin: 0; }
-    .escalation-box p + p { margin-top: 0.5rem; }
-    .escalation-box a { color: var(--blue); text-decoration: none; }
-    .ack-box { background: var(--white); border: 1px solid rgba(13,18,32,0.08); border-radius: 12px; padding: 2rem; margin-top: 1rem;  }
-    .ack-box p { font-size: 0.9rem; color: var(--grey); margin-bottom: 0.75rem; }
-    .ack-box ul { margin: 0.5rem 0 0 1.25rem; }
-    .ack-box ul li { font-size: 0.9rem; color: var(--grey); line-height: 1.8; font-weight: 300; margin-bottom: 0.25rem; }
-    .sig-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
-    .sig-block { display: flex; flex-direction: column; gap: 0.5rem; }
-    .sig-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey-light); font-weight: 600; }
-    .sig-line { height: 1px; background: rgba(13,18,32,0.12); margin-top: 2.5rem; }
-    .sig-name { font-size: 0.875rem; color: var(--grey); margin-top: 0.5rem; }
-    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(13,18,32,0.06); border: 1px solid rgba(13,18,32,0.05); border-radius: 14px; overflow: hidden; margin: 1.25rem 0; }
-    .info-cell { background: rgba(8,12,20,0.6);  padding: 1.25rem 1.5rem; }
-    .info-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; font-weight: 600; }
-    .info-value { font-size: 1rem; color: var(--ink); font-weight: 700; }
-    .info-detail { font-size: 0.8rem; color: var(--grey-light); margin-top: 0.3rem; font-weight: 300; }
-    footer { padding: 2rem 3rem; border-top: 1px solid rgba(255,255,255,0.07); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--grey-light); flex-wrap: wrap; gap: 0.75rem; background: var(--cream); }
-    footer a { color: var(--grey-light); text-decoration: none; transition: color 0.2s; } footer a:hover { color: var(--ink); }
+    .section-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); display: block; margin-bottom: 0.6rem; }
+    .legal-section h2 { font-family: var(--serif); font-size: 1.65rem; font-weight: 800; color: var(--text); letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 1rem; }
+    .legal-section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.85; font-weight: 300; margin-bottom: 0.85rem; }
+    .legal-section p strong { color: var(--text); font-weight: 600; }
+    .legal-section p:last-child { margin-bottom: 0; }
+    .legal-section ul { margin: 0.5rem 0 0.85rem 0; list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+    .legal-section ul li { font-size: 0.95rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; display: flex; align-items: flex-start; gap: 0.75rem; }
+    .legal-section ul li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 7px; }
+    .legal-section a { color: var(--blue); text-decoration: none; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin: 1.25rem 0; }
+    .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+    .info-card .info-label { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.85rem; display: block; }
+    .info-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; font-weight: 300; margin: 0 0 0.2rem; }
+    .info-card strong { color: var(--text); font-weight: 600; display: block; font-size: 0.95rem; margin-bottom: 0.35rem; }
+    .payment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.25rem 0; }
+    .payment-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; text-align: center; }
+    .payment-card .tier { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; display: block; }
+    .payment-card .price { font-family: var(--serif); font-size: 1.4rem; font-weight: 800; color: var(--text); line-height: 1.1; margin-bottom: 0.2rem; }
+    .payment-card .freq { font-size: 0.75rem; color: var(--text-dim); font-weight: 300; }
+    .contact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem 2rem; margin-top: 1.25rem; transition: border-color 0.2s, background 0.2s; }
+    .contact-card:hover { border-color: var(--border-mid); background: var(--surface-hover); }
+    .contact-card p { font-size: 0.9rem; color: var(--text-mid); margin: 0 0 0.35rem; font-weight: 300; line-height: 1.6; }
+    .contact-card p:last-child { margin: 0; }
+    .contact-card a { color: var(--blue); text-decoration: none; }
+    .escalation-card { background: var(--blue-dim); border: 1px solid var(--blue-border); border-radius: 14px; padding: 1.5rem 2rem; margin-top: 1.25rem; }
+    .escalation-card p { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin: 0 0 0.5rem; }
+    .escalation-card p:last-child { margin: 0; }
+    .escalation-card a { color: var(--blue); text-decoration: none; }
+    .escalation-card strong { color: var(--text); font-weight: 600; }
+    .sign-section { margin-top: 5rem; padding-top: 4rem; border-top: 1px solid var(--border); }
+    .sign-section h2 { font-family: var(--serif); font-size: 1.75rem; font-weight: 800; color: var(--text); letter-spacing: -0.025em; margin-bottom: 0.75rem; }
+    .sign-section p { font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; margin-bottom: 1.5rem; }
+    .sign-box { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem 2.25rem; }
+    .sign-box .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .sign-box .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .sign-box label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-mid); }
+    .sign-box input[type="text"],
+    .sign-box input[type="email"] { width: 100%; padding: 0.7rem 0.9rem; background: var(--bg); border: 1px solid var(--border-mid); border-radius: 8px; font-family: var(--sans); font-size: 0.95rem; color: var(--text); outline: none; transition: border-color 0.2s; }
+    .sign-box input:focus { border-color: var(--blue); }
+    .sign-box .checkbox-row { display: flex; align-items: flex-start; gap: 0.85rem; margin: 1.25rem 0; }
+    .sign-box input[type="checkbox"] { margin-top: 3px; accent-color: var(--blue); width: 16px; height: 16px; flex-shrink: 0; cursor: pointer; }
+    .sign-box .checkbox-label { font-size: 0.88rem; color: var(--text-mid); line-height: 1.65; font-weight: 300; }
+    .sign-box .checkbox-label a { color: var(--blue); text-decoration: none; }
+    .sign-btn { width: 100%; padding: 0.95rem 1.5rem; background: var(--blue); color: #fff; border: none; border-radius: 2rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; transition: opacity 0.2s, transform 0.2s; margin-top: 0.5rem; }
+    .sign-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .sign-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+    .success-box { display: none; text-align: center; padding: 2.5rem 2rem; }
+    .success-box .tick { width: 64px; height: 64px; border-radius: 50%; background: var(--blue-dim); border: 1px solid var(--blue-border); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
+    .success-box .tick svg { width: 28px; height: 28px; }
+    .success-box h3 { font-family: var(--serif); font-size: 1.4rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+    .success-box p { font-size: 0.9rem; color: var(--text-mid); font-weight: 300; line-height: 1.7; }
+    .success-box .timestamp { font-size: 0.78rem; color: var(--text-dim); margin-top: 0.75rem; }
+    @media (max-width: 600px) {
+      .page-body { padding: 4rem 1.5rem 5rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .payment-grid { grid-template-columns: 1fr 1fr; }
+      .sign-box .form-row { grid-template-columns: 1fr; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+    footer { padding: 2rem 3.5rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-dim); flex-wrap: wrap; gap: 0.75rem; background: var(--bg2); }
+    footer a { color: var(--text-dim); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--text); }
     .footer-legal { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    @media (max-width: 900px) { .notice-banner { margin: 1.5rem 1.5rem 0; } .sig-grid { grid-template-columns: 1fr; } .info-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) { .page-hero { padding: 8rem 1.5rem 3rem; } .legal-body { padding: 3rem 1.5rem 4rem; } footer { flex-direction: column; text-align: center; } .footer-legal { justify-content: center; } }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="index.html" class="nav-logo"><img src="PR_Logo.png" alt="Performance Rebuilt" class="nav-logo-img" /></a>
+    <a href="index.html" class="nav-logo">
+      <img src="PR_Logo_new.jpg" alt="Performance Rebuilt" class="nav-logo-img" />
+      <span class="nav-wordmark">Performance Rebuilt</span>
+    </a>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
     <ul id="mobileMenu">
-      <li><a href="about.html">About</a></li>
       <li><a href="index.html#services">Services</a></li>
       <li><a href="index.html#how">How it works</a></li>
       <li><a href="https://www.instagram.com/performance.rebuilt" target="_blank">Instagram</a></li>
       <li><a href="index.html#contact" class="nav-cta">Get started</a></li>
     </ul>
   </nav>
-  <div class="page-hero">
-    <h1 data-aos="fade-up">Liability <span>Waiver</span></h1>
-    <p class="effective-date">Effective Date: 1 July 2026</p>
-  </div>
-  <div class="notice-banner"><strong>Please read this waiver carefully.</strong> Access to the Performance Rebuilt platform is conditional on your explicit acceptance of this Waiver during account activation. If you do not agree, you must not use the Platform.</div>
-  <div class="legal-body">
-    <div class="legal-section" data-aos="fade-up">
+
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <h1 class="reveal">Service<br /><em>Agreement.</em></h1>
+      <p class="hero-sub reveal reveal-delay-1">This agreement sets out the terms of service between Performance Rebuilt Aus and you as a client.</p>
+      <p class="effective-date reveal reveal-delay-2">Agreement Version: v2 &nbsp;|&nbsp; 1 July 2026</p>
+    </div>
+  </section>
+
+  <div class="section-rule"></div>
+
+  <div class="page-body">
+
+    <div class="legal-section reveal">
+      <span class="section-tag">Parties</span>
+      <h2>The parties.</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <span class="info-label">Service Provider</span>
+          <strong>Performance Rebuilt Aus</strong>
+          <p>ABN: 88 571 749 763</p>
+          <p>admin@performancerebuilt.com.au</p>
+          <p>Western Australia, Australia</p>
+        </div>
+        <div class="info-card">
+          <span class="info-label">Client</span>
+          <strong>You</strong>
+          <p>As named and identified at the time of onboarding to the Performance Rebuilt platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-section reveal">
       <span class="section-tag">01</span>
-      <h2>Nature of Services</h2>
-      <p>Performance Rebuilt Aus provides online fitness coaching services, including personalised training programs, nutrition guidance, and progress tracking. Coaches are fitness professionals. Unless expressly stated, they are not registered medical practitioners, physiotherapists, dietitians, or allied health professionals. Nothing provided constitutes medical advice, diagnosis, or treatment.</p>
+      <h2>Scope of service.</h2>
+      <p>Performance Rebuilt Aus agrees to provide the client with access to its online coaching platform, which includes one or more of the following based on the selected service tier:</p>
+      <ul>
+        <li>Personalised training program design and delivery</li>
+        <li>Nutrition and macro coaching guidance</li>
+        <li>Body composition and progress tracking tools</li>
+        <li>Weekly or regular check-ins via the platform's messaging system</li>
+        <li>Goal setting and progress analytics</li>
+      </ul>
+      <p>Services are delivered exclusively through the Performance Rebuilt platform. No in-person training or clinical services are included.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">02</span>
-      <h2>Pre-Exercise Health Screening (PAR-Q)</h2>
-      <p>Before being granted access to any training program, you are required to complete the PAR-Q provided during onboarding. Program access will not be activated until it has been submitted.</p>
-      <p>By completing the PAR-Q, you confirm that:</p>
-      <ul>
-        <li>You have answered all questions truthfully and to the best of your knowledge</li>
-        <li>If the PAR-Q identifies health risk factors, you will obtain written medical clearance before commencing any program</li>
-        <li>You will notify your coach immediately if your health status changes after submitting the PAR-Q</li>
-        <li>You understand that providing false or incomplete information may result in your access being suspended</li>
-      </ul>
-      <p>If you have a diagnosed medical condition, Performance Rebuilt Aus can only provide services if you present a medical clearance stating your conditions are stable and you are fit to participate.</p>
+      <h2>Payment terms.</h2>
+      <p>Coaching is provided on a subscription basis. All fees are in Australian Dollars (AUD) and are billed in advance at the agreed frequency. Current service tiers are as follows:</p>
+      <div class="payment-grid">
+        <div class="payment-card">
+          <span class="tier">Essentials</span>
+          <div class="price">$40</div>
+          <div class="freq">per week</div>
+        </div>
+        <div class="payment-card">
+          <span class="tier">Performance</span>
+          <div class="price">$75</div>
+          <div class="freq">per week</div>
+        </div>
+        <div class="payment-card">
+          <span class="tier">Elite</span>
+          <div class="price">$105</div>
+          <div class="freq">per week</div>
+        </div>
+      </div>
+      <p>Late or failed payments may result in suspension of access until outstanding amounts are settled. No less than 14 days' written notice will be given before any fee change.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">03</span>
-      <h2>Acknowledgment of Risks</h2>
-      <p>You acknowledge that participation in physical exercise and changes to dietary intake carry inherent risks, including:</p>
-      <ul>
-        <li>Muscle strains, sprains, and other soft tissue injuries</li>
-        <li>Joint injuries including to the knee, shoulder, back, and hip</li>
-        <li>Cardiovascular events including elevated heart rate and in rare cases, cardiac events</li>
-        <li>Dizziness, nausea, or fainting during or after exercise</li>
-        <li>Aggravation of pre-existing medical conditions</li>
-        <li>Adverse reactions to changes in nutrition or caloric intake</li>
-        <li>Psychological impacts related to body image or performance pressure</li>
-      </ul>
+      <h2>Cancellation policy.</h2>
+      <p>You may cancel this agreement at any time by notifying your coach in writing via the platform or by emailing <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a>. Cancellation will take effect at the end of your current billing period. No partial refunds are provided for unused days within a paid billing period, except where required under Australian Consumer Law or the WA Fitness Code.</p>
+      <p>Refer to the <a href="terms.html">Terms and Conditions</a> for full details of your cancellation and refund rights, including the cooling-off period and ACL entitlements.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">04</span>
-      <h2>Medical Clearance</h2>
+      <h2>Client obligations.</h2>
       <ul>
-        <li>You have obtained, or will obtain, written medical clearance if you have any pre-existing conditions, injuries, or health concerns</li>
-        <li>You are not aware of any physical condition preventing you from participating in moderate to vigorous activity</li>
-        <li>You will immediately cease any exercise causing pain or unusual symptoms and seek medical advice</li>
-        <li>You will inform your coach of any changes in health status</li>
+        <li>Complete the PAR-Q health questionnaire honestly before program access is activated</li>
+        <li>Notify your coach promptly of any changes to your health status, injuries, or medical conditions</li>
+        <li>Engage with the platform in good faith and communicate openly with your coach</li>
+        <li>Not share your account credentials or allow another person to access your account</li>
+        <li>Consult a qualified medical professional before commencing the program if you have any health concerns</li>
       </ul>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">05</span>
-      <h2>Release and Indemnification</h2>
-      <p>To the maximum extent permitted by Australian law, you release, discharge, and hold harmless Performance Rebuilt Aus, its coaches, employees, contractors, and representatives from all claims arising from:</p>
-      <ul>
-        <li>Your use of the Platform or any services</li>
-        <li>Your participation in any training program or nutrition plan</li>
-        <li>Any injury, illness, or property damage suffered by you</li>
-        <li>Any reliance on information or content provided through the Platform</li>
-      </ul>
+      <h2>Health disclaimer.</h2>
+      <p>Performance Rebuilt Aus coaches are not registered medical practitioners, physiotherapists, or dietitians unless expressly stated. Nothing provided through the platform constitutes medical advice, diagnosis, or treatment. You participate in any exercise or nutrition program at your own risk. Performance Rebuilt Aus accepts no liability for injury, illness, or adverse outcomes arising from your participation, to the maximum extent permitted by law.</p>
+      <p>Any nutrition guidance follows the Australian Dietary Guidelines and does not constitute clinical dietary advice. You should seek independent medical advice before making significant changes to your diet or exercise regime.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">06</span>
-      <h2>Australian Consumer Law</h2>
-      <p>Nothing in this Waiver excludes, restricts, or modifies any right or remedy implied or imposed by the Australian Consumer Law that cannot be excluded. Where it applies, our liability is limited to re-supplying the services or paying the cost of re-supply.</p>
+      <h2>Intellectual property.</h2>
+      <p>All training programs, content, and materials created and delivered by Performance Rebuilt Aus remain the intellectual property of Performance Rebuilt Aus. You are granted a personal, non-transferable licence to use these materials for your own coaching purposes only. You must not reproduce, share, or commercialise any materials without prior written consent.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">07</span>
-      <h2>Assumption of Risk</h2>
-      <p>You voluntarily and knowingly assume all risks associated with your participation in exercise and nutrition programs facilitated through the Platform.</p>
+      <h2>Privacy.</h2>
+      <p>Performance Rebuilt Aus is committed to protecting your personal information in accordance with the <em>Privacy Act 1988</em> (Cth) and the Australian Privacy Principles. Information you provide — including health and body composition data — is collected and held securely to deliver and improve coaching services. Your data will not be sold or disclosed to third parties except where required by law or as outlined in the <a href="privacy.html">Privacy Policy</a>.</p>
+      <p>You may request access to or correction of your data by contacting <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a>.</p>
     </div>
-    <div class="legal-section" data-aos="fade-up">
+
+    <div class="legal-section reveal">
       <span class="section-tag">08</span>
-      <h2>Governing Law</h2>
-      <p>This Waiver is governed by the laws of Western Australia, Australia. Any dispute arising shall be subject to the jurisdiction of the courts of Western Australia.</p>
-    </div>
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-tag">Client Acknowledgement</span>
-      <h2>Client Acknowledgement</h2>
-      <div class="ack-box">
-        <p>Access to the Performance Rebuilt Aus platform is granted only upon explicit acceptance of this Waiver. At account activation, you will be required to tick an unchecked checkbox confirming the following:</p>
-        <ul>
-          <li>I have read and understood this Waiver in full</li>
-          <li>I accept and agree to all terms stated above</li>
-          <li>I am 18 years of age or older</li>
-          <li>I have completed the PAR-Q health screening honestly</li>
-          <li>I have not been pressured or coerced into accepting these terms</li>
-        </ul>
-        <p style="margin-top:0.75rem;font-size:0.82rem;color:var(--dim);">Your acceptance is recorded electronically, including a timestamp, your account identifier, and the version of this Waiver in effect at the time of acceptance.</p>
-      </div>
-      <p style="margin-top:1rem;">If you do not agree to this Waiver, you must not use the Platform. For questions, contact us at <a href="mailto:admin@performancerebuilt.com.au" style="color:var(--blue);">admin@performancerebuilt.com.au</a>.</p>
-    </div>
-    <div class="legal-section" data-aos="fade-up">
-      <span class="section-tag">Contact</span>
-      <h2>Contact us.</h2>
-      <div class="contact-block">
-        <p>Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</p>
-        <p>Email: <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a></p>
-        <p>Western Australia, Australia</p>
+      <h2>Complaints and disputes.</h2>
+      <p>If you have a complaint, please contact us at <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a>. We will acknowledge your complaint within 7 business days and endeavour to resolve it within 30 days. If you are not satisfied with our response, you may escalate to:</p>
+      <div class="escalation-card">
+        <p><strong>Consumer Protection WA</strong></p>
+        <p>Website: <a href="https://www.consumerprotection.wa.gov.au" target="_blank">consumerprotection.wa.gov.au</a> &nbsp;|&nbsp; Phone: 1300 30 40 54</p>
       </div>
     </div>
+
+    <div class="legal-section reveal">
+      <span class="section-tag">09</span>
+      <h2>Governing law.</h2>
+      <p>This agreement is governed by the laws of Western Australia, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of Western Australia. Nothing in this agreement limits your rights under the Australian Consumer Law.</p>
+    </div>
+
+    <div class="legal-section reveal">
+      <span class="section-tag">10</span>
+      <h2>Entire agreement.</h2>
+      <p>This Service Agreement, together with the <a href="terms.html">Terms and Conditions</a>, the <a href="privacy.html">Privacy Policy</a>, and the <a href="complaints.html">Complaints Policy</a>, constitute the entire agreement between the parties. In the event of any inconsistency between these documents, the Terms and Conditions will prevail. This agreement supersedes all prior representations, negotiations, and understandings between the parties.</p>
+    </div>
+
+    <!-- Digital acknowledgement -->
+    <div class="sign-section reveal">
+      <h2>Digital acknowledgement.</h2>
+      <p>By submitting this form you confirm that you have read, understood, and agree to be bound by this Service Agreement and all associated documents. Your submission is recorded with a timestamp in Australian Western Standard Time (AWST) and constitutes your digital signature.</p>
+
+      <div class="sign-box" id="signBox">
+        <form id="signForm" action="https://formspree.io/f/mykawkpl" method="POST">
+          <input type="hidden" name="form_type" value="service_agreement" />
+          <input type="hidden" name="agreement_version" value="v2 — 1 July 2026" />
+          <input type="hidden" name="timestamp" id="tsField" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full name</label>
+              <input type="text" id="fullName" name="full_name" placeholder="Your full legal name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="emailAddr">Email address</label>
+              <input type="email" id="emailAddr" name="email" placeholder="you@example.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <div class="checkbox-row">
+            <input type="checkbox" id="agreeCheck" name="agreement_confirmed" value="yes" required />
+            <label for="agreeCheck" class="checkbox-label">
+              I confirm that I have read and agree to the
+              <a href="waiver.html">Service Agreement</a>,
+              <a href="terms.html">Terms &amp; Conditions</a>,
+              <a href="privacy.html">Privacy Policy</a>, and
+              <a href="complaints.html">Complaints Policy</a>
+              of Performance Rebuilt Aus (ABN 88 571 749 763).
+            </label>
+          </div>
+
+          <button type="submit" class="sign-btn" id="signBtn">Sign and submit →</button>
+        </form>
+      </div>
+
+      <div class="success-box" id="successBox">
+        <div class="tick">
+          <svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 14.5L11.5 20L22 9" stroke="#1A56FD" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Agreement signed.</h3>
+        <p>Thank you. Your acknowledgement has been recorded and a copy will be forwarded to you by email.</p>
+        <p class="timestamp" id="signTimestamp"></p>
+      </div>
+    </div>
+
   </div>
+
   <footer>
     <span>© 2026 Performance Rebuilt Aus &nbsp;|&nbsp; ABN: 88 571 749 763</span>
     <div class="footer-legal">
       <a href="privacy.html">Privacy Policy</a>
       <a href="terms.html">Terms &amp; Conditions</a>
-      <a href="waiver.html">Liability Waiver</a>
+      <a href="waiver.html">Service Agreement</a>
       <a href="complaints.html">Complaints</a>
     </div>
     <a href="mailto:admin@performancerebuilt.com.au">admin@performancerebuilt.com.au</a>
   </footer>
+
   <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+    const lenis = new Lenis({ duration: 1.4, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
     function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
-    AOS.init({ duration: 700, easing: 'ease-out-cubic', once: true, offset: 50 });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.hero .reveal').forEach((el, i) => setTimeout(() => el.classList.add('revealed'), 150 + i * 100));
+    });
+
     const menuToggle = document.getElementById('menuToggle');
     const mobileMenu = document.getElementById('mobileMenu');
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('active');
-      const isOpen = mobileMenu.classList.contains('active');
-      menuToggle.innerHTML = isOpen ? '\u2715' : '\u2630';
-      menuToggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+      const open = mobileMenu.classList.contains('active');
+      menuToggle.innerHTML = open ? '✕' : '☰';
+      menuToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
-    document.querySelectorAll('#mobileMenu a').forEach(link => {
-      link.addEventListener('click', () => { mobileMenu.classList.remove('active'); menuToggle.innerHTML = '\u2630'; menuToggle.setAttribute('aria-label', 'Open menu'); });
+    document.querySelectorAll('#mobileMenu a').forEach(l => l.addEventListener('click', () => {
+      mobileMenu.classList.remove('active'); menuToggle.innerHTML = '☰'; menuToggle.setAttribute('aria-label', 'Open menu');
+    }));
+
+    const signForm = document.getElementById('signForm');
+    const signBox = document.getElementById('signBox');
+    const successBox = document.getElementById('successBox');
+    const signTimestamp = document.getElementById('signTimestamp');
+    const tsField = document.getElementById('tsField');
+
+    signForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('signBtn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      const now = new Date();
+      const awst = now.toLocaleString('en-AU', {
+        timeZone: 'Australia/Perth',
+        day: '2-digit', month: 'long', year: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: true
+      });
+      tsField.value = awst + ' AWST';
+
+      try {
+        const data = new FormData(signForm);
+        const res = await fetch(signForm.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          signBox.style.display = 'none';
+          successBox.style.display = 'block';
+          signTimestamp.textContent = 'Signed: ' + awst + ' AWST';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Sign and submit →';
+          alert('Submission failed. Please try again or contact admin@performancerebuilt.com.au');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Sign and submit →';
+        alert('Network error. Please check your connection and try again.');
+      }
     });
   </script>
 </body>
